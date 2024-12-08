@@ -49,8 +49,11 @@ public class UserLogin : MonoBehaviour
             userGameData.UserID = response.UserID;
             userGameData.Login = response.Login;
             userGameData.Nickname = response.Nickname;
+            userGameData.RoomID = response.RoomID;
 
             responseText.text = $"Login successful: {response.Login}";
+
+            connectData.regUserObj.SetActive(false);
         }
         else
         {

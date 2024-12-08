@@ -8,6 +8,8 @@ public class UserData : MonoBehaviour
     public int UserID;
     public string Login;
     public string Nickname;
+    public int RoomID;
+    public List<int> WorksID = new List<int>();
 }
 
 [System.Serializable]
@@ -16,4 +18,5 @@ public class UserLoginResponse
     public int UserID;
     public string Login;
     public string Nickname;
+    public int RoomID;
 }

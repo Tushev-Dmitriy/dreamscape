@@ -65,6 +65,9 @@ public class UserRegistration : MonoBehaviour
             userGameData.Nickname = response.Nickname;
 
             responseText.text = $"Registration successful: {response.Login}";
+
+            connectData.regUserObj.SetActive(false);
+            connectData.loginUserObj.SetActive(true);
         }
         else
         {
