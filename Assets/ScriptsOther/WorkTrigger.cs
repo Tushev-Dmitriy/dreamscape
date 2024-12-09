@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class WorkTrigger : MonoBehaviour
 {
-    private GameObject workListUI;
     private GameObject workDataUI;
     private GameObject inGameUI;
 
@@ -19,9 +18,8 @@ public class WorkTrigger : MonoBehaviour
             {
                 if (obj.name == "Canvas")
                 {
-                    workListUI = obj.transform.GetChild(3).gameObject;
-                    workDataUI = obj.transform.GetChild(4).gameObject;
-                    inGameUI = obj.transform.GetChild(7).gameObject;
+                    workDataUI = obj.transform.GetChild(3).gameObject;
+                    inGameUI = obj.transform.GetChild(6).gameObject;
                     break;
                 }
             }
@@ -42,35 +40,20 @@ public class WorkTrigger : MonoBehaviour
             playerInTrigger = false;
             inGameUI.SetActive(true);
             workDataUI.SetActive(false);
-            workListUI.SetActive(false);
         }
     }
 
     private void Update()
     {
-        if (playerInTrigger)
-        { 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                OpenWorkList();
-            } else if (Input.GetKeyDown(KeyCode.E))
-            {
-                OpenWorkData();
-            }
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            OpenWorkData();
         }
-    }
-
-    private void OpenWorkList()
-    {
-        workListUI.SetActive(true);
-        workDataUI.SetActive(false);
-        inGameUI.SetActive(false);
     }
 
     private void OpenWorkData()
     {
         workDataUI.SetActive(true);
-        workListUI.SetActive(false);
         inGameUI.SetActive(false);
     }
 }

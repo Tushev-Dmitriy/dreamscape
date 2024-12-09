@@ -46,9 +46,9 @@ public class ConnectData : MonoBehaviour
         return $"{host}user/{userId}/avatar";
     }
 
-    public string GetUserRoomUrl(int userId)
+    public string GetUserRoomUrl(int ñurrentRoomID)
     {
-        return $"{host}room/{userId}/works";
+        return $"{host}room/{ñurrentRoomID}/works";
     }
 
     public string GetLikeWorkUrl(int workId)

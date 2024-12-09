@@ -9,6 +9,7 @@ public class UserData : MonoBehaviour
     public string Login;
     public string Nickname;
     public int RoomID;
+    public int CurrentRoomID;
     public List<int> WorksID = new List<int>();
     public List<int> LikedWorks = new List<int>();
 }

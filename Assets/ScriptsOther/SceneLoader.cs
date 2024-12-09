@@ -24,12 +24,12 @@ public class SceneLoader : MonoBehaviour
         LoadMainScene();
     }
 
-    public void SwitchScene(bool isRoom)
+    public void SwitchScene(bool isRoom, int roomId)
     {
         if (isRoom)
         {
             SceneManager.UnloadSceneAsync("MainScene");
-            LoadRoomScene();
+            LoadRoomScene(roomId);
             SetPlayerPosition(new Vector3(0, 1, 0));
         }
         else
@@ -47,7 +47,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void LoadRoomScene()
+    void LoadRoomScene(int roomId)
     {
         SceneManager.LoadSceneAsync("RoomScene", LoadSceneMode.Additive);
 
@@ -64,8 +64,11 @@ public class SceneLoader : MonoBehaviour
     {
         if (scene.name == "MainScene")
         {
-            GameObject mainSceneObject = GameObject.FindGameObjectWithTag("Portal");
-            mainSceneObject.GetComponent<RoomTransition>().sceneLoader = this;
+            GameObject[] mainSceneObject = GameObject.FindGameObjectsWithTag("Portal");
+            for (int i = 0; i < mainSceneObject.Length; i++)
+            {
+                mainSceneObject[i].GetComponent<RoomTransition>().sceneLoader = this;
+            }
 
             SetPlayerPosition(new Vector3(0, 1, 0));
         }

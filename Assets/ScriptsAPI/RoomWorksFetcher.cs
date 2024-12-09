@@ -9,13 +9,13 @@ public class RoomWorksFetcher : MonoBehaviour
     [Header("API Settings")]
     public ConnectData connectData;
     public UserData userGameData;
+    public RoomController roomController;
 
     private string worksUrl;
 
-    void Start()
+    public void StartGetRoom()
     {
         worksUrl = connectData.GetUserRoomUrl(userGameData.UserID);
-
         FetchWorksFromRoom(userGameData.RoomID);
     }
 
@@ -34,7 +34,7 @@ public class RoomWorksFetcher : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             RoomWorksResponse GetWorksFromRoomResponse = JsonConvert.DeserializeObject<RoomWorksResponse>(request.downloadHandler.text);
-            
+            roomController.roomWorksResponse = GetWorksFromRoomResponse;
         }
         else
         {
