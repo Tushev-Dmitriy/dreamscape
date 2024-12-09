@@ -22,19 +22,13 @@ public class WorkUploader : MonoBehaviour
     private string addWorkUrl;
     private string filePath;
 
-    private void Awake()
-    {
-        uploadButton.onClick.AddListener(OpenFileExplorer);
-        submitButton.onClick.AddListener(SendWork);
-    }
-
     private void Start()
     {
         int userId = connectData.userGameData.UserID;
         addWorkUrl = connectData.GetAddWorkUrl(userId);
     }
 
-    private void OpenFileExplorer()
+    public void OpenFileExplorer()
     {
         string[] extensions = { "png", "jpg", "jpeg", "obj", "fbx" };
         filePath = UnityEditor.EditorUtility.OpenFilePanel("Select Work File", "", string.Join(",", extensions));
@@ -49,7 +43,7 @@ public class WorkUploader : MonoBehaviour
         }
     }
 
-    private void SendWork()
+    public void SendWork()
     {
         string workTitle = workTitleField.text;
         string workType = workTypeField.text;

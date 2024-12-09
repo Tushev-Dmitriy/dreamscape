@@ -5,11 +5,11 @@ using UnityEngine;
 public class ConnectData : MonoBehaviour
 {
     [Header("URLS")]
-    private static string host = "http://localhost:8000/";
-    public string registrationUrl = $"{host}auth/register/";
-    public string loginUrl = $"{host}auth/login/";
-    public string userWorksUrl = $"{host}works/";
-    public string addWorkBaseUrl = $"{host}works/";
+    private static string host = "http://77.91.78.231:8080/";
+    public string registrationUrl;
+    public string loginUrl;
+    public string userWorksUrl;
+    public string addWorkBaseUrl;
 
     [Header("Obj in scene")]
     public GameObject regUserObj;
@@ -17,6 +17,19 @@ public class ConnectData : MonoBehaviour
 
     [Header("Scripts")]
     public UserData userGameData;
+
+    private void Awake()
+    {
+        registrationUrl = $"{host}auth/register/";
+        loginUrl = $"{host}auth/login/";
+        userWorksUrl = $"{host}works/";
+        addWorkBaseUrl = $"{host}works/";
+    }
+
+    private void Start()
+    {
+        Debug.Log(userWorksUrl);
+    }
 
     public string GetAddWorkUrl(int userId)
     {

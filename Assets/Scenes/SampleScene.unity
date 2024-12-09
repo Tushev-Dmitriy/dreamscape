@@ -8681,10 +8681,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7105e7da9dd3e49b8fceabd8102716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  registrationUrl: http://localhost:8000/auth/register/
-  loginUrl: http://localhost:8000/auth/login/
-  userWorksUrl: http://localhost:8000/works/
-  addWorkBaseUrl: http://localhost:8000/works/
+  registrationUrl: http://77.91.78.231:8080/auth/register/
+  loginUrl: http://77.91.78.231:8080/auth/login/
+  userWorksUrl: http://77.91.78.231:8080works/
+  addWorkBaseUrl: http://77.91.78.231:8080/works/
   regUserObj: {fileID: 1745482044}
   loginUserObj: {fileID: 1833615402}
   userGameData: {fileID: 2072018672}
@@ -9126,7 +9126,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1057263068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982803345}
+        m_TargetAssemblyTypeName: WorkUploader, Assembly-CSharp
+        m_MethodName: OpenFileExplorer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1063948676
 GameObject:
   m_ObjectHideFlags: 0
@@ -16360,7 +16372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2020468163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982803345}
+        m_TargetAssemblyTypeName: WorkUploader, Assembly-CSharp
+        m_MethodName: SendWork
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2020468163
 MonoBehaviour:
   m_ObjectHideFlags: 0
