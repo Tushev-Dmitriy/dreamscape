@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using Newtonsoft.Json;
 using TMPro;
 using System.IO;
+using System;
 
 public class UserWorksManager : MonoBehaviour
 {
@@ -47,7 +48,6 @@ public class UserWorksManager : MonoBehaviour
                 foreach (AllWork work in works)
                 {
                     userGameData.WorksID.Add(work.WorkID);
-                    //SaveWorkToFile(work);
                 }
 
                 DisplayWorks(works);
