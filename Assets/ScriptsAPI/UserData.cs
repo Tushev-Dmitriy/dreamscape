@@ -12,6 +12,26 @@ public class UserData : MonoBehaviour
     public int CurrentRoomID;
     public List<int> WorksID = new List<int>();
     public List<int> LikedWorks = new List<int>();
+    [SerializeField] private RoomWorksFetcher roomWorksFetcher;
+
+    [Header("Events")]
+    [SerializeField] private IntEventChannelSO currentRoomIdEvent;
+
+    private void Start()
+    {
+        currentRoomIdEvent.OnEventRaised += SetCurrentRoomID;
+    }
+
+    private void OnDisable()
+    {
+        currentRoomIdEvent.OnEventRaised -= SetCurrentRoomID;
+    }
+
+    private void SetCurrentRoomID(int roomID)
+    {
+        CurrentRoomID = roomID;
+        roomWorksFetcher.StartGetRoom(CurrentRoomID);
+    }
 }
 
 [System.Serializable]

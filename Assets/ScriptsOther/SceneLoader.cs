@@ -7,6 +7,9 @@ public class SceneLoader : MonoBehaviour
 {
     private static SceneLoader instance;
 
+    [Header("Events")]
+    [SerializeField] private IntEventChannelSO currentRoomIdEvent;
+
     private void Awake()
     {
         if (instance != null)
@@ -51,6 +54,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("RoomScene", LoadSceneMode.Additive);
 
+        currentRoomIdEvent.RaiseEvent(roomId);
+
         SceneManager.sceneLoaded += OnRoomSceneLoaded;
     }
 
@@ -58,6 +63,10 @@ public class SceneLoader : MonoBehaviour
     {
         GameObject mainSceneObject = GameObject.FindGameObjectWithTag("Portal");
         mainSceneObject.GetComponent<RoomTransition>().sceneLoader = this;
+        GameObject roomFetcherSceneObject = GameObject.FindGameObjectWithTag("API");
+        GameObject roomControllerSceneObject = GameObject.FindGameObjectWithTag("RoomController");
+        RoomController tempRoom = roomControllerSceneObject.GetComponent<RoomController>();
+        roomFetcherSceneObject.GetComponent<RoomWorksFetcher>().roomController = tempRoom;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

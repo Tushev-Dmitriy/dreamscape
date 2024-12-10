@@ -7457,6 +7457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b96c9e9acd30e42a6371e8d74eb39e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
 --- !u!4 &665985669
 Transform:
   m_ObjectHideFlags: 0
@@ -13872,7 +13873,7 @@ GameObject:
   - component: {fileID: 1338621622}
   m_Layer: 0
   m_Name: API
-  m_TagString: Untagged
+  m_TagString: API
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19390,6 +19391,8 @@ MonoBehaviour:
   CurrentRoomID: 0
   WorksID: 
   LikedWorks: 
+  roomWorksFetcher: {fileID: 1338621622}
+  currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
 --- !u!114 &1729647040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19404,6 +19407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 0}
   isRoom: 0
+  roomId: 3
 --- !u!4 &1729647041
 Transform:
   m_ObjectHideFlags: 0

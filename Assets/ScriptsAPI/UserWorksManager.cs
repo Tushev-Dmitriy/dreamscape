@@ -117,35 +117,6 @@ public class UserWorksManager : MonoBehaviour
             Debug.LogError($"Failed to delete work {workId}: {request.responseCode} - {request.error}");
         }
     }
-
-    private void SaveWorkToFile(Work work)
-    {
-        try
-        {
-            string extension = work.WorkType.ToLower() switch
-            {
-                "image" => "png",
-                "music" => "mp3",
-                "model" => "fbx",
-                _ => "dat"
-            };
-
-            string timestamp = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string fileName = $"{work.WorkTitle}_{timestamp}.{extension}";
-
-            string savePath = Path.Combine(Application.streamingAssetsPath, fileName);
-
-            byte[] fileData = System.Convert.FromBase64String(work.WorkContent);
-
-            File.WriteAllBytes(savePath, fileData);
-
-            Debug.Log($"Файл {fileName} успешно сохранен в {savePath}");
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Ошибка сохранения файла для работы {work.WorkID}: {ex.Message}");
-        }
-    }
 }
 
 [System.Serializable]

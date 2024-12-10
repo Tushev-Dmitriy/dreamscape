@@ -1210,6 +1210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 0}
   isRoom: 1
+  roomId: 4
 --- !u!65 &697686089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2111,6 +2112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 0}
   isRoom: 1
+  roomId: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Portal
   - WorkSlot
+  - WorkRoomList
+  - RoomController
+  - API
   layers:
   - Default
   - TransparentFX
