@@ -1,43 +1,40 @@
+using System;
 using System.Collections;
+using Events;
+using ScriptsAPI;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class UserRegistration : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public TMP_InputField loginField;
-    public TMP_InputField nicknameField;
-    public TMP_InputField passwordField;
-    public TMP_Text responseText;
+    [Header("Listening To")] [SerializeField]
+    private UserLoginRequestSO _userRegisterRequest = default;
 
-    [Header("API Settings")]
-    public ConnectData connectData;
-    public UserData userGameData;
+    [Header("Broadcasting on")] [SerializeField]
+    private BoolEventChannelSO _serverErrorEvent = default;
 
-    private string registrationUrl;
+    [Header("API Settings")] public UserData userGameData;
 
     private void Awake()
     {
-        registrationUrl = connectData.registrationUrl;
+        _userRegisterRequest.OnEventRaised += RegisterUser;
     }
 
-    public void RegisterUser()
+    private void OnDisable()
     {
-        string login = loginField.text;
-        string nickname = nicknameField.text;
-        string password = passwordField.text;
+        _userRegisterRequest.OnEventRaised -= RegisterUser;
+    }
 
-        if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(nickname) || string.IsNullOrEmpty(password))
-        {
-            responseText.text = "All fields are required.";
-            return;
-        }
-
+    private void RegisterUser(string login, string password)
+    {
+        Debug.Log(login + "\n" + password);
         UserRegistrationData userData = new UserRegistrationData
         {
             Login = login,
-            Nickname = nickname,
+            Nickname = login,
             PasswordHash = password
         };
 
@@ -48,7 +45,7 @@ public class UserRegistration : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(userData);
 
-        UnityWebRequest request = new UnityWebRequest(registrationUrl, "POST");
+        UnityWebRequest request = new UnityWebRequest(ConnectData.RegistrationUrl, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
@@ -63,15 +60,15 @@ public class UserRegistration : MonoBehaviour
             userGameData.UserID = response.UserID;
             userGameData.Login = response.Login;
             userGameData.Nickname = response.Nickname;
-
-            responseText.text = $"Registration successful: {response.Login}";
-
-            connectData.regUserObj.SetActive(false);
-            connectData.loginUserObj.SetActive(true);
+            userGameData.RoomID = response.RoomID;
+            
+            _serverErrorEvent.RaiseEvent(false);
         }
         else
         {
-            responseText.text = $"Error: {request.responseCode} - {request.error}\n{request.downloadHandler.text}";
+            _serverErrorEvent.RaiseEvent(true);
+            
+            Debug.Log($"Error: {request.responseCode} - {request.error}\n{request.downloadHandler.text}");
         }
     }
 }

@@ -14,7 +14,6 @@ public class WorkDetailsDisplay : MonoBehaviour
 
     [Header("Dependencies")]
     public UserData userGameData;
-    public ConnectData connectData;
 
     private Work workData;
 
@@ -57,7 +56,7 @@ public class WorkDetailsDisplay : MonoBehaviour
 
     private IEnumerator SendLikeRequest(int workId)
     {
-        string likeUrl = connectData.GetLikeWorkUrl(workId);
+        string likeUrl = ConnectData.GetLikeWorkUrl(workId);
 
         UnityWebRequest request = UnityWebRequest.PostWwwForm(likeUrl, "");
         request.SetRequestHeader("Content-Type", "application/json");

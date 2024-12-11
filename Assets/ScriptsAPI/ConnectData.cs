@@ -2,68 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectData : MonoBehaviour
+public static class ConnectData
 {
-    [Header("URLS")]
-    private static string host = "http://77.91.78.231:8081/";
-    public string registrationUrl;
-    public string loginUrl;
-    public string userWorksUrl;
-    public string addWorkBaseUrl;
+    private static readonly string Host = "http://77.91.78.231:8081/";
+    public static readonly string RegistrationUrl = $"{Host}auth/register";
+    public static readonly string LoginUrl = $"{Host}auth/login";
+    public static readonly string UserWorksUrl = $"{Host}works/";
+    public static readonly string AddWorkBaseUrl = $"{Host}works/";
 
-    [Header("Obj in scene")]
-    public GameObject regUserObj;
-    public GameObject loginUserObj;
-
-    [Header("Scripts")]
-    public UserData userGameData;
-
-    private void Awake()
+    public static string GetAddWorkUrl(int userId)
     {
-        registrationUrl = $"{host}auth/register";
-        loginUrl = $"{host}auth/login";
-        userWorksUrl = $"{host}works/";
-        addWorkBaseUrl = $"{host}works/";
+        return $"{AddWorkBaseUrl}{userId}/add";
     }
 
-    public string GetAddWorkUrl(int userId)
+    public static string GetUserWorksUrl(int userId)
     {
-        return $"{addWorkBaseUrl}{userId}/add";
+        return $"{UserWorksUrl}{userId}";
     }
 
-    public string GetUserWorksUrl(int userId)
+    public static string GetDeleteWorkUrl(int userId, int workId)
     {
-        return $"{userWorksUrl}{userId}";
+        return $"{Host}works/{userId}/{workId}/delete";
     }
 
-    public string GetDeleteWorkUrl(int userId, int workId)
+    public static string GetUserAvatarUrl(int userId)
     {
-        return $"{host}works/{userId}/{workId}/delete";
+        return $"{Host}user/{userId}/avatar";
     }
 
-    public string GetUserAvatarUrl(int userId)
+    public static string GetUserRoomUrl(int currentRoomID)
     {
-        return $"{host}user/{userId}/avatar";
+        return $"{Host}room/{currentRoomID}/works";
     }
 
-    public string GetUserRoomUrl(int ñurrentRoomID)
+    public static string GetLikeWorkUrl(int workId)
     {
-        return $"{host}room/{ñurrentRoomID}/works";
+        return $"{Host}works/{workId}/like";
     }
 
-    public string GetLikeWorkUrl(int workId)
+    public static string GetValidationUrl(int workId, string type)
     {
-        return $"{host}works/{workId}/like";
+        return $"{Host}works/{workId}/validate/{type}";
     }
 
-    public string GetValidationUrl(int workId, string type)
+    public static string GetAddWorkUrl(int roomId, int slot)
     {
-        return $"{host}works/{workId}/validate/{type}";
-    }
-
-    public string GetAddWorkUrl(int roomId, int slot)
-    {
-        return $"{host}room/{roomId}/{slot}/add_work/";
+        return $"{Host}room/{roomId}/{slot}/add_work/";
     }
 
 }

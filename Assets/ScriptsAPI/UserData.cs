@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserData : MonoBehaviour
+[CreateAssetMenu(fileName = "UserData", menuName = "UserData", order = 1)]
+public class UserData : ScriptableObject
 {
     [Header("User Information")]
     public int UserID;
@@ -12,33 +13,4 @@ public class UserData : MonoBehaviour
     public int CurrentRoomID;
     public List<int> WorksID = new List<int>();
     public List<int> LikedWorks = new List<int>();
-    [SerializeField] private RoomWorksFetcher roomWorksFetcher;
-
-    [Header("Events")]
-    [SerializeField] private IntEventChannelSO currentRoomIdEvent;
-
-    private void Start()
-    {
-        currentRoomIdEvent.OnEventRaised += SetCurrentRoomID;
-    }
-
-    private void OnDisable()
-    {
-        currentRoomIdEvent.OnEventRaised -= SetCurrentRoomID;
-    }
-
-    private void SetCurrentRoomID(int roomID)
-    {
-        CurrentRoomID = roomID;
-        roomWorksFetcher.StartGetRoom(CurrentRoomID);
-    }
-}
-
-[System.Serializable]
-public class UserLoginResponse
-{
-    public int UserID;
-    public string Login;
-    public string Nickname;
-    public int RoomID;
 }

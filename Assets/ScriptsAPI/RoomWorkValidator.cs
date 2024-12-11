@@ -10,7 +10,6 @@ public class RoomWorkValidator : MonoBehaviour
     public TMP_InputField[] musicFields;
     public TMP_InputField[] modelFields; 
 
-    public ConnectData connectData;
     public UserData userData;
 
     public void ValidateAndSaveRoomWorks()
@@ -43,7 +42,7 @@ public class RoomWorkValidator : MonoBehaviour
                 yield break;
             }
 
-            string validationUrl = connectData.GetValidationUrl(workId, type);
+            string validationUrl = ConnectData.GetValidationUrl(workId, type);
             UnityWebRequest validationRequest = UnityWebRequest.Get(validationUrl);
             yield return validationRequest.SendWebRequest();
 
@@ -53,7 +52,7 @@ public class RoomWorkValidator : MonoBehaviour
                 yield break;
             }
 
-            string addWorkUrl = connectData.GetAddWorkUrl(roomId, slot);
+            string addWorkUrl = ConnectData.GetAddWorkUrl(roomId, slot);
             var requestBody = new AddWorkRequest { work_id = workId, user_id = userData.UserID };
             string jsonData = JsonUtility.ToJson(requestBody);
 

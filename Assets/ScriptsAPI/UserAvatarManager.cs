@@ -7,7 +7,6 @@ using TMPro;
 public class UserAvatarManager : MonoBehaviour
 {
     [Header("API Settings")]
-    public ConnectData connectData;
     public UserData userGameData;
 
     [Header("UI Elements")]
@@ -20,8 +19,8 @@ public class UserAvatarManager : MonoBehaviour
 
     private void Start()
     {
-        int userId = connectData.userGameData.UserID;
-        userAvatarUrl = connectData.GetUserAvatarUrl(userId);
+        int userId = userGameData.UserID;
+        userAvatarUrl = ConnectData.GetUserAvatarUrl(userId);
     }
 
     public void FetchUserAvatarData()

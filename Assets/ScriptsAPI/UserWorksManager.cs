@@ -10,7 +10,6 @@ using System;
 public class UserWorksManager : MonoBehaviour
 {
     [Header("API Settings")]
-    public ConnectData connectData;
     public UserData userGameData;
 
     [Header("UI Elements")]
@@ -21,8 +20,8 @@ public class UserWorksManager : MonoBehaviour
 
     private void Start()
     {
-        int userId = connectData.userGameData.UserID;
-        userWorksUrl = connectData.GetUserWorksUrl(userId);
+        int userId = userGameData.UserID;
+        userWorksUrl = ConnectData.GetUserWorksUrl(userId);
     }
 
     public void FetchUserWorks()
@@ -96,7 +95,7 @@ public class UserWorksManager : MonoBehaviour
 
     private IEnumerator DeleteWorkRequest(int userId, int workId)
     {
-        string deleteUrl = connectData.GetDeleteWorkUrl(userId, workId);
+        string deleteUrl = ConnectData.GetDeleteWorkUrl(userId, workId);
 
         UnityWebRequest request = UnityWebRequest.Delete(deleteUrl);
         yield return request.SendWebRequest();

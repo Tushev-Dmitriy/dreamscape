@@ -1,22 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Events;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 
 public class RoomWorksFetcher : MonoBehaviour
 {
     [Header("API Settings")]
-    public ConnectData connectData;
-    public UserData userGameData;
-    public RoomController roomController;
-
+    [SerializeField] private UserData userGameData;
+    [SerializeField] public RoomController roomController;
+    
     private string worksUrl;
 
-    public void StartGetRoom(int currentRoomID)
+#region Singleton pattern
+
+    private static RoomWorksFetcher _instance;
+    public static RoomWorksFetcher Instance
     {
-        worksUrl = connectData.GetUserRoomUrl(currentRoomID);
-        FetchWorksFromRoom(currentRoomID);
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<RoomWorksFetcher>();
+            }
+            
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    #endregion
+
+    public void StartGetRoom(int roomId)
+    {
+        worksUrl = ConnectData.GetUserRoomUrl(roomId);
+        FetchWorksFromRoom(roomId);
     }
 
     void FetchWorksFromRoom(int roomId)

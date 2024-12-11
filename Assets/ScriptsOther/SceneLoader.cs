@@ -1,91 +1,143 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using Events;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static SceneLoader instance;
+    [Header("Listening To")]
+    [SerializeField] private LoadEventChannelSO _loadHub;
+    [SerializeField] private LoadEventChannelSO _loadAvatarCreation;
+    [SerializeField] private LoadEventChannelSO _loadRoom;
+    [SerializeField] private LoadEventChannelSO _loadMenu;
+    
+    [SerializeField] private BoolEventChannelSO _onRoomLoadedEvent;
+    [SerializeField] private BoolEventChannelSO _onHubLoadedEvent;
 
-    [Header("Events")]
-    [SerializeField] private IntEventChannelSO currentRoomIdEvent;
+    [Header("Broadcasting on")]
+    [SerializeField] private BoolEventChannelSO _toggleLoadingScreen;
+    [SerializeField] private FadeChannelSO _fadeRequestChannel = default;
+    
+    private AsyncOperationHandle<SceneInstance> _loadingOperationHandle;
+    
+    private GameSceneSO _sceneToLoad;
+    private GameSceneSO _currentlyLoadedScene;
+    private bool _showLoadingScreen;
+    
+    private float _fadeDuration = .5f;
+    private bool _isLoading = false;
+    
+    private static SceneLoader _instance;
 
-    private void Awake()
+    public static SceneLoader Instance
     {
-        if (instance != null)
+        get
         {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        LoadMainScene();
-    }
-
-    public void SwitchScene(bool isRoom, int roomId)
-    {
-        if (isRoom)
-        {
-            SceneManager.UnloadSceneAsync("MainScene");
-            LoadRoomScene(roomId);
-            SetPlayerPosition(new Vector3(0, 1, 0));
-        }
-        else
-        {
-            SceneManager.UnloadSceneAsync("RoomScene");
-            SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Additive);
-            SetPlayerPosition(new Vector3(0, 1, 0));
-        }
-    }
-
-    void LoadMainScene()
-    {
-        SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void LoadRoomScene(int roomId)
-    {
-        SceneManager.LoadSceneAsync("RoomScene", LoadSceneMode.Additive);
-
-        currentRoomIdEvent.RaiseEvent(roomId);
-
-        SceneManager.sceneLoaded += OnRoomSceneLoaded;
-    }
-
-    void OnRoomSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        GameObject mainSceneObject = GameObject.FindGameObjectWithTag("Portal");
-        mainSceneObject.GetComponent<RoomTransition>().sceneLoader = this;
-        GameObject roomFetcherSceneObject = GameObject.FindGameObjectWithTag("API");
-        GameObject roomControllerSceneObject = GameObject.FindGameObjectWithTag("RoomController");
-        RoomController tempRoom = roomControllerSceneObject.GetComponent<RoomController>();
-        roomFetcherSceneObject.GetComponent<RoomWorksFetcher>().roomController = tempRoom;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "MainScene")
-        {
-            GameObject[] mainSceneObject = GameObject.FindGameObjectsWithTag("Portal");
-            for (int i = 0; i < mainSceneObject.Length; i++)
+            if (_instance == null)
             {
-                mainSceneObject[i].GetComponent<RoomTransition>().sceneLoader = this;
+                _instance = FindObjectOfType<SceneLoader>();
             }
+            
+            return _instance;
+        }
+    }
+    
+    private void OnEnable()
+    {
+        _loadHub.OnLoadingRequested += LoadScene;
+        _loadAvatarCreation.OnLoadingRequested += LoadScene;
+        _loadMenu.OnLoadingRequested += LoadScene;
+        _loadRoom.OnLoadingRequested += LoadScene;
+    }
 
-            SetPlayerPosition(new Vector3(0, 1, 0));
+    private void OnDisable()
+    {
+        _loadHub.OnLoadingRequested -= LoadScene;
+        _loadAvatarCreation.OnLoadingRequested -= LoadScene;
+        _loadMenu.OnLoadingRequested -= LoadScene;
+        _loadRoom.OnLoadingRequested -= LoadScene;
+    }
+    
+    private void LoadScene(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
+    {
+        if (_isLoading) return;
+
+        _sceneToLoad = menuToLoad;
+        _showLoadingScreen = showLoadingScreen;
+        _isLoading = true;
+
+        StartCoroutine(UnloadPreviousScene());
+    }
+    
+    private IEnumerator UnloadPreviousScene()
+    {
+        _fadeRequestChannel.FadeOut(_fadeDuration);
+
+        yield return new WaitForSeconds(_fadeDuration);
+
+        if (_currentlyLoadedScene != null)
+        {
+            if (_currentlyLoadedScene.SceneReference.OperationHandle.IsValid())
+            {
+                _currentlyLoadedScene.SceneReference.UnLoadScene();
+            }
+#if UNITY_EDITOR
+            else
+            {
+                SceneManager.UnloadSceneAsync(_currentlyLoadedScene.SceneReference.editorAsset.name);
+            }
+#endif
+        }
+
+        LoadNewScene();
+    }
+    
+    private void IsHubLoading()
+    {
+        if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Hub)
+        {
+            _onHubLoadedEvent.RaiseEvent(true);
         }
     }
 
-    void SetPlayerPosition(Vector3 position)
+    private void IsRoomLoading()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<MoveController>().SetPlayerPos();
+        if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Room)
+        {
+            _onRoomLoadedEvent.RaiseEvent(true);
+        }
+    }
+    
+    private void LoadNewScene()
+    {
+        if (_showLoadingScreen)
+        {
+            _toggleLoadingScreen.RaiseEvent(true);
+        }
+
+        _loadingOperationHandle = _sceneToLoad.SceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
+        _loadingOperationHandle.Completed += OnNewSceneLoaded;
+    }
+    
+    private void OnNewSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    {
+        _currentlyLoadedScene = _sceneToLoad;
+
+        IsHubLoading();
+        IsRoomLoading();
+
+        Scene s = obj.Result.Scene;
+        SceneManager.SetActiveScene(s);
+        _isLoading = false;
+
+        if (_showLoadingScreen)
+        {
+            _toggleLoadingScreen.RaiseEvent(false);
+        }
+
+        _fadeRequestChannel.FadeIn(_fadeDuration);
     }
 }

@@ -13,7 +13,6 @@ public class WorkUploader : MonoBehaviour
     public TMP_Text selectedFileText;
 
     [Header("API Settings")]
-    public ConnectData connectData;
     public UserData userGameData;
 
     private string addWorkUrl;
@@ -21,8 +20,8 @@ public class WorkUploader : MonoBehaviour
 
     private void Start()
     {
-        int userId = connectData.userGameData.UserID;
-        addWorkUrl = connectData.GetAddWorkUrl(userId);
+        int userId = userGameData.UserID;
+        addWorkUrl = ConnectData.GetAddWorkUrl(userId);
     }
 
     public void OpenFileExplorer()

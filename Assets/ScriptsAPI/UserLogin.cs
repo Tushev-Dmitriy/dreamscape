@@ -1,31 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Events;
+using ScriptsAPI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class UserLogin : MonoBehaviour
 {
-    [Header("UI Elements")]
-    public TMP_InputField loginField;
-    public TMP_InputField passwordField;
-    public TextMeshProUGUI responseText;
-
     [Header("API Settings")]
-    public ConnectData connectData;
     public UserData userGameData;
+    
+    [Header("Listening To")]
+    [SerializeField] private UserLoginRequestSO _userLoginRequest = default;
+    
+    [Header("Broadcasting on")]
+    [SerializeField] private BoolEventChannelSO _loginCorrectEvent = default;
+    [SerializeField] private BoolEventChannelSO _serverErrorEvent = default;
 
     private string loginUrl;
 
     private void Awake()
     {
-        loginUrl = connectData.loginUrl;
+        loginUrl = ConnectData.LoginUrl;
+        _userLoginRequest.OnEventRaised += Login;
     }
-    public void Login()
-    {
-        string login = loginField.text;
-        string password = passwordField.text;
 
+    private void OnDisable()
+    {
+        _userLoginRequest.OnEventRaised -= Login;
+    }
+
+    private void Login(string login, string password)
+    {
         StartCoroutine(SendLoginRequest(login, password));
     }
 
@@ -51,13 +60,20 @@ public class UserLogin : MonoBehaviour
             userGameData.Nickname = response.Nickname;
             userGameData.RoomID = response.RoomID;
 
-            responseText.text = $"Login successful: {response.Login}";
-
-            connectData.regUserObj.SetActive(false);
+            _loginCorrectEvent.RaiseEvent(true);
         }
         else
         {
-            responseText.text = $"Error: {request.responseCode} - {request.error}\n{request.downloadHandler.text}";
+            if (request.downloadHandler.text.Contains("401"))
+            {
+                _loginCorrectEvent.RaiseEvent(false);
+            }
+            else
+            {
+                _serverErrorEvent.RaiseEvent(true);
+            }
+            
+            Debug.Log($"Error: {request.responseCode} - {request.error}\n{request.downloadHandler.text}");
         }
     }
 }
