@@ -167,6 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7783815026559738707}
+  - component: {fileID: 5090213533091373182}
   m_Layer: 5
   m_Name: WorkListPanel
   m_TagString: Untagged
@@ -199,6 +200,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 48}
   m_SizeDelta: {x: 1026, y: 864}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5090213533091373182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157375751503274559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c7ee28f169441eae0c716ee07524bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableSlots: []
+  workSlots:
+  - {fileID: 1076276828672998816}
+  - {fileID: 8819319350379597133}
+  - {fileID: 733576425656158031}
+  getWorkListEventChannel: {fileID: 11400000, guid: ca6eff28aff27b347a31648637d863dd, type: 2}
+  setWorkListEventChannel: {fileID: 11400000, guid: 345a03820c8bc864380e0de6a6565877, type: 2}
+  setWorksInSlotsEvent: {fileID: 11400000, guid: af225759aed4d7d44b5797586c85d99d, type: 2}
+  userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!1 &189865248067496449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3041094703960935813}
+  - component: {fileID: 733576425656158031}
   m_Layer: 5
   m_Name: ModelsSlot
   m_TagString: Untagged
@@ -1376,6 +1399,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 276, y: 214.00848}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &733576425656158031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846116629983323994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c80d59b8cdec44ca33ee0c898ff06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 2669485677723027713}
+  - {fileID: 7091885582975768375}
+  - {fileID: 3373786046617713945}
+  workType: 2
+  userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!1 &2874888247909027785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,8 +2481,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2948112807337989311}
   m_HandleRect: {fileID: 6933304660644317826}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3007,6 +3048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3594674964454386141}
+  - component: {fileID: 1076276828672998816}
   m_Layer: 5
   m_Name: ImagesSlot
   m_TagString: Untagged
@@ -3035,6 +3077,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 276, y: 214.00848}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1076276828672998816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963094005547943648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c80d59b8cdec44ca33ee0c898ff06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 2585033139914780579}
+  - {fileID: 1953242309753290262}
+  - {fileID: 7380207976399077197}
+  workType: 0
+  userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!1 &4980191554578216197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8785553515817283176}
+  - component: {fileID: 8819319350379597133}
   m_Layer: 5
   m_Name: MusicSlot
   m_TagString: Untagged
@@ -3188,6 +3249,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 276, y: 214.00848}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8819319350379597133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5132431121742671494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c80d59b8cdec44ca33ee0c898ff06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 4326382986031691073}
+  - {fileID: 6683701638823742193}
+  - {fileID: 599576384944352453}
+  workType: 1
+  userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!1 &5309338332910462644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,7 +3457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0003142042}
+  m_AnchoredPosition: {x: 0, y: 0.000027782311}
   m_SizeDelta: {x: 0, y: 607}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8332572429399173037

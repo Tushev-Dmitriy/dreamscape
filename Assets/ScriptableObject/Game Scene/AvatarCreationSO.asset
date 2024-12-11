@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: AvatarCreationSO
   m_EditorClassIdentifier: 
   SceneType: 2
-  SceneReference:
-    m_AssetGUID: 4dda937c0058a7a4b96cf134e30206bd
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  SceneReference: AvatarCreation

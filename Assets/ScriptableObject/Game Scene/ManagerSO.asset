@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: ManagerSO
   m_EditorClassIdentifier: 
   SceneType: 1
-  SceneReference:
-    m_AssetGUID: 8c37f3bc08cce154bb47e8be3acc3de4
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  SceneReference: ManagerScene

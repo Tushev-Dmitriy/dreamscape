@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,4 +14,15 @@ public class UserData : ScriptableObject
     public int CurrentRoomID;
     public List<int> WorksID = new List<int>();
     public List<int> LikedWorks = new List<int>();
+    
+    public List<AllWork> AllWorks = new List<AllWork>();
+
+    public WorkSlot WorkSlot;
+
+    public void ResetSlotsData()
+    {
+        Array.Clear(WorkSlot.ImagesSlot, 0, WorkSlot.ImagesSlot.Length);
+        Array.Clear(WorkSlot.MusicSlot, 0, WorkSlot.MusicSlot.Length);
+        Array.Clear(WorkSlot.ModelSlot, 0, WorkSlot.ModelSlot.Length);
+    }
 }

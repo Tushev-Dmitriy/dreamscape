@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: RoomSO
   m_EditorClassIdentifier: 
   SceneType: 4
-  SceneReference:
-    m_AssetGUID: f65bd9032e5a6174ea4f730cc966403f
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  SceneReference: RoomScene

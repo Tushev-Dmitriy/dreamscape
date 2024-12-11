@@ -1,26 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.UI;
 
 public class RoomWorkValidator : MonoBehaviour
 {
-    public TMP_InputField[] imageFields;
-    public TMP_InputField[] musicFields;
-    public TMP_InputField[] modelFields; 
+    [SerializeField] private VoidEventChannelSO setWorksInSlotsEvent;
+    [SerializeField] private UserData userData;
 
-    public UserData userData;
+    private void OnEnable()
+    {
+        setWorksInSlotsEvent.OnEventRaised += ValidateAndSaveRoomWorks;
+    }
+
+    private void OnDisable()
+    {
+        setWorksInSlotsEvent.OnEventRaised -= ValidateAndSaveRoomWorks;
+    }
 
     public void ValidateAndSaveRoomWorks()
     {
+        var workSlot = userData.WorkSlot;
         int roomId = userData.RoomID;
-        StartCoroutine(ValidateAndSaveCoroutine(roomId));
+        StartCoroutine(ValidateAndSaveCoroutine(roomId, workSlot.ImagesSlot, workSlot.MusicSlot, workSlot.ModelSlot));
     }
 
-    private IEnumerator ValidateAndSaveCoroutine(int roomId)
+    private IEnumerator ValidateAndSaveCoroutine(int roomId, string[] imageFields, string[] musicFields, string[] modelFields)
     {
-        List<(int slot, TMP_InputField field, string type)> slots = new List<(int, TMP_InputField, string)>
+        List<(int slot, string field, string type)> slots = new List<(int, string, string)>
         {
             (1, imageFields[0], "image"), (2, imageFields[1], "image"), (3, imageFields[2], "image"),
             (4, musicFields[0], "music"), (5, musicFields[1], "music"), (6, musicFields[2], "music"),
@@ -29,7 +39,7 @@ public class RoomWorkValidator : MonoBehaviour
 
         foreach (var (slot, field, type) in slots)
         {
-            string workIdText = field.text.Trim();
+            string workIdText = field.Trim();
 
             if (string.IsNullOrEmpty(workIdText))
             {
@@ -67,6 +77,8 @@ public class RoomWorkValidator : MonoBehaviour
             if (addWorkRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Failed to add work in slot {slot}: {addWorkRequest.downloadHandler.text}");
+                
+                userData.ResetSlotsData();
                 yield break;
             }
         }

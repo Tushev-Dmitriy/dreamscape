@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using Events;
 using UnityEngine;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -20,8 +18,6 @@ public class SceneLoader : MonoBehaviour
     [Header("Broadcasting on")]
     [SerializeField] private BoolEventChannelSO _toggleLoadingScreen;
     [SerializeField] private FadeChannelSO _fadeRequestChannel = default;
-    
-    private AsyncOperationHandle<SceneInstance> _loadingOperationHandle;
     
     private GameSceneSO _sceneToLoad;
     private GameSceneSO _currentlyLoadedScene;
@@ -80,14 +76,14 @@ public class SceneLoader : MonoBehaviour
 
         if (_currentlyLoadedScene != null)
         {
-            if (_currentlyLoadedScene.SceneReference.OperationHandle.IsValid())
+            if (!string.IsNullOrEmpty(_currentlyLoadedScene.SceneReference))
             {
-                _currentlyLoadedScene.SceneReference.UnLoadScene();
+                SceneManager.UnloadSceneAsync(_currentlyLoadedScene.SceneReference);
             }
 #if UNITY_EDITOR
             else
             {
-                SceneManager.UnloadSceneAsync(_currentlyLoadedScene.SceneReference.editorAsset.name);
+                SceneManager.UnloadSceneAsync(_currentlyLoadedScene.SceneReference);
             }
 #endif
         }
@@ -118,19 +114,21 @@ public class SceneLoader : MonoBehaviour
             _toggleLoadingScreen.RaiseEvent(true);
         }
 
-        _loadingOperationHandle = _sceneToLoad.SceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
-        _loadingOperationHandle.Completed += OnNewSceneLoaded;
+        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(_sceneToLoad.SceneReference, LoadSceneMode.Additive);
+        loadingOperation.completed += OnNewSceneLoaded;
     }
     
-    private void OnNewSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    //TODO: не загружать комнату до ответа от сервака, оставить fadecontroller
+    private void OnNewSceneLoaded(AsyncOperation obj)
     {
         _currentlyLoadedScene = _sceneToLoad;
 
         IsHubLoading();
         IsRoomLoading();
 
-        Scene s = obj.Result.Scene;
-        SceneManager.SetActiveScene(s);
+        Scene loadedScene = SceneManager.GetSceneByName(_sceneToLoad.SceneReference);
+        SceneManager.SetActiveScene(loadedScene);
+
         _isLoading = false;
 
         if (_showLoadingScreen)

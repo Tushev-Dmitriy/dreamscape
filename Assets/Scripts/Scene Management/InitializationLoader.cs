@@ -1,9 +1,6 @@
 ﻿using System;
 using Events;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 namespace Scene_Management
@@ -14,23 +11,21 @@ namespace Scene_Management
         [SerializeField] private GameSceneSO _menuToLoad = default;
         
         [Header("Broadcasting on")]
-        [SerializeField] private AssetReference _menuLoadChannel = default;
+        [SerializeField] private LoadEventChannelSO _menuLoadChannel = default;
 
         private void Start()
         {
-            _managerScene.SceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += LoadEventChannel;
-        }
-        
-        private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
-        {
-            _menuLoadChannel.LoadAssetAsync<LoadEventChannelSO>().Completed += LoadMainMenu;
+            // Загрузка управляющей сцены (Manager Scene) как дополнительной
+            SceneManager.LoadSceneAsync(_managerScene.SceneReference, LoadSceneMode.Additive).completed += LoadEventChannel;
         }
 
-        private void LoadMainMenu(AsyncOperationHandle<LoadEventChannelSO> obj)
+        private void LoadEventChannel(AsyncOperation obj)
         {
-            obj.Result.RaiseEvent(_menuToLoad, false, true);
+            // После загрузки Manager Scene вызываем событие для загрузки меню
+            _menuLoadChannel.RaiseEvent(_menuToLoad, false, true);
 
-            SceneManager.UnloadSceneAsync(0);
+            // Выгружаем сцену Initialization
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

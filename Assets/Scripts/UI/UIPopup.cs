@@ -19,7 +19,7 @@ namespace UI
         public PopupType _actualType;
 
         public event UnityAction<bool> ConfirmationResponseAction;
-        public event UnityAction ClosePopupAction;
+        public event UnityAction<bool> ClosePopupAction;
         
         private void OnDisable()
         {
@@ -32,15 +32,15 @@ namespace UI
         
         public void ClosePopupButtonClicked()
         {
-            ClosePopupAction.Invoke();
+            ClosePopupAction.Invoke(false);
         }
 
-        void ConfirmButtonClicked()
+        public void ConfirmButtonClicked()
         {
             ConfirmationResponseAction.Invoke(true);
         }
 
-        void CancelButtonClicked()
+        public void CancelButtonClicked()
         {
             ConfirmationResponseAction.Invoke(false);
         }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -13,44 +12,6 @@ public class RoomController : MonoBehaviour
     public List<GameObject> workSlots;
 
     private List<string> savedFiles = new List<string>();
-    
-    private static RoomController _instance;
-
-    public static RoomController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<RoomController>();
-            }
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        foreach (string filePath in savedFiles)
-        {
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-                Debug.Log($"пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: {filePath}");
-            }
-        }
-    }
 
     public void SetWorksInRoom(RoomWorksResponse roomWorksResponseIn)
     {
@@ -60,7 +21,7 @@ public class RoomController : MonoBehaviour
 
         for (int i = 0; i < workSlots.Count; i++)
         {
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            // Проверяем, есть ли работа для текущего слота
             if (i >= allWorkInRoom.Count || allWorkInRoom[i].WorkID == -1)
             {
                 ClearSlot(workSlots[i]);
@@ -88,7 +49,7 @@ public class RoomController : MonoBehaviour
                     break;
 
                 default:
-                    Debug.LogWarning($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: {tempWork.WorkType}");
+                    Debug.LogWarning($"Неизвестный тип работы: {tempWork.WorkType}");
                     break;
             }
         }
@@ -112,18 +73,18 @@ public class RoomController : MonoBehaviour
             string savePath = Path.Combine(Application.streamingAssetsPath, fileName);
 
             byte[] fileData = System.Convert.FromBase64String(work.WorkContent);
-
+            
             File.WriteAllBytes(savePath, fileData);
 
-            savedFiles.Add(savePath); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            savedFiles.Add(savePath); // Добавляем файл в список для последующего удаления
 
-            Debug.Log($"пїЅпїЅпїЅпїЅ {fileName} пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ {savePath}");
+            Debug.Log($"Файл {fileName} успешно сохранен в {savePath}");
 
             return savePath;
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ {work.WorkID}: {ex.Message}");
+            Debug.LogError($"Ошибка сохранения файла для работы {work.WorkID}: {ex.Message}");
             return null;
         }
     }
@@ -145,7 +106,7 @@ public class RoomController : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: {filePath}");
+            Debug.LogError($"Не удалось загрузить текстуру из файла: {filePath}");
         }
     }
 
@@ -169,25 +130,25 @@ public class RoomController : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 audioSource.clip = DownloadHandlerAudioClip.GetContent(www);
-                Debug.Log($"пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ {filePath}");
+                Debug.Log($"Аудио успешно загружено из {filePath}");
             }
             else
             {
-                Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ {filePath}: {www.error}");
+                Debug.LogError($"Ошибка загрузки аудио из {filePath}: {www.error}");
             }
         }
     }
 
     private void ClearSlot(GameObject slot)
     {
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        // Удаляем материал, если есть
         MeshRenderer renderer = slot.GetComponent<MeshRenderer>();
         if (renderer != null && renderer.material != null)
         {
             renderer.material = null;
         }
 
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        // Удаляем аудиоклип, если есть
         AudioSource audioSource = slot.GetComponent<AudioSource>();
         if (audioSource != null)
         {
@@ -197,34 +158,52 @@ public class RoomController : MonoBehaviour
 
     private void LoadModelWithTriLib(string filePath, GameObject slot)
     {
-        var options = AssetLoader.CreateDefaultLoaderOptions(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        Debug.Log("trilib is loading");
+        var options = AssetLoader.CreateDefaultLoaderOptions(); // Настройки загрузчика
 
         AssetLoader.LoadModelFromFile(
             filePath,
             onLoad: (context) =>
             {
-                GameObject loadedGameObject = context.RootGameObject; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                GameObject loadedGameObject = context.RootGameObject; // Получаем загруженную модель
                 if (loadedGameObject != null)
                 {
                     loadedGameObject.transform.SetParent(slot.transform);
-                    loadedGameObject.transform.localPosition = new Vector3(0, -0.5f, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ y -0.5
-                    loadedGameObject.transform.localRotation = Quaternion.Euler(0, -90, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ y пїЅпїЅ -90 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                    loadedGameObject.transform.localScale = new Vector3(3, 3, 3); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3x3x3
+                    loadedGameObject.transform.localPosition = new Vector3(0, -0.5f, 0); // Позиция по y -0.5
+                    loadedGameObject.transform.localRotation = Quaternion.Euler(0, -90, 0); // Поворот по y на -90 градусов
+                    loadedGameObject.transform.localScale = new Vector3(3, 3, 3); // Масштаб 3x3x3
 
-                    Debug.Log($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: {slot.name}");
+                    Debug.Log($"Модель успешно загружена в слот: {slot.name}");
+                }
+                else
+                {
+                    Debug.LogError("Model is null");
                 }
             },
-            onMaterialsLoad: null, // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            onMaterialsLoad: null, // Вызывается после загрузки материалов
             onProgress: (context, progress) =>
             {
-                Debug.Log($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: {progress * 100:F2}%");
+                Debug.Log($"Прогресс загрузки модели: {progress * 100:F2}%");
             },
             onError: (error) =>
             {
-                Debug.LogError($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: {error}");
+                Debug.LogError($"Ошибка загрузки модели: {error}");
             },
-            wrapperGameObject: null, // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-            assetLoaderOptions: options // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            wrapperGameObject: null, // Контейнер для модели, если нужен
+            assetLoaderOptions: options // Передаем настройки
         );
+    }
+    
+
+    private void OnDestroy()
+    {
+        foreach (string filePath in savedFiles)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                Debug.Log($"Файл удален: {filePath}");
+            }
+        }
     }
 }

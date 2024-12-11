@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 4152577960293353781}
   - component: {fileID: 5015759335163873882}
   - component: {fileID: 6127685262156873138}
+  - component: {fileID: 7074428878535522053}
   m_Layer: 5
   m_Name: NotConfirmButton
   m_TagString: Untagged
@@ -195,7 +196,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5015759335163873882}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1148337847101325205}
+        m_TargetAssemblyTypeName: UI.UIPopup, Assembly-CSharp
+        m_MethodName: CancelButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7074428878535522053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614131881078420413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebd32bb402c4d57b323aa0ef358058b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3104061225135808884
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4540602348662066294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1148337847101325205}
+        m_TargetAssemblyTypeName: UI.UIPopup, Assembly-CSharp
+        m_MethodName: ClosePopupButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3114127739835293064
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1973658336001024041}
+  - component: {fileID: 1148337847101325205}
   m_Layer: 5
   m_Name: ComplateActionPanel
   m_TagString: Untagged
@@ -497,7 +535,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3242018497074417272}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -516,6 +554,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 579, y: 286}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1148337847101325205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242018497074417272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4fb11df7744a2980165114c9acf516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClose: {fileID: 8512570368440812111}
+  _confirmationButton: {fileID: 6804197101937054813}
+  _cancelButton: {fileID: 7074428878535522053}
+  _actualType: 0
 --- !u!1 &3329672297076614666
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +737,7 @@ GameObject:
   - component: {fileID: 7162091588359840571}
   - component: {fileID: 758528573286556521}
   - component: {fileID: 3997287067725759239}
+  - component: {fileID: 6804197101937054813}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -791,7 +846,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 758528573286556521}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1148337847101325205}
+        m_TargetAssemblyTypeName: UI.UIPopup, Assembly-CSharp
+        m_MethodName: ConfirmButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6804197101937054813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856103338147346900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebd32bb402c4d57b323aa0ef358058b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7285099049426847965
 GameObject:
   m_ObjectHideFlags: 0

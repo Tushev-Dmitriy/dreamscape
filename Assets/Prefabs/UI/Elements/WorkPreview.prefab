@@ -395,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8530324916580889712}
   - component: {fileID: 2218453417867700920}
+  - component: {fileID: 2622604021445328913}
   m_Layer: 5
   m_Name: WorkPreview
   m_TagString: Untagged
@@ -450,3 +451,31 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2622604021445328913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305008072882948762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b9ff61f26238e46ba4592e5ee7fae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idWork: {fileID: 4098254862830812312}
+  titleWork: {fileID: 4848208196112419800}
+  iconPreview: {fileID: 8056853354186947757}
+  bgImage: {fileID: 4721994024369724303}
+  moderationIcon: {fileID: 2534058525280930126}
+  icons:
+  - {fileID: 21300000, guid: dc1c0283aa56335458bec1538c072fee, type: 3}
+  - {fileID: 21300000, guid: ef63e15a3bb775743b060505cef0e9cf, type: 3}
+  - {fileID: 21300000, guid: 89013ecbbb7216f48b23dd2e80718a29, type: 3}
+  currentItem:
+    _item:
+      WorkID: 0
+      WorkTitle: 
+      WorkType: 
+      LikesCount: 0
+      IsModerated: 0

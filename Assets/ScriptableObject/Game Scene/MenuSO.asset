@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: MenuSO
   m_EditorClassIdentifier: 
   SceneType: 0
-  SceneReference:
-    m_AssetGUID: ae7b8e387bc851740a192c1690baa46e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  SceneReference: Menu

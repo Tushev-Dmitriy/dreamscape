@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: HubSceneSO
   m_EditorClassIdentifier: 
   SceneType: 3
-  SceneReference:
-    m_AssetGUID: 9fc0d4010bbf28b4594072e72b8655ab
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  SceneReference: Hub

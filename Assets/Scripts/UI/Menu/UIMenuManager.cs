@@ -102,7 +102,7 @@ public class UIMenuManager : MonoBehaviour
         }
     }
     
-    void HideIncorrectInfoPopup()
+    void HideIncorrectInfoPopup(bool value)
     {
         _incorrectInfoPanel.ClosePopupAction -= HideIncorrectInfoPopup;
         _incorrectInfoPanel.gameObject.SetActive(false);
@@ -110,7 +110,7 @@ public class UIMenuManager : MonoBehaviour
         mainMenu.ClearInputs();
     }
     
-    void HideServerErrorPopup()
+    void HideServerErrorPopup(bool value)
     {
         _serverErrorPanel.ClosePopupAction -= HideServerErrorPopup;
         _serverErrorPanel.gameObject.SetActive(false);

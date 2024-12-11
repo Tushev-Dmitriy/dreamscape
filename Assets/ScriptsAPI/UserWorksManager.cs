@@ -11,21 +11,25 @@ public class UserWorksManager : MonoBehaviour
 {
     [Header("API Settings")]
     public UserData userGameData;
-
-    [Header("UI Elements")]
-    public Transform worksContainer;
-    public GameObject workPrefab;
+    
+    [SerializeField] private VoidEventChannelSO getWorkListEventChannel;
+    [SerializeField] private VoidEventChannelSO setWorkListEventChannel;
 
     private string userWorksUrl;
 
     private void Start()
     {
-        int userId = userGameData.UserID;
-        userWorksUrl = ConnectData.GetUserWorksUrl(userId);
+        getWorkListEventChannel.OnEventRaised += FetchUserWorks;
+    }
+
+    private void OnDisable()
+    {
+        getWorkListEventChannel.OnEventRaised -= FetchUserWorks;
     }
 
     public void FetchUserWorks()
     {
+        userWorksUrl = ConnectData.GetUserWorksUrl(userGameData.UserID);
         StartCoroutine(GetUserWorks());
     }
 
@@ -43,13 +47,15 @@ public class UserWorksManager : MonoBehaviour
                 List<AllWork> works = JsonConvert.DeserializeObject<List<AllWork>>(request.downloadHandler.text);
 
                 userGameData.WorksID.Clear();
+                userGameData.AllWorks.Clear();
 
                 foreach (AllWork work in works)
                 {
                     userGameData.WorksID.Add(work.WorkID);
+                    userGameData.AllWorks.Add(work);
                 }
-
-                DisplayWorks(works);
+                
+                setWorkListEventChannel.RaiseEvent();
             }
             catch (System.Exception ex)
             {
@@ -65,25 +71,6 @@ public class UserWorksManager : MonoBehaviour
             else
             {
                 Debug.LogError($"Error fetching user works: {request.responseCode} - {request.downloadHandler.text}");
-            }
-        }
-    }
-
-    private void DisplayWorks(List<AllWork> works)
-    {
-        foreach (Transform child in worksContainer)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (AllWork work in works)
-        {
-            GameObject workItem = Instantiate(workPrefab, worksContainer);
-            WorkDisplay workDisplay = workItem.GetComponent<WorkDisplay>();
-
-            if (workDisplay != null)
-            {
-                workDisplay.SetWorkData(work, this);
             }
         }
     }
