@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using TriLibCore;
-using TriLibCore.General;
+using System.Linq;
+using Assimp;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -45,7 +45,7 @@ public class RoomController : MonoBehaviour
                     break;
 
                 case "model":
-                    LoadModelWithTriLib(filePath, workSlots[i]);
+                    LoadModelWithTriLib(workSlots[i], filePath);
                     break;
 
                 default:
@@ -95,7 +95,7 @@ public class RoomController : MonoBehaviour
         Texture2D texture = new Texture2D(2, 2);
         if (texture.LoadImage(imageData))
         {
-            Material material = new Material(Shader.Find("Standard"));
+            UnityEngine.Material material = new UnityEngine.Material(Shader.Find("Standard"));
             material.mainTexture = texture;
 
             MeshRenderer renderer = slot.GetComponentInChildren<MeshRenderer>();
@@ -156,44 +156,58 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void LoadModelWithTriLib(string filePath, GameObject slot)
+    private void LoadModelWithTriLib(GameObject slot, string filePath)
     {
-        Debug.Log("trilib is loading");
-        var options = AssetLoader.CreateDefaultLoaderOptions(); // Настройки загрузчика
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError($"Файл не найден: {filePath}");
+            return;
+        }
 
-        AssetLoader.LoadModelFromFile(
-            filePath,
-            onLoad: (context) =>
-            {
-                GameObject loadedGameObject = context.RootGameObject; // Получаем загруженную модель
-                if (loadedGameObject != null)
-                {
-                    loadedGameObject.transform.SetParent(slot.transform);
-                    loadedGameObject.transform.localPosition = new Vector3(0, -0.5f, 0); // Позиция по y -0.5
-                    loadedGameObject.transform.localRotation = Quaternion.Euler(0, -90, 0); // Поворот по y на -90 градусов
-                    loadedGameObject.transform.localScale = new Vector3(3, 3, 3); // Масштаб 3x3x3
+        AssimpContext importer = new AssimpContext();
+        Debug.Log($"Попытка загрузки модели из: {filePath}");
 
-                    Debug.Log($"Модель успешно загружена в слот: {slot.name}");
-                }
-                else
+        try
+        {
+            Scene model = importer.ImportFile(filePath, PostProcessSteps.Triangulate | PostProcessSteps.FlipUVs);
+
+            foreach (var mesh in model.Meshes)
+            {
+                Debug.Log($"Загружается меш: {mesh.Name}");
+
+                UnityEngine.Mesh unityMesh = new UnityEngine.Mesh
                 {
-                    Debug.LogError("Model is null");
+                    name = mesh.Name,
+                    vertices = mesh.Vertices.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray(),
+                    normals = mesh.Normals.Select(n => new Vector3(n.X, n.Y, n.Z)).ToArray(),
+                    triangles = mesh.GetIndices()
+                };
+
+                if (mesh.HasTextureCoords(0))
+                {
+                    unityMesh.uv = mesh.TextureCoordinateChannels[0].Select(uv => new Vector2(uv.X, uv.Y)).ToArray();
                 }
-            },
-            onMaterialsLoad: null, // Вызывается после загрузки материалов
-            onProgress: (context, progress) =>
-            {
-                Debug.Log($"Прогресс загрузки модели: {progress * 100:F2}%");
-            },
-            onError: (error) =>
-            {
-                Debug.LogError($"Ошибка загрузки модели: {error}");
-            },
-            wrapperGameObject: null, // Контейнер для модели, если нужен
-            assetLoaderOptions: options // Передаем настройки
-        );
+
+                GameObject meshObject = new GameObject(mesh.Name);
+                meshObject.transform.SetParent(slot.transform);
+
+                // Применяем трансформации
+                meshObject.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
+                meshObject.transform.localRotation = UnityEngine.Quaternion.Euler(-90, -90, 0);
+                meshObject.transform.localPosition = new Vector3(0, -0.55f, 0);
+
+                meshObject.AddComponent<MeshFilter>().mesh = unityMesh;
+                meshObject.AddComponent<MeshRenderer>().material = new UnityEngine.Material(Shader.Find("Standard"));
+
+                Debug.Log($"Меш {mesh.Name} успешно загружен.");
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Ошибка при загрузке FBX: {ex.Message}");
+        }
     }
-    
+
 
     private void OnDestroy()
     {
