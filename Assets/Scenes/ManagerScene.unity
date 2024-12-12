@@ -11248,6 +11248,7 @@ MonoBehaviour:
   userGameData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
   getWorkListEventChannel: {fileID: 11400000, guid: ca6eff28aff27b347a31648637d863dd, type: 2}
   setWorkListEventChannel: {fileID: 11400000, guid: 345a03820c8bc864380e0de6a6565877, type: 2}
+  deleteItemEventChannel: {fileID: 11400000, guid: a76024d5be5eda640aaee0f3835f15cf, type: 2}
 --- !u!114 &1338621617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15669,7 +15670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5018666761249065913, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00051410566
+      value: 0.00012224539
       objectReference: {fileID: 0}
     - target: {fileID: 5090213533091373182, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
       propertyPath: userData
@@ -15833,7 +15834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282401461873441566, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9996878
+      value: 0.99998665
       objectReference: {fileID: 0}
     - target: {fileID: 6282401461873441566, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
       propertyPath: m_AnchorMin.y
@@ -17207,6 +17208,8 @@ MonoBehaviour:
   loadRoomEventChannel: {fileID: 0}
   currentRoomIdEvent: {fileID: 0}
   gameScene: {fileID: 0}
+  loadHubEventChannel: {fileID: 0}
+  hubScene: {fileID: 0}
 --- !u!4 &1729647041
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
         {
             RoomWorksFetcher.Instance.roomController = roomControllerSceneObject;
             RoomWorksFetcher.Instance.StartGetRoom(UserData.CurrentRoomID); 
+            
+            Debug.Log("room controller");
         }
         else
         {

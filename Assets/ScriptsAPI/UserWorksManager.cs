@@ -14,17 +14,23 @@ public class UserWorksManager : MonoBehaviour
     
     [SerializeField] private VoidEventChannelSO getWorkListEventChannel;
     [SerializeField] private VoidEventChannelSO setWorkListEventChannel;
+    
+    [SerializeField] private IntEventChannelSO deleteItemEventChannel;
+
 
     private string userWorksUrl;
 
     private void Start()
     {
         getWorkListEventChannel.OnEventRaised += FetchUserWorks;
+        deleteItemEventChannel.OnEventRaised += DeleteWork;
     }
 
     private void OnDisable()
     {
         getWorkListEventChannel.OnEventRaised -= FetchUserWorks;
+        deleteItemEventChannel.OnEventRaised -= DeleteWork;
+
     }
 
     public void FetchUserWorks()

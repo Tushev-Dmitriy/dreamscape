@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UI;
@@ -15,7 +16,7 @@ public class UIWorkItem : MonoBehaviour
 {
     [SerializeField] private Text idWork;
     [SerializeField] private Text titleWork;
-
+    
     [SerializeField] private Image iconPreview;
     [SerializeField] private Image bgImage;
     [SerializeField] private Image moderationIcon;
@@ -24,6 +25,18 @@ public class UIWorkItem : MonoBehaviour
     
     [HideInInspector] public WorkItemStack currentItem;
     
+    [SerializeField] private IntEventChannelSO deleteItemEventChannel;
+    
+    [SerializeField] private VoidEventChannelSO getWorkListEventChannel;
+    [SerializeField] private VoidEventChannelSO setWorkListEventChannel;
+    
+    public void DeleteItem()
+    {
+        deleteItemEventChannel.RaiseEvent(currentItem.Item.WorkID);
+        
+        getWorkListEventChannel.RaiseEvent();
+    }
+
     public void SetItem(WorkItemStack itemStack)
     {
         currentItem = itemStack;
