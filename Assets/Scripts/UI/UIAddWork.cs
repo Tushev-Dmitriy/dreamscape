@@ -48,6 +48,15 @@ namespace UI
         {
             successEventChannel.OnEventRaised -= ShowSuccessPopup;
             serverErrorEventChannel.OnEventRaised -= ShowServerErrorPopup;
+
+            ResetUI();
+        }
+
+        private void ResetUI()
+        {
+            workTitle.text = string.Empty;
+            workTypeDropdown.value = 0;
+            fileNameText.text = string.Empty;
         }
 
         public void OpenFileExplorer()

@@ -9,12 +9,11 @@ using System;
 
 public class UserWorksManager : MonoBehaviour
 {
-    [Header("API Settings")]
-    public UserData userGameData;
-    
+    [Header("API Settings")] public UserData userGameData;
+
     [SerializeField] private VoidEventChannelSO getWorkListEventChannel;
     [SerializeField] private VoidEventChannelSO setWorkListEventChannel;
-    
+
     [SerializeField] private IntEventChannelSO deleteItemEventChannel;
 
 
@@ -30,7 +29,6 @@ public class UserWorksManager : MonoBehaviour
     {
         getWorkListEventChannel.OnEventRaised -= FetchUserWorks;
         deleteItemEventChannel.OnEventRaised -= DeleteWork;
-
     }
 
     public void FetchUserWorks()
@@ -50,17 +48,39 @@ public class UserWorksManager : MonoBehaviour
         {
             try
             {
-                List<AllWork> works = JsonConvert.DeserializeObject<List<AllWork>>(request.downloadHandler.text);
+                List<AllWork> works;
+                try
+                {
+                    works = JsonConvert.DeserializeObject<List<AllWork>>(request.downloadHandler.text);
+                }
+                catch (JsonSerializationException ex)
+                {
+                    Debug.LogError($"Deserialization error: {ex.Message}");
+                    yield break;
+                }
+
+                if (works == null || works.Count == 0)
+                {
+                    Debug.LogError("No works found in the response.");
+                    yield break;
+                }
 
                 userGameData.WorksID.Clear();
                 userGameData.AllWorks.Clear();
 
                 foreach (AllWork work in works)
                 {
+                    if (work == null)
+                    {
+                        Debug.LogError("Invalid work entry found.");
+                        continue;
+                    }
+
                     userGameData.WorksID.Add(work.WorkID);
                     userGameData.AllWorks.Add(work);
                 }
-                
+
+
                 setWorkListEventChannel.RaiseEvent();
             }
             catch (System.Exception ex)

@@ -3,7 +3,12 @@ guid: 73b74b598904289419a416bb2fe64025
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: denim
+    second: {fileID: 2100000, guid: e7d4f96a7a05fab4396270633989a99b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

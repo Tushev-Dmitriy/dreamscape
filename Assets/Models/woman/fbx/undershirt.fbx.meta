@@ -3,7 +3,12 @@ guid: f0142a9c45fedf64b9fc2c925e4ab9db
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: undershirt
+    second: {fileID: 2100000, guid: c96c3a34313aafa4c878ea13ef4b8464, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

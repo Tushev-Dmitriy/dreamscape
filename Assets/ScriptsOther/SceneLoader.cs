@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private LoadEventChannelSO _loadAvatarCreation;
     [SerializeField] private LoadEventChannelSO _loadRoom;
     [SerializeField] private LoadEventChannelSO _loadMenu;
+    [SerializeField] private LoadEventChannelSO _backToHub;
     
     [SerializeField] private BoolEventChannelSO _onRoomLoadedEvent;
     [SerializeField] private BoolEventChannelSO _onHubLoadedEvent;
@@ -47,6 +48,8 @@ public class SceneLoader : MonoBehaviour
         _loadAvatarCreation.OnLoadingRequested += LoadScene;
         _loadMenu.OnLoadingRequested += LoadScene;
         _loadRoom.OnLoadingRequested += LoadScene;
+
+        _backToHub.OnLoadingRequested += BackToHub;
     }
 
     private void OnDisable()
@@ -55,10 +58,26 @@ public class SceneLoader : MonoBehaviour
         _loadAvatarCreation.OnLoadingRequested -= LoadScene;
         _loadMenu.OnLoadingRequested -= LoadScene;
         _loadRoom.OnLoadingRequested -= LoadScene;
+        
+        _backToHub.OnLoadingRequested -= BackToHub;
+
+    }
+
+    private void BackToHub(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
+    {
+        if (_currentlyLoadedScene != null)
+        {
+            if (_currentlyLoadedScene.SceneType == GameSceneSO.GameSceneType.Hub) return;
+
+        }
+        
+        LoadScene(menuToLoad, showLoadingScreen, fadeScreen);
     }
     
     private void LoadScene(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
     {
+        
+        
         if (_isLoading) return;
 
         _sceneToLoad = menuToLoad;

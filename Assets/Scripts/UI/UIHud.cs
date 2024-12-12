@@ -16,8 +16,12 @@ public class UIHud : MonoBehaviour
     [SerializeField] private UIWorkList workListPanel;
     [SerializeField] private UIAddWork addWorkPanel;
 
+    [SerializeField] private GameSceneSO _hubScene;
+
     [SerializeField] private List<TabSO> _tabTypesList = new List<TabSO>();
     [SerializeField] private GameStateSO gameState;
+    
+    [SerializeField] private LoadEventChannelSO _backToHub;
     
     private TabSO _selectedTab = default;
 
@@ -125,6 +129,11 @@ public class UIHud : MonoBehaviour
                 gameState.UpdateGameState(GameState.UI);
                 break;
             
+            case TabType.Home:
+                GoToHub();
+                gameState.UpdateGameState(GameState.Gameplay);
+                break;
+            
             case TabType.AddWork:
                 if (addWorkPanel != null)
                     SetCurrentPanel(addWorkPanel.gameObject);
@@ -149,6 +158,11 @@ public class UIHud : MonoBehaviour
         exitConfirmationPopup.gameObject.SetActive(true);
     }
 
+    private void GoToHub()
+    {
+        _backToHub.RaiseEvent(_hubScene, true, true);
+    }
+
     private void HideExitConfirmationPopup(bool isConfirmed)
     {
         exitConfirmationPopup.ConfirmationResponseAction -= HideExitConfirmationPopup;
@@ -161,6 +175,11 @@ public class UIHud : MonoBehaviour
 #else
         Application.Quit();
 #endif
+        }
+        else
+        {
+            gameState.UpdateGameState(GameState.Gameplay);
+
         }
     }
 }

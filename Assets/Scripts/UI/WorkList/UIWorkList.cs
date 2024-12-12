@@ -30,10 +30,14 @@ namespace UI
         private void OnDisable()
         {
             setWorkListEventChannel.OnEventRaised -= SetItems;
+            
+            listItemsToShow.Clear();
         }
 
         private void SetItems()
         {
+            listItemsToShow.Clear();
+
             foreach (var work in userData.AllWorks)
             {
                 var itemStack = new WorkItemStack(work);
@@ -49,26 +53,31 @@ namespace UI
             {
                 availableSlots = new List<UIWorkItem>();
             }
-            
-            int maxCount = Mathf.Max(listItemsToShow.Count, availableSlots.Count);
-            
-            for (int i = 0; i < maxCount; i++)
+
+            int itemsCount = listItemsToShow.Count;
+
+            for (int i = 0; i < itemsCount; i++)
             {
-                if (i < listItemsToShow.Count)
+                if (i < availableSlots.Count)
                 {
                     availableSlots[i].SetItem(listItemsToShow[i]);
-
                 }
-                else if (i < availableSlots.Count)
+                else
                 {
-                    availableSlots[i].SetInactiveItem();
+                    Debug.LogError($"Not enough available slots for work items. Index {i} exceeds availableSlots count {availableSlots.Count}");
                 }
+            }
 
+            // Deactivate remaining slots if there are more availableSlots than items
+            for (int i = itemsCount; i < availableSlots.Count; i++)
+            {
+                availableSlots[i].SetInactiveItem();
             }
         }
 
         public void SaveChanges()
         {
+
             foreach (var workSlot in workSlots)
             {
                 workSlot.SaveChanges();

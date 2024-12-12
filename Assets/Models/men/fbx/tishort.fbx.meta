@@ -3,7 +3,12 @@ guid: d76610c0c9c71ae47b271c514a1d700f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tishort
+    second: {fileID: 2100000, guid: ce54a97a2a5c9dc4dbcb8e5a689f4365, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
