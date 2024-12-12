@@ -37,7 +37,7 @@ namespace UI
         private void SetItems()
         {
             listItemsToShow.Clear();
-
+            
             foreach (var work in userData.AllWorks)
             {
                 var itemStack = new WorkItemStack(work);
@@ -52,6 +52,11 @@ namespace UI
             if (availableSlots == null)
             {
                 availableSlots = new List<UIWorkItem>();
+            }
+            
+            foreach (var slot in availableSlots)
+            {
+                slot.SetInactiveItem();
             }
 
             int itemsCount = listItemsToShow.Count;

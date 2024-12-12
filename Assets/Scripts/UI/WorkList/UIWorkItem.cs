@@ -40,6 +40,12 @@ public class UIWorkItem : MonoBehaviour
     public void SetItem(WorkItemStack itemStack)
     {
         currentItem = itemStack;
+        
+        idWork.gameObject.SetActive(true);
+        titleWork.gameObject.SetActive(true);
+        bgImage.gameObject.SetActive(true);
+        iconPreview.gameObject.SetActive(true);
+        moderationIcon.gameObject.SetActive(true);
 
         idWork.text = itemStack.Item.WorkID.ToString();
         titleWork.text = itemStack.Item.WorkTitle;
