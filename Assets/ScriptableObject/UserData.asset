@@ -12,10 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbdd772bfe0e4843882acee905506fc, type: 3}
   m_Name: UserData
   m_EditorClassIdentifier: 
-  UserID: 0
-  Login: 
-  Nickname: 
-  RoomID: 0
-  CurrentRoomID: 0
-  WorksID: 
+  UserID: 8
+  Login: newuser
+  Nickname: newuser
+  RoomID: 3
+  CurrentRoomID: 3
+  WorksID: 12000000170000001c0000001f0000002000000021000000
   LikedWorks: 
+  AllWorks:
+  - WorkID: 18
+    WorkTitle: LegaMusic
+    WorkType: Music
+    LikesCount: 4
+    IsModerated: 1
+  - WorkID: 23
+    WorkTitle: Boy_002
+    WorkType: Model
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 28
+    WorkTitle: Work2
+    WorkType: Music
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 31
+    WorkTitle: CubeModel
+    WorkType: Model
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 32
+    WorkTitle: "\u0442\u0435\u0441\u0442\u043E\u0432\u0430\u044F \u0440\u0430\u0431\u043E\u0442\u0430"
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 33
+    WorkTitle: Grape
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  WorkSlot:
+    ImagesSlot:
+    - 33
+    - 
+    - 
+    MusicSlot:
+    - 
+    - 
+    - 
+    ModelSlot:
+    - 
+    - 
+    - 
