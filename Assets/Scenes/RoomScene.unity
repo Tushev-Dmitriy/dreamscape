@@ -860,9 +860,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bd209bc8bc1034999b8cffc29e8fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoader: {fileID: 0}
-  isRoom: 0
+  isRoom: 1
   roomId: 3
+  loadRoomEventChannel: {fileID: 11400000, guid: 9b167a6d299cd774cb5f7f2da56cfed1, type: 2}
+  currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
+  gameScene: {fileID: 11400000, guid: 12f0959324d75a541b49f97b50a6136c, type: 2}
+  loadHubEventChannel: {fileID: 11400000, guid: 063a345b035fcaf47a3d2027d8213f23, type: 2}
+  hubScene: {fileID: 11400000, guid: 316c66036e750804fb532013457105b2, type: 2}
 --- !u!65 &398502023
 BoxCollider:
   m_ObjectHideFlags: 0
