@@ -45,7 +45,7 @@ public class RoomController : MonoBehaviour
                     break;
 
                 case "model":
-                    LoadModelWithTriLib(workSlots[i], filePath);
+                    LoadModelWithMaterials(workSlots[i], filePath);
                     break;
 
                 default:
@@ -156,7 +156,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void LoadModelWithTriLib(GameObject slot, string filePath)
+    private void LoadModelWithMaterials(GameObject slot, string filePath)
     {
         if (!File.Exists(filePath))
         {
@@ -169,12 +169,20 @@ public class RoomController : MonoBehaviour
 
         try
         {
+            // Импортируем сцену
             Scene model = importer.ImportFile(filePath, PostProcessSteps.Triangulate | PostProcessSteps.FlipUVs);
 
+            Debug.Log($"Количество материалов в модели: {model.MaterialCount}");
+
+            // Словарь для хранения текстур
+            Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();
+
+            // Проходим по всем мешам
             foreach (var mesh in model.Meshes)
             {
-                Debug.Log($"Загружается меш: {mesh.Name}");
+                Debug.Log($"Загружается меш: {mesh.Name} (Материал индекс: {mesh.MaterialIndex})");
 
+                // Создаем меш Unity
                 UnityEngine.Mesh unityMesh = new UnityEngine.Mesh
                 {
                     name = mesh.Name,
@@ -188,16 +196,61 @@ public class RoomController : MonoBehaviour
                     unityMesh.uv = mesh.TextureCoordinateChannels[0].Select(uv => new Vector2(uv.X, uv.Y)).ToArray();
                 }
 
+                // Создаем объект для меша
                 GameObject meshObject = new GameObject(mesh.Name);
                 meshObject.transform.SetParent(slot.transform);
 
                 // Применяем трансформации
-                meshObject.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
-                meshObject.transform.localRotation = UnityEngine.Quaternion.Euler(-90, -90, 0);
+                meshObject.transform.localScale = new Vector3(0.004f, 0.004f, 0.004f);
+                meshObject.transform.localRotation = UnityEngine.Quaternion.Euler(0, 0, 0);
                 meshObject.transform.localPosition = new Vector3(0, -0.55f, 0);
 
-                meshObject.AddComponent<MeshFilter>().mesh = unityMesh;
-                meshObject.AddComponent<MeshRenderer>().material = new UnityEngine.Material(Shader.Find("Standard"));
+                // Добавляем MeshFilter и MeshRenderer
+                MeshFilter meshFilter = meshObject.AddComponent<MeshFilter>();
+                meshFilter.mesh = unityMesh;
+
+                MeshRenderer meshRenderer = meshObject.AddComponent<MeshRenderer>();
+
+                // Работаем с материалом
+                Assimp.Material material = model.Materials[mesh.MaterialIndex];
+                UnityEngine.Material unityMaterial = new UnityEngine.Material(Shader.Find("Standard"));
+
+                // Загружаем текстуры
+                if (material.HasTextureDiffuse)
+                {
+                    TextureSlot textureSlot;
+                    if (material.GetMaterialTexture(TextureType.Diffuse, 0, out textureSlot))
+                    {
+                        string texturePath = textureSlot.FilePath;
+
+                        // Проверяем, встроенная или внешняя текстура
+                        Texture2D texture;
+                        if (!string.IsNullOrEmpty(texturePath) && texturePath.StartsWith("*"))
+                        {
+                            // Встроенные текстуры
+                            texture = LoadEmbeddedTexture(model, texturePath);
+                        }
+                        else
+                        {
+                            // Внешние текстуры
+                            string fullPath = Path.Combine(Path.GetDirectoryName(filePath), texturePath);
+                            if (!loadedTextures.TryGetValue(fullPath, out texture))
+                            {
+                                texture = LoadExternalTexture(fullPath);
+                                loadedTextures[fullPath] = texture;
+                            }
+                        }
+
+                        // Применяем текстуру к материалу
+                        if (texture != null)
+                        {
+                            unityMaterial.mainTexture = texture;
+                        }
+                    }
+                }
+
+                // Назначаем материал
+                meshRenderer.material = unityMaterial;
 
                 Debug.Log($"Меш {mesh.Name} успешно загружен.");
             }
@@ -207,6 +260,46 @@ public class RoomController : MonoBehaviour
             Debug.LogError($"Ошибка при загрузке FBX: {ex.Message}");
         }
     }
+
+    // Метод для загрузки встроенной текстуры
+    private Texture2D LoadEmbeddedTexture(Scene model, string texturePath)
+    {
+        int textureIndex = int.Parse(texturePath.Substring(1)); // Пропускаем символ '*'
+        if (textureIndex >= 0 && textureIndex < model.Textures.Count)
+        {
+            var embeddedTexture = model.Textures[textureIndex];
+            if (embeddedTexture.HasCompressedData)
+            {
+                byte[] textureData = embeddedTexture.CompressedData;
+
+                Texture2D texture = new Texture2D(2, 2);
+                texture.LoadImage(textureData);
+                Debug.Log("Успешно загружена встроенная текстура.");
+                return texture;
+            }
+        }
+
+        Debug.LogError("Не удалось загрузить встроенную текстуру.");
+        return null;
+    }
+
+    // Метод для загрузки внешней текстуры
+    private Texture2D LoadExternalTexture(string texturePath)
+    {
+        if (File.Exists(texturePath))
+        {
+            byte[] textureData = File.ReadAllBytes(texturePath);
+
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(textureData);
+            Debug.Log($"Успешно загружена внешняя текстура из {texturePath}");
+            return texture;
+        }
+
+        Debug.LogError($"Текстура не найдена: {texturePath}");
+        return null;
+    }
+
 
 
     private void OnDestroy()
