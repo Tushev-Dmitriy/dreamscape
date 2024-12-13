@@ -15,7 +15,7 @@ public class RoomWorksFetcher : MonoBehaviour
 
     [SerializeField] private BoolEventChannelSO onRoomLoadedChannel;
     [SerializeField] private VoidEventChannelSO getRoomWorkEventChannel;
-    [SerializeField] private VoidEventChannelSO setWorkSlotsChannel;
+   // [SerializeField] private VoidEventChannelSO setWorkSlotsChannel;
     [SerializeField] private VoidEventChannelSO listEnabledChannel;
     
     private string worksUrl;
@@ -54,14 +54,14 @@ public class RoomWorksFetcher : MonoBehaviour
     {
         getRoomWorkEventChannel.OnEventRaised += GetRoomWorks;
 
-        listEnabledChannel.OnEventRaised += () => { setWorkSlotsChannel.RaiseEvent(); };
+       // listEnabledChannel.OnEventRaised += () => { setWorkSlotsChannel.RaiseEvent(); };
     }
 
     private void OnDisable()
     {
         getRoomWorkEventChannel.OnEventRaised -= GetRoomWorks;
         
-        listEnabledChannel.OnEventRaised -= () => { setWorkSlotsChannel.RaiseEvent(); };
+        //listEnabledChannel.OnEventRaised -= () => { setWorkSlotsChannel.RaiseEvent(); };
     }
 
     private void GetRoomWorks()
@@ -146,7 +146,7 @@ public class RoomWorksFetcher : MonoBehaviour
                 }
             }
             
-            setWorkSlotsChannel.RaiseEvent();
+          //  setWorkSlotsChannel.RaiseEvent();
 
             if (roomController!= null)
             {

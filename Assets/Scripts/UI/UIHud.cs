@@ -155,7 +155,9 @@ public class UIHud : MonoBehaviour
     {
         exitConfirmationPopup.ConfirmationResponseAction += HideExitConfirmationPopup;
         exitConfirmationPopup.ClosePopupAction += HideExitConfirmationPopup;
-        exitConfirmationPopup.gameObject.SetActive(true);
+
+        SetCurrentPanel(exitConfirmationPopup.gameObject);
+        //exitConfirmationPopup.gameObject.SetActive(true);
     }
 
     private void GoToHub()
