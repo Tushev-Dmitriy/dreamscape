@@ -10,6 +10,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static Action onJoinedRoom;
     public static Action onLeftRoom;
     public static Action onTryDisconenct;
+    public static Action onPlayerEnteredRoom;
+    public static Action onPlayerLeftRoom;
 
     private string _roomForCreating;
 
@@ -99,6 +101,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     }
 
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
+
+        onPlayerEnteredRoom?.Invoke();
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+
+
+        onPlayerLeftRoom?.Invoke();
+    }
+
     private void OnHubLoaded()
     {
         //Debug.LogError(0);
@@ -111,4 +128,5 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //Debug.LogError(0);
         ConnectToServer();
     }
+
 }

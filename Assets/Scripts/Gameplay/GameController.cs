@@ -80,9 +80,8 @@ public class GameController : MonoBehaviour
     private void OnJoinedRoom()
     {
         SpawnPlayer();
-    }
 
-    
+    }
 
     private void SpawnPlayer()
     {
@@ -91,5 +90,7 @@ public class GameController : MonoBehaviour
         controller.enabled = true;
         controller.currentCamera = player.transform.GetChild(0).GetComponent<Camera>();
         controller.currentCamera.gameObject.SetActive(true);
+
+        
     }
 }

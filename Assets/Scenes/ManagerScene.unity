@@ -9254,6 +9254,7 @@ MonoBehaviour:
   _playerPref: {fileID: 6810805324695645657, guid: 4f941e50ae0c7ab4ea55fc9cd52628b4, type: 3}
   _portalPref: {fileID: 8780160245862366896, guid: 016c37d978b4056409a627b5f82da5c6, type: 3}
   _photonRoomManager: {fileID: 399406209}
+  _portalManager: {fileID: 0}
 --- !u!4 &1158121126
 Transform:
   m_ObjectHideFlags: 0
@@ -17235,6 +17236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRoom: 0
   roomId: 3
+  photonRoomName: 
   loadRoomEventChannel: {fileID: 0}
   currentRoomIdEvent: {fileID: 0}
   gameScene: {fileID: 0}

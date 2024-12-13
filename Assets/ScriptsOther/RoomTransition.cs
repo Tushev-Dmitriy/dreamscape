@@ -9,7 +9,7 @@ public class RoomTransition : MonoBehaviour
     public bool isRoom = false;
     public int roomId = 3;
 
-    public string photonRoomName;
+    //public string photonRoomName;
 
     private RoomManager _photonRoomManager;
 
@@ -27,7 +27,7 @@ public class RoomTransition : MonoBehaviour
 
     public void Initialize(string photonRoomName, int roomId, RoomManager photonRoomManager)
     {
-        this.photonRoomName = photonRoomName;
+        //this.photonRoomName = photonRoomName;
         this.roomId = roomId;
         _photonRoomManager = photonRoomManager;
     }
@@ -37,7 +37,7 @@ public class RoomTransition : MonoBehaviour
         if (other.tag == "Player")
         {
             _photonRoomManager = FindObjectOfType<RoomManager>();
-            _photonRoomManager.SetNextLoadRoom(photonRoomName);
+            _photonRoomManager.SetNextLoadRoom(roomId.ToString());
             _photonRoomManager.Disconect();
 
 
@@ -51,4 +51,11 @@ public class RoomTransition : MonoBehaviour
             }
         }
     }
+
+    [PunRPC]
+    public void SetRoomId(int roomId)
+    {
+        this.roomId = roomId;
+    }
+
 }
