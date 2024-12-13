@@ -17,14 +17,9 @@ MonoBehaviour:
   Nickname: newuser
   RoomID: 3
   CurrentRoomID: 3
-  WorksID: 120000002400000025000000
+  WorksID: 240000002500000027000000290000002a0000002b0000003100000032000000
   LikedWorks: 
   AllWorks:
-  - WorkID: 18
-    WorkTitle: LegaMusic
-    WorkType: Music
-    LikesCount: 4
-    IsModerated: 1
   - WorkID: 36
     WorkTitle: TestTree
     WorkType: Model
@@ -35,16 +30,46 @@ MonoBehaviour:
     WorkType: Model
     LikesCount: 0
     IsModerated: 1
+  - WorkID: 39
+    WorkTitle: LegaMuz
+    WorkType: Music
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 41
+    WorkTitle: "\u0435\u0449\u0435 \u043E\u0434\u043D\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430"
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 0
+  - WorkID: 42
+    WorkTitle: "\u043A\u043A\u043A"
+    WorkType: Model
+    LikesCount: 0
+    IsModerated: 0
+  - WorkID: 43
+    WorkTitle: "\u0435\u0435\u0435\u0435\u0435\u0435\u0435\u0435"
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 49
+    WorkTitle: fdsfdsfds
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 0
+  - WorkID: 50
+    WorkTitle: vbvcbvcbvcb
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 0
   WorkSlot:
     ImagesSlot:
     - 
     - 
     - 
     MusicSlot:
-    - 18
+    - 
     - 
     - 
     ModelSlot:
-    - 37
-    - 36
+    - 
+    - 
     - 

@@ -13,6 +13,10 @@ namespace UI
         [SerializeField] private VoidEventChannelSO getWorkListEventChannel;
         [SerializeField] private VoidEventChannelSO setWorkListEventChannel;
         [SerializeField] private VoidEventChannelSO setWorksInSlotsEvent;
+
+        [SerializeField] private VoidEventChannelSO listEnabledChannel;
+        
+        [SerializeField] private VoidEventChannelSO setWorkSlotsChannel;
         
         [SerializeField] private UserData userData;
         
@@ -25,14 +29,29 @@ namespace UI
             getWorkListEventChannel.RaiseEvent();
 
             setWorkListEventChannel.OnEventRaised += SetItems;
+            
+            setWorkSlotsChannel.OnEventRaised += SetSlots;
+            
+            listEnabledChannel.RaiseEvent();
         }
 
         private void OnDisable()
         {
             setWorkListEventChannel.OnEventRaised -= SetItems;
             
+            setWorkSlotsChannel.OnEventRaised -= SetSlots;
+            
             listItemsToShow.Clear();
         }
+
+        private void SetSlots()
+        {
+            foreach (var slot in workSlots)
+            {
+                slot.SetWorkSlot();
+            }
+        }
+        
 
         private void SetItems()
         {

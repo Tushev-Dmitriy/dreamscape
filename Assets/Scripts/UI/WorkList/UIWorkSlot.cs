@@ -20,6 +20,7 @@ public class UIWorkSlot : MonoBehaviour
     [SerializeField] private WorkType workType;
     [SerializeField] private UserData userData;
     
+    
     public UnityAction SaveChanges;
 
     private void OnEnable()
@@ -32,6 +33,44 @@ public class UIWorkSlot : MonoBehaviour
     private void OnDisable()
     {
         SaveChanges -= SetWorksSlots;
+    }
+
+    public void SetWorkSlot()
+    {
+        switch (workType)
+        {
+            case WorkType.Audio:
+
+                if (userData.WorkSlot.MusicSlot != null)
+                {
+                    for (int i = 0; i < userData.WorkSlot.MusicSlot.Length; i++)
+                    {
+                        inputFields[i].text = userData.WorkSlot.MusicSlot[i].ToString();
+                    }
+                }
+                break;
+            
+            case WorkType.Image:
+                if (userData.WorkSlot.ImagesSlot != null)
+                {
+                    for (int i = 0; i < userData.WorkSlot.ImagesSlot.Length; i++)
+                    {
+                        inputFields[i].text = userData.WorkSlot.ImagesSlot[i].ToString();
+                    }
+                }
+                break;
+            
+            case WorkType.Model:
+                
+                if (userData.WorkSlot.ModelSlot != null)
+                {
+                    for (int i = 0; i < userData.WorkSlot.ModelSlot.Length; i++)
+                    {
+                        inputFields[i].text = userData.WorkSlot.ModelSlot[i].ToString();
+                    }
+                }
+                break;
+        }
     }
 
     private void ResetUI()

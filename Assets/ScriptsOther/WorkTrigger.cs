@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class WorkTrigger : MonoBehaviour
 {
-    private GameObject workDataUI;
-    private GameObject inGameUI;
+    /*private GameObject workDataUI;
+    private GameObject inGameUI;*/
 
     private bool playerInTrigger;
 
@@ -18,8 +18,8 @@ public class WorkTrigger : MonoBehaviour
             {
                 if (obj.name == "Canvas")
                 {
-                    workDataUI = obj.transform.GetChild(3).gameObject;
-                    inGameUI = obj.transform.GetChild(6).gameObject;
+                   /* workDataUI = obj.transform.GetChild(3).gameObject;
+                    inGameUI = obj.transform.GetChild(6).gameObject;*/
                     break;
                 }
             }
@@ -38,8 +38,8 @@ public class WorkTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
-            inGameUI.SetActive(true);
-            workDataUI.SetActive(false);
+           /* inGameUI.SetActive(true);
+            workDataUI.SetActive(false);*/
         }
     }
 
@@ -53,7 +53,7 @@ public class WorkTrigger : MonoBehaviour
 
     private void OpenWorkData()
     {
-        workDataUI.SetActive(true);
-        inGameUI.SetActive(false);
+      /*  workDataUI.SetActive(true);
+        inGameUI.SetActive(false);*/
     }
 }

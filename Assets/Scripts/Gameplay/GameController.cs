@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Events;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour
         _onHubLoadedEvent.OnEventRaised -= OnHubSceneLoaded;
         _onRoomLoadedEvent.OnEventRaised -= OnRoomSceneLoaded;
         currentRoomIdEvent.OnEventRaised -= SetCurrentRoomId;
+        
+        UserData.ResetSlotsData();
     }
 
     private void OnRoomSceneLoaded(bool isLoaded)

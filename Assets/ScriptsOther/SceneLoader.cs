@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
 
     [Header("Broadcasting on")]
     [SerializeField] private BoolEventChannelSO _toggleLoadingScreen;
+    [SerializeField] private BoolEventChannelSO onRoomLoadedChannel;
     [SerializeField] private FadeChannelSO _fadeRequestChannel = default;
     
     private GameSceneSO _sceneToLoad;
@@ -76,8 +77,6 @@ public class SceneLoader : MonoBehaviour
     
     private void LoadScene(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
     {
-        
-        
         if (_isLoading) return;
 
         _sceneToLoad = menuToLoad;
@@ -137,6 +136,7 @@ public class SceneLoader : MonoBehaviour
         loadingOperation.completed += OnNewSceneLoaded;
     }
     
+    
     //TODO: не загружать комнату до ответа от сервака, оставить fadecontroller
     private void OnNewSceneLoaded(AsyncOperation obj)
     {
@@ -148,6 +148,36 @@ public class SceneLoader : MonoBehaviour
         Scene loadedScene = SceneManager.GetSceneByName(_sceneToLoad.SceneReference);
         SceneManager.SetActiveScene(loadedScene);
 
+       if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Room)
+        {
+            StartCoroutine(WaitForServerResponse());
+        }
+        else
+        {
+            FinalizeSceneLoad();
+        }
+    }
+
+    private IEnumerator WaitForServerResponse()
+    {
+        bool isResponseReceived = false;
+
+        // Подписка на событие окончания загрузки данных
+        onRoomLoadedChannel.OnEventRaised += (response) =>
+        {
+            isResponseReceived = response;
+        };
+        // Ждем, пока ответ не будет получен
+        while (!isResponseReceived)
+        {
+            yield return null;
+        }
+
+        FinalizeSceneLoad();
+    }
+
+    private void FinalizeSceneLoad()
+    {
         _isLoading = false;
 
         if (_showLoadingScreen)

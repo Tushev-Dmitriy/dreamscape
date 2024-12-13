@@ -6031,6 +6031,7 @@ MonoBehaviour:
   _onRoomLoadedEvent: {fileID: 11400000, guid: c7bd01762d3e633428053cc445e0697a, type: 2}
   _onHubLoadedEvent: {fileID: 11400000, guid: 14b0aeaf5175c734fa9273ed56abc164, type: 2}
   _toggleLoadingScreen: {fileID: 11400000, guid: 29193e37da8ad5049b8260edf795f806, type: 2}
+  onRoomLoadedChannel: {fileID: 11400000, guid: 2f200a580617fb8459ad5c51527f7e95, type: 2}
   _fadeRequestChannel: {fileID: 11400000, guid: 731d473a72e96e24c8ac65122c08f27d, type: 2}
 --- !u!4 &665985669
 Transform:
@@ -9368,6 +9369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onHubLoadedEvent: {fileID: 11400000, guid: 14b0aeaf5175c734fa9273ed56abc164, type: 2}
   _onRoomLoadedEvent: {fileID: 11400000, guid: c7bd01762d3e633428053cc445e0697a, type: 2}
+  getRoomWorkEventChannel: {fileID: 11400000, guid: 463662987cfa4cf47bca3407dd9081e1, type: 2}
   currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
   UserData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!4 &1158121126
@@ -11340,6 +11342,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userGameData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
   roomController: {fileID: 0}
+  onRoomLoadedChannel: {fileID: 11400000, guid: 2f200a580617fb8459ad5c51527f7e95, type: 2}
+  getRoomWorkEventChannel: {fileID: 11400000, guid: 463662987cfa4cf47bca3407dd9081e1, type: 2}
+  setWorkSlotsChannel: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
+  listEnabledChannel: {fileID: 11400000, guid: ac95d372dcef3fa408990b649358b365, type: 2}
 --- !u!1 &1345186755
 GameObject:
   m_ObjectHideFlags: 0
@@ -15677,6 +15683,14 @@ PrefabInstance:
       propertyPath: userData
       value: 
       objectReference: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
+    - target: {fileID: 5090213533091373182, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
+      propertyPath: listEnabledChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: ac95d372dcef3fa408990b649358b365, type: 2}
+    - target: {fileID: 5090213533091373182, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
+      propertyPath: setWorkSlotsChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
     - target: {fileID: 5090213533091373182, guid: 35de4a2192112a545a3cc29f6d0d0f80, type: 3}
       propertyPath: getWorkListEventChannel
       value: 

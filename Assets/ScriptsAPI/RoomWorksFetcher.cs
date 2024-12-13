@@ -12,6 +12,11 @@ public class RoomWorksFetcher : MonoBehaviour
     [Header("API Settings")]
     [SerializeField] private UserData userGameData;
     [SerializeField] public RoomController roomController;
+
+    [SerializeField] private BoolEventChannelSO onRoomLoadedChannel;
+    [SerializeField] private VoidEventChannelSO getRoomWorkEventChannel;
+    [SerializeField] private VoidEventChannelSO setWorkSlotsChannel;
+    [SerializeField] private VoidEventChannelSO listEnabledChannel;
     
     private string worksUrl;
 
@@ -45,13 +50,35 @@ public class RoomWorksFetcher : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        getRoomWorkEventChannel.OnEventRaised += GetRoomWorks;
+
+        listEnabledChannel.OnEventRaised += () => { setWorkSlotsChannel.RaiseEvent(); };
+    }
+
+    private void OnDisable()
+    {
+        getRoomWorkEventChannel.OnEventRaised -= GetRoomWorks;
+        
+        listEnabledChannel.OnEventRaised -= () => { setWorkSlotsChannel.RaiseEvent(); };
+    }
+
+    private void GetRoomWorks()
+    {
+        worksUrl = ConnectData.GetUserRoomUrl(userGameData.RoomID);
+
+        FetchWorksFromRoom();
+        
+    }
+    
     public void StartGetRoom(int roomId)
     {
         worksUrl = ConnectData.GetUserRoomUrl(roomId);
-        FetchWorksFromRoom(roomId);
+        FetchWorksFromRoom();
     }
 
-    void FetchWorksFromRoom(int roomId)
+    void FetchWorksFromRoom()
     {
         StartCoroutine(GetWorksFromRoom());
     }
@@ -66,7 +93,65 @@ public class RoomWorksFetcher : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             RoomWorksResponse GetWorksFromRoomResponse = JsonConvert.DeserializeObject<RoomWorksResponse>(request.downloadHandler.text);
-            roomController.SetWorksInRoom(GetWorksFromRoomResponse);
+            
+            if (roomController != null)
+            {
+                roomController.SetWorksInRoom(GetWorksFromRoomResponse);
+            }
+
+            foreach (var work in GetWorksFromRoomResponse.Works)
+            {
+
+                switch (work.WorkType.ToLower())
+                {
+                    case "image":
+                        for (int i = 0; i < userGameData.WorkSlot.ImagesSlot.Length; i++)
+                        {
+                            if (string.IsNullOrEmpty(userGameData.WorkSlot.ImagesSlot[i]))  // Проверка на пустой слот
+                            {
+                                if (work.WorkID != -1)
+                                {
+                                    userGameData.WorkSlot.ImagesSlot[i] = work.WorkID.ToString();
+                                }  // Добавление работы в слот
+                            }
+                        }
+                        break;
+                    
+                    case "music":
+                        for (int i = 0; i < userGameData.WorkSlot.MusicSlot.Length; i++)
+                        {
+                            if (string.IsNullOrEmpty(userGameData.WorkSlot.MusicSlot[i]))
+                            {
+                                if (work.WorkID != -1)
+                                {
+                                    userGameData.WorkSlot.MusicSlot[i] = work.WorkID.ToString();
+                                }
+                            }
+                        }
+                        break;
+                    
+                    case "model":
+                        for (int i = 0; i < userGameData.WorkSlot.ModelSlot.Length; i++)
+                        {
+                            if (string.IsNullOrEmpty(userGameData.WorkSlot.ModelSlot[i]))
+                            {
+                                if (work.WorkID != -1)
+                                {
+                                    userGameData.WorkSlot.ModelSlot[i] = work.WorkID.ToString();
+                                }
+                            }
+                        }
+
+                        break;
+                }
+            }
+            
+            setWorkSlotsChannel.RaiseEvent();
+
+            if (roomController!= null)
+            {
+                onRoomLoadedChannel.RaiseEvent(true);
+            }
         }
         else
         {
