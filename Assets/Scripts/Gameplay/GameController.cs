@@ -9,8 +9,6 @@ using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
-    private bool isJoin = false;
-
     [SerializeField] private BoolEventChannelSO _onHubLoadedEvent;
     [SerializeField] private BoolEventChannelSO _onRoomLoadedEvent;
     
@@ -19,6 +17,8 @@ public class GameController : MonoBehaviour
 
     [Header("test")]
     [SerializeField] private GameObject _playerPref;
+    [SerializeField] private GameObject _portalPref;
+    [SerializeField] private RoomManager _photonRoomManager;
 
     private void Awake()
     {
@@ -79,15 +79,17 @@ public class GameController : MonoBehaviour
 
     private void OnJoinedRoom()
     {
-        if (!isJoin)
-        {
-            Debug.LogError(0);
-            isJoin = true;
-            var player = PhotonNetwork.Instantiate(_playerPref.name, new Vector3(0, 1, 0), Quaternion.identity);
-            var controller = player.GetComponent<MoveController>();
-            controller.enabled = true;
-            controller.currentCamera = player.transform.GetChild(0).GetComponent<Camera>();
-            controller.currentCamera.gameObject.SetActive(true);
-        }
+        SpawnPlayer();
+    }
+
+    
+
+    private void SpawnPlayer()
+    {
+        var player = PhotonNetwork.Instantiate(_playerPref.name, new Vector3(0, 1, 0), Quaternion.identity);
+        var controller = player.GetComponent<MoveController>();
+        controller.enabled = true;
+        controller.currentCamera = player.transform.GetChild(0).GetComponent<Camera>();
+        controller.currentCamera.gameObject.SetActive(true);
     }
 }

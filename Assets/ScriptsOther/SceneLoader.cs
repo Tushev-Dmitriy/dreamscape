@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public static Action onHubLoaded;
+    public static Action onRoomLoaded;
+
     [Header("Listening To")]
     [SerializeField] private LoadEventChannelSO _loadHub;
     [SerializeField] private LoadEventChannelSO _loadAvatarCreation;
@@ -114,6 +117,7 @@ public class SceneLoader : MonoBehaviour
         if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Hub)
         {
             _onHubLoadedEvent.RaiseEvent(true);
+            onHubLoaded?.Invoke();
         }
     }
 
@@ -122,6 +126,7 @@ public class SceneLoader : MonoBehaviour
         if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Room)
         {
             _onRoomLoadedEvent.RaiseEvent(true);
+            onRoomLoaded?.Invoke();
         }
     }
     
@@ -174,6 +179,7 @@ public class SceneLoader : MonoBehaviour
         }
 
         FinalizeSceneLoad();
+        
     }
 
     private void FinalizeSceneLoad()

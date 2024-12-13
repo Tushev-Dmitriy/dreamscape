@@ -3228,8 +3228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd38271748dce574c855de5a01818997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hubSceneName: Hub
-  _roomSceneName: RoomScece
   _hubRoomName: hub
 --- !u!4 &399406210
 Transform:
@@ -9254,6 +9252,8 @@ MonoBehaviour:
   currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
   UserData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
   _playerPref: {fileID: 6810805324695645657, guid: 4f941e50ae0c7ab4ea55fc9cd52628b4, type: 3}
+  _portalPref: {fileID: 8780160245862366896, guid: 016c37d978b4056409a627b5f82da5c6, type: 3}
+  _photonRoomManager: {fileID: 399406209}
 --- !u!4 &1158121126
 Transform:
   m_ObjectHideFlags: 0
@@ -16955,7 +16955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1711608902
 RectTransform:
   m_ObjectHideFlags: 0

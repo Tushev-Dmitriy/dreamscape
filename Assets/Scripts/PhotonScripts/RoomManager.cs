@@ -1,20 +1,42 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static Action onConnectedToMaster;
     public static Action onJoinedRoom;
     public static Action onLeftRoom;
+    public static Action onTryDisconenct;
 
     private string _roomForCreating;
-    private string _sceneForLoad;
 
-    [SerializeField] private string _hubSceneName;
-    [SerializeField] private string _roomSceneName;
     [SerializeField] private string _hubRoomName;
+
+    private void Start()
+    {
+        SceneLoader.onHubLoaded += OnHubLoaded;
+        SceneLoader.onRoomLoaded += OnRoomLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneLoader.onHubLoaded -= OnHubLoaded;
+        SceneLoader.onRoomLoaded -= OnRoomLoaded;
+    }
+
+    public void Disconect()
+    {
+        onTryDisconenct?.Invoke();
+        PhotonNetwork.Disconnect();
+    }
+
+    public void SetNextLoadRoom(string roomForCreating)
+    {
+        _roomForCreating = roomForCreating;
+    }
 
     public void SwitchToRoom(string roomName)
     {
@@ -22,7 +44,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("Leaving current room...");
             _roomForCreating = roomName;
-            _sceneForLoad = _roomSceneName;
             PhotonNetwork.LeaveRoom(); 
         }
     }
@@ -33,17 +54,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("Leaving current room...");
             _roomForCreating = _hubRoomName;
-            _sceneForLoad = _hubSceneName;
             PhotonNetwork.LeaveRoom();
         }
     }
 
-    public void ConnectToHub()
+    public void ConnectToServer()
     {
-        Debug.Log("Connecting...");
-
-        _roomForCreating = _hubRoomName;
-        _sceneForLoad = _hubSceneName;
+        Debug.Log("Connecting... ");
 
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -57,11 +74,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         onConnectedToMaster?.Invoke();
 
         PhotonNetwork.JoinOrCreateRoom(_roomForCreating, null, null);
-
-        if (_sceneForLoad != SceneManager.GetActiveScene().name)
-        {
-            PhotonNetwork.LoadLevel(_sceneForLoad);
-        }
     }
 
     public override void OnJoinedRoom()
@@ -78,7 +90,25 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("Successfully left the room. Now creating a new room...");
-        onLeftRoom?.Invoke();   
+        onLeftRoom?.Invoke();
     }
 
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        Debug.LogError("новая комната");
+
+    }
+
+    private void OnHubLoaded()
+    {
+        //Debug.LogError(0);
+        _roomForCreating = "hub";
+        ConnectToServer();
+    }
+
+    private void OnRoomLoaded()
+    {
+        //Debug.LogError(0);
+        ConnectToServer();
+    }
 }
