@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde525769a4b90c4899d8c5e7a95b75a, type: 3}
+  m_Name: AvatarData
+  m_EditorClassIdentifier: 
+  menItems:
+  - {fileID: 11400000, guid: c6fad270e70ccdd4f9ef12a1c81fd303, type: 2}
+  - {fileID: 11400000, guid: 8af2ccc9003c4fe4e824be3f4a504b97, type: 2}
+  - {fileID: 11400000, guid: 94d855a01991059468e95c04f730913f, type: 2}
+  - {fileID: 11400000, guid: a9e40ae6d4c4cc340aff367ebc6bef1b, type: 2}
+  - {fileID: 11400000, guid: 655a8f89f30d0a44b8a3695a94e053c2, type: 2}
+  - {fileID: 11400000, guid: d20b4dc2c677ac746a7c2e7dbb0ebcc1, type: 2}
+  womanItems:
+  - {fileID: 11400000, guid: fc34b201006eb344988b5b1bfa629bf1, type: 2}
+  - {fileID: 11400000, guid: 93bbdd05c1f5335428db73c4773ec0bf, type: 2}
+  - {fileID: 11400000, guid: da9f68f9c884fa84c8a27160550bd6c7, type: 2}
+  - {fileID: 11400000, guid: b7e2cb3a487e10949ad3f4268485c6e9, type: 2}
+  - {fileID: 11400000, guid: e80e8780b5d50c24f9f9c45361f7417c, type: 2}
+  - {fileID: 11400000, guid: d846817fd1bc1bc40992fef1057b7881, type: 2}

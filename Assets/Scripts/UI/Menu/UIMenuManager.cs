@@ -26,6 +26,11 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private BoolEventChannelSO _loginCorrectEvent = default;
     [SerializeField] private BoolEventChannelSO _serverErrorEvent = default;
 
+    private void OnEnable()
+    {
+        gameState.UpdateGameState(GameState.Menu);
+    }
+
     private void Start()
     {
         mainMenu.LoginAction += LoginButtonClicked;

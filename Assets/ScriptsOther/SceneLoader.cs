@@ -137,7 +137,6 @@ public class SceneLoader : MonoBehaviour
     }
     
     
-    //TODO: не загружать комнату до ответа от сервака, оставить fadecontroller
     private void OnNewSceneLoaded(AsyncOperation obj)
     {
         _currentlyLoadedScene = _sceneToLoad;
@@ -167,6 +166,7 @@ public class SceneLoader : MonoBehaviour
         {
             isResponseReceived = response;
         };
+        
         // Ждем, пока ответ не будет получен
         while (!isResponseReceived)
         {

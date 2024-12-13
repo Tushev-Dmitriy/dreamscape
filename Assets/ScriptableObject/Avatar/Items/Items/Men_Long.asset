@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd476b0642e61c4cad71f18c9a2dd65, type: 3}
+  m_Name: Men_Long
+  m_EditorClassIdentifier: 
+  preview: {fileID: 21300000, guid: 42d561985e4497b4f8bdec876946271e, type: 3}
+  avatarItemType: {fileID: 11400000, guid: 8016635c1bd271f40a6891c64b9ca317, type: 2}
+  objectName: long

@@ -448,6 +448,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40868730}
   m_CullTransparentMesh: 1
+--- !u!1 &43673863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43673866}
+  - component: {fileID: 43673865}
+  - component: {fileID: 43673864}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &43673864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43673863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &43673865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43673863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &43673866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43673863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55860409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,6 +2779,9 @@ MonoBehaviour:
   rotateSpeed: 5
   gravity: -9.81
   jumpHeight: 2
+  lookSpeed: 2.5
+  maxLookAngle: 60
+  playerCamera: {fileID: 861847490}
   gameState: {fileID: 11400000, guid: 12f04149f09ff1942af0cd0ae3b7d1d5, type: 2}
 --- !u!143 &274309000
 CharacterController:
@@ -2821,7 +2892,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 861847490}
@@ -7502,7 +7573,7 @@ Transform:
   m_GameObject: {fileID: 861847489}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 2, z: -1.75}
+  m_LocalPosition: {x: 0, y: 1.83, z: -3.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7552,7 +7623,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -11561,10 +11632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userGameData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
-  eyeColorDropdown: {fileID: 1823412216}
-  hairStyleDropdown: {fileID: 177443881}
-  skinColorDropdown: {fileID: 196247630}
-  outfitDropdown: {fileID: 473293358}
+  onSaveAvatarData: {fileID: 11400000, guid: eb3865492bd9dcc4db10e18400745b13, type: 2}
 --- !u!114 &1338621616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11673,7 +11741,6 @@ MonoBehaviour:
   roomController: {fileID: 0}
   onRoomLoadedChannel: {fileID: 11400000, guid: 2f200a580617fb8459ad5c51527f7e95, type: 2}
   getRoomWorkEventChannel: {fileID: 11400000, guid: 463662987cfa4cf47bca3407dd9081e1, type: 2}
-  setWorkSlotsChannel: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
   listEnabledChannel: {fileID: 11400000, guid: ac95d372dcef3fa408990b649358b365, type: 2}
 --- !u!1 &1345186755
 GameObject:
@@ -22750,3 +22817,4 @@ SceneRoots:
   - {fileID: 7803234448466189714}
   - {fileID: 1503846999}
   - {fileID: 1158121126}
+  - {fileID: 43673866}

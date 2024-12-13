@@ -1,46 +1,51 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class UserAvatarManager : MonoBehaviour
 {
     [Header("API Settings")]
     public UserData userGameData;
 
-    [Header("UI Elements")]
-    public TMP_Dropdown eyeColorDropdown;
-    public TMP_Dropdown hairStyleDropdown;
-    public TMP_Dropdown skinColorDropdown;
-    public TMP_Dropdown outfitDropdown;
+    [SerializeField] private VoidEventChannelSO onSaveAvatarData;
 
     private string userAvatarUrl;
 
-    private void Start()
+    private void OnEnable()
     {
-        int userId = userGameData.UserID;
-        userAvatarUrl = ConnectData.GetUserAvatarUrl(userId);
+        onSaveAvatarData.OnEventRaised += FetchUserAvatarData;
+    }
+
+    private void OnDisable()
+    {
+        onSaveAvatarData.OnEventRaised -= FetchUserAvatarData;
     }
 
     public void FetchUserAvatarData()
     {
+        int userId = userGameData.UserID;
+        userAvatarUrl = ConnectData.GetUserAvatarUrl(userId);
+        
         StartCoroutine(GetUserAvatarData());
     }
 
     public void SetUserAvatarData()
     {
-        int eyeColor = eyeColorDropdown.value + 1;
-        int hairStyle = hairStyleDropdown.value + 1;
-        int skinColor = skinColorDropdown.value + 1;
-        int outfit = outfitDropdown.value + 1;
+        int gender = userGameData.AvatarData.Gender;
+        int hairStyle = userGameData.AvatarData.HairStyle;
+        int outfitTop = userGameData.AvatarData.OutfitTop;
+        int outfitDown = userGameData.AvatarData.OutfitDown;
 
         AvatarData avatarData = new AvatarData
         {
-            EyeColor = eyeColor,
+            Gender = gender,
             HairStyle = hairStyle,
-            SkinColor = skinColor,
-            Outfit = outfit
+            OutfitTop = outfitTop,
+            OutfitDown = outfitDown
         };
 
         StartCoroutine(UpdateUserAvatarData(avatarData));
@@ -58,7 +63,6 @@ public class UserAvatarManager : MonoBehaviour
             try
             {
                 AvatarData fetchedAvatar = JsonConvert.DeserializeObject<AvatarData>(request.downloadHandler.text);
-                SetDropdownValues(fetchedAvatar);
 
                 Debug.Log($"Avatar data fetched: {JsonConvert.SerializeObject(fetchedAvatar)}");
             }
@@ -71,14 +75,6 @@ public class UserAvatarManager : MonoBehaviour
         {
             Debug.LogError($"Error fetching avatar data: {request.responseCode} - {request.downloadHandler.text}");
         }
-    }
-
-    private void SetDropdownValues(AvatarData avatarData)
-    {
-        eyeColorDropdown.value = avatarData.EyeColor - 1;
-        hairStyleDropdown.value = avatarData.HairStyle - 1;
-        skinColorDropdown.value = avatarData.SkinColor - 1;
-        outfitDropdown.value = avatarData.Outfit - 1;
     }
 
     private IEnumerator UpdateUserAvatarData(AvatarData avatarData)
@@ -107,8 +103,8 @@ public class UserAvatarManager : MonoBehaviour
 [System.Serializable]
 public class AvatarData
 {
-    public int EyeColor;
     public int HairStyle;
-    public int SkinColor;
-    public int Outfit;
+    public int Gender;
+    public int OutfitTop;
+    public int OutfitDown;
 }

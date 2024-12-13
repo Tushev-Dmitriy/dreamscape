@@ -10,6 +10,7 @@ public class UserData : ScriptableObject
     public int UserID;
     public string Login;
     public string Nickname;
+    
     public int RoomID;
     public int CurrentRoomID;
     public List<int> WorksID = new List<int>();
@@ -18,6 +19,12 @@ public class UserData : ScriptableObject
     public List<AllWork> AllWorks = new List<AllWork>();
 
     public WorkSlot WorkSlot;
+    public AvatarData AvatarData;
+    
+    public void ResetAvatarData()
+    {
+        AvatarData = null;
+    }
 
     public void ResetSlotsData()
     {
