@@ -16,6 +16,9 @@ public class MoveController : MonoBehaviour
 
     [SerializeField] private GameStateSO gameState;
 
+    [Header("test")]
+    public Camera currentCamera;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -33,8 +36,8 @@ public class MoveController : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            Vector3 camForward = Camera.main.transform.forward;
-            Vector3 camRight = Camera.main.transform.right;
+            Vector3 camForward = currentCamera.transform.forward;
+            Vector3 camRight = currentCamera.transform.right;
 
             camForward.y = 0;
             camRight.y = 0;
