@@ -5,21 +5,9 @@ using UnityEngine.UI;
 
 public class MusicUI : MonoBehaviour
 {
-    //public GameObject audioControlPanel;
-    //public Button playPauseButton;
-    //public Slider volumeSlider;
-    //public AudioSource targetAudioSource;
-
-    private void Start()
-    {
-        //audioControlPanel.SetActive(false);
-        //if (playPauseButton != null) playPauseButton.onClick.AddListener(TogglePlayback);
-        //if (volumeSlider != null) volumeSlider.onValueChanged.AddListener(SetVolume);
-    }
-
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Camera.main != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -31,22 +19,9 @@ public class MusicUI : MonoBehaviour
                 if (audioSource != null)
                 {
                     TogglePlayback(audioSource);
-                    //OpenAudioControl(audioSource);
                 }
             }
         }
-    }
-
-    public void OpenAudioControl(AudioSource source)
-    {
-        //targetAudioSource = source;
-        //if (volumeSlider != null) volumeSlider.value = source.volume;
-        //audioControlPanel.SetActive(true);
-    }
-
-    public void CloseAudioControl()
-    {
-        //audioControlPanel.SetActive(false);
     }
 
     public void TogglePlayback(AudioSource targetAudioSource)
@@ -55,11 +30,5 @@ public class MusicUI : MonoBehaviour
             if (targetAudioSource.isPlaying) targetAudioSource.Pause();
             else targetAudioSource.Play();
         }
-    }
-
-    public void SetVolume(float value)
-    {
-        //if (targetAudioSource == null) return;
-        //targetAudioSource.volume = value;
     }
 }
