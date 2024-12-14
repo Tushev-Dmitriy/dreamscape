@@ -94,62 +94,20 @@ public class RoomWorksFetcher : MonoBehaviour
         {
             RoomWorksResponse GetWorksFromRoomResponse = JsonConvert.DeserializeObject<RoomWorksResponse>(request.downloadHandler.text);
             
+            Debug.Log(GetWorksFromRoomResponse.RoomID);
+            
             if (roomController != null)
             {
                 roomController.SetWorksInRoom(GetWorksFromRoomResponse);
             }
-
-            foreach (var work in GetWorksFromRoomResponse.Works)
-            {
-
-                switch (work.WorkType.ToLower())
-                {
-                    case "image":
-                        for (int i = 0; i < userGameData.WorkSlot.ImagesSlot.Length; i++)
-                        {
-                            if (string.IsNullOrEmpty(userGameData.WorkSlot.ImagesSlot[i]))  // Проверка на пустой слот
-                            {
-                                if (work.WorkID != -1)
-                                {
-                                    userGameData.WorkSlot.ImagesSlot[i] = work.WorkID.ToString();
-                                }  // Добавление работы в слот
-                            }
-                        }
-                        break;
-                    
-                    case "music":
-                        for (int i = 0; i < userGameData.WorkSlot.MusicSlot.Length; i++)
-                        {
-                            if (string.IsNullOrEmpty(userGameData.WorkSlot.MusicSlot[i]))
-                            {
-                                if (work.WorkID != -1)
-                                {
-                                    userGameData.WorkSlot.MusicSlot[i] = work.WorkID.ToString();
-                                }
-                            }
-                        }
-                        break;
-                    
-                    case "model":
-                        for (int i = 0; i < userGameData.WorkSlot.ModelSlot.Length; i++)
-                        {
-                            if (string.IsNullOrEmpty(userGameData.WorkSlot.ModelSlot[i]))
-                            {
-                                if (work.WorkID != -1)
-                                {
-                                    userGameData.WorkSlot.ModelSlot[i] = work.WorkID.ToString();
-                                }
-                            }
-                        }
-
-                        break;
-                }
-            }
+            
             
           //  setWorkSlotsChannel.RaiseEvent();
 
             if (roomController!= null)
             {
+                Debug.Log("room loaded");
+
                 onRoomLoadedChannel.RaiseEvent(true);
             }
         }

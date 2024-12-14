@@ -15,6 +15,8 @@ public class RoomController : MonoBehaviour
 
     public void SetWorksInRoom(RoomWorksResponse roomWorksResponseIn)
     {
+        
+        Debug.LogError("set works in room");
         roomWorksResponse = roomWorksResponseIn;
 
         List<Work> allWorkInRoom = roomWorksResponse.Works;
