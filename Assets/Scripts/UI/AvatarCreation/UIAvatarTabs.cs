@@ -9,9 +9,7 @@ public class UIAvatarTabs : MonoBehaviour
 {
     [SerializeField] private List<UIAvatarTab> tabBars = new List<UIAvatarTab>();
     public event UnityAction<AvatarTabSO> TabChanged;
-
-    private bool tabsInitialized = false;
-
+    
     private void OnEnable()
     {
         InitializeTabs(tabBars);
@@ -28,17 +26,10 @@ public class UIAvatarTabs : MonoBehaviour
                 tab.OnTabSelected += ChangeTab; 
             }
         }
-
-        tabsInitialized = true;
     }
 
     public void SetTabs(List<AvatarTabSO> typesList, AvatarTabSO selectedTab)
     {
-        if (!tabsInitialized)
-        {
-            Debug.LogError("Tabs are not initialized. Call InitializeTabs first.");
-            return;
-        }
         
         for (int i = 0; i < tabBars.Count; i++)
         {

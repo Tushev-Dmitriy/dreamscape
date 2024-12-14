@@ -22,6 +22,8 @@ public class RoomTransition : MonoBehaviour
     [SerializeField] private LoadEventChannelSO loadHubEventChannel;
     [SerializeField] private GameSceneSO hubScene;
     
+    [SerializeField] private GameStateSO gameState;
+    
    /* [Header("Hub")]
     [SerializeField] private */
 
@@ -36,6 +38,7 @@ public class RoomTransition : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            gameState.UpdateGameState(GameState.Gameplay);
             _photonRoomManager = FindObjectOfType<RoomManager>();
             _photonRoomManager.SetNextLoadRoom(roomId.ToString());
             _photonRoomManager.Disconect();

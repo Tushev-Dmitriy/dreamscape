@@ -17,12 +17,12 @@ public class UserAvatarManager : MonoBehaviour
 
     private void OnEnable()
     {
-        onSaveAvatarData.OnEventRaised += FetchUserAvatarData;
+        onSaveAvatarData.OnEventRaised += SetUserAvatarData;
     }
 
     private void OnDisable()
     {
-        onSaveAvatarData.OnEventRaised -= FetchUserAvatarData;
+        onSaveAvatarData.OnEventRaised -= SetUserAvatarData;
     }
 
     public void FetchUserAvatarData()
@@ -30,11 +30,13 @@ public class UserAvatarManager : MonoBehaviour
         int userId = userGameData.UserID;
         userAvatarUrl = ConnectData.GetUserAvatarUrl(userId);
         
-        StartCoroutine(GetUserAvatarData());
     }
 
     public void SetUserAvatarData()
     {
+        int userId = userGameData.UserID;
+        userAvatarUrl = ConnectData.GetUserAvatarUrl(userId);
+        
         int gender = userGameData.AvatarData.Gender;
         int hairStyle = userGameData.AvatarData.HairStyle;
         int outfitTop = userGameData.AvatarData.OutfitTop;
@@ -48,7 +50,7 @@ public class UserAvatarManager : MonoBehaviour
             OutfitDown = outfitDown
         };
 
-        StartCoroutine(UpdateUserAvatarData(avatarData));
+        StartCoroutine(UpdateUserAvatarData());
     }
 
     private IEnumerator GetUserAvatarData()
@@ -77,9 +79,9 @@ public class UserAvatarManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateUserAvatarData(AvatarData avatarData)
+    private IEnumerator UpdateUserAvatarData()
     {
-        string jsonData = JsonConvert.SerializeObject(avatarData);
+        string jsonData = JsonConvert.SerializeObject(userGameData.AvatarData);
 
         UnityWebRequest request = new UnityWebRequest(userAvatarUrl, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);

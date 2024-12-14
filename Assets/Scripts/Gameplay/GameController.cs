@@ -86,11 +86,9 @@ public class GameController : MonoBehaviour
     private void SpawnPlayer()
     {
         var player = PhotonNetwork.Instantiate(_playerPref.name, new Vector3(0, 1, 0), Quaternion.identity);
-        var controller = player.GetComponent<MoveController>();
+        var controller = player.GetComponentInChildren<MoveController>();
         controller.enabled = true;
-        controller.currentCamera = player.transform.GetChild(0).GetComponent<Camera>();
         controller.currentCamera.gameObject.SetActive(true);
-
-        
+        controller.currentCamera.enabled = true;
     }
 }

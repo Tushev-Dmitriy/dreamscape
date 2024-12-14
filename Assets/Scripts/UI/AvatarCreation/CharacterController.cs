@@ -1,29 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace UI.AvatarCreation
 {
-    public enum Gender
+    public class CharacterController : MonoBehaviour
     {
-        Man,
-        Woman
-    }
-    
-    public class AvatarController : MonoBehaviour
-    {
-        [SerializeField] private AvatarDataSO avatarDataSO;
         [SerializeField] private UserData userData;
+        [SerializeField] private AvatarDataSO avatarData;
 
         [SerializeField] private GameObject menObject;
         [SerializeField] private GameObject womanObject;
-
-        [Header("Events")] 
-        [SerializeField] private IntEventChannelSO setGenderEventChannel;
-        [SerializeField] private IntEventChannelSO setHairstyleEventChannel;
-        [SerializeField] private IntEventChannelSO setOutfitTopEventChannel;
-        [SerializeField] private IntEventChannelSO setOutfitDownEventChannel;
         
         private Gender _gender = Gender.Man;
         
@@ -36,24 +24,14 @@ namespace UI.AvatarCreation
 
         private void OnEnable()
         {
-            setGenderEventChannel.OnEventRaised += SetGender;
-            setHairstyleEventChannel.OnEventRaised += SetHairstyle;
-            setOutfitTopEventChannel.OnEventRaised += SetOutfitTop;
-            setOutfitDownEventChannel.OnEventRaised += SetOutfitDown;
-        }
-
-        private void OnDisable()
-        {
-            setGenderEventChannel.OnEventRaised -= SetGender;
-            setHairstyleEventChannel.OnEventRaised -= SetHairstyle;
-            setOutfitTopEventChannel.OnEventRaised -= SetOutfitTop;
-            setOutfitDownEventChannel.OnEventRaised -= SetOutfitDown;
+            SetGender(userData.AvatarData.Gender);
+            SetHairstyle(userData.AvatarData.HairStyle);
+            SetOutfitTop(userData.AvatarData.OutfitTop);
+            SetOutfitDown(userData.AvatarData.OutfitDown);
         }
 
         private void SetGender(int gender)
         {
-            //currentItems.Clear();
-            
             _gender = (Gender)gender;
             
             switch (_gender)
@@ -66,7 +44,7 @@ namespace UI.AvatarCreation
 
                     currentGameobject = menObject;
 
-                    currentItems = avatarDataSO.MenItems;
+                    currentItems = avatarData.MenItems;
                     break;
                 
                 case Gender.Woman:
@@ -77,7 +55,7 @@ namespace UI.AvatarCreation
 
                     currentGameobject = womanObject;
                     
-                    currentItems = avatarDataSO.WomanItems;
+                    currentItems = avatarData.WomanItems;
                     break;
             }
 
@@ -110,8 +88,6 @@ namespace UI.AvatarCreation
                     hairstyleItemList[i].SetActive(false);
                 }
             }
-            
-            userData.AvatarData.HairStyle = hairstyle;
         }
 
         private void SetOutfitTop(int outfitTop)
@@ -140,8 +116,6 @@ namespace UI.AvatarCreation
                     outfitTopObjects[i].SetActive(false);
                 }
             }
-            
-            userData.AvatarData.OutfitTop = outfitTop;
         }
 
         private void SetOutfitDown(int outfitDown)
@@ -170,8 +144,6 @@ namespace UI.AvatarCreation
                     outfitDownObjects[i].SetActive(false);
                 }
             }
-            
-            userData.AvatarData.OutfitDown = outfitDown;
         }
     }
 }

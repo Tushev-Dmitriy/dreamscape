@@ -23,6 +23,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private BoolEventChannelSO _toggleLoadingScreen;
     [SerializeField] private BoolEventChannelSO onRoomLoadedChannel;
     [SerializeField] private FadeChannelSO _fadeRequestChannel = default;
+
+    [SerializeField] private GameStateSO gamestate;
     
     private GameSceneSO _sceneToLoad;
     private GameSceneSO _currentlyLoadedScene;
@@ -126,6 +128,7 @@ public class SceneLoader : MonoBehaviour
         if (_sceneToLoad.SceneType == GameSceneSO.GameSceneType.Room)
         {
             _onRoomLoadedEvent.RaiseEvent(true);
+            gamestate.UpdateGameState(GameState.Gameplay);
             onRoomLoaded?.Invoke();
         }
     }

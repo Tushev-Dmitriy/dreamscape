@@ -20,6 +20,9 @@ public class UIAvatarCreation : MonoBehaviour
     [SerializeField] private LoadEventChannelSO _backToMenu;
     [SerializeField] private VoidEventChannelSO onSaveAvatarDataEvent;
 
+    [SerializeField] private LoadEventChannelSO loadHubSceneEvent;
+    [SerializeField] private GameSceneSO hub;
+
     [SerializeField] private GameSceneSO _menuToLoad;
     
     private AvatarTabSO _selectedTab = default;
@@ -30,6 +33,7 @@ public class UIAvatarCreation : MonoBehaviour
 
     private void Awake()
     {
+        _currentPanel = _generalSlots.gameObject;
         if (tabBar == null)
         {
             Debug.LogError("TabBar не установлен в инспекторе.");
@@ -74,16 +78,20 @@ public class UIAvatarCreation : MonoBehaviour
             case AvatarTabType.Clothes:
                 if (_clothesSlots != null)
                     SetCurrentPanel(_clothesSlots.gameObject);
+                Debug.Log("Clothes panel is active");
                 break;
             
             case AvatarTabType.General:
                 if (_generalSlots != null)
                     SetCurrentPanel(_generalSlots.gameObject);
+                Debug.Log("General panel is active");
+
                 break;
             
             case AvatarTabType.Appearance:
                 if (_appearanceSlots != null)
                     SetCurrentPanel(_appearanceSlots.gameObject);
+                Debug.Log("Appearance panel is active");
                 break;
             
             default:
@@ -110,6 +118,10 @@ public class UIAvatarCreation : MonoBehaviour
     public void SaveAvatarData()
     {
         onSaveAvatarDataEvent.RaiseEvent();
+        
+        loadHubSceneEvent.RaiseEvent(hub, true, true);
+        
+        gameState.UpdateGameState(GameState.Gameplay);
     }
 
     private void SetCurrentPanel(GameObject panel)

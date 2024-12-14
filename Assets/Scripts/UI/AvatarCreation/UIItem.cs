@@ -24,15 +24,16 @@ public class UIItem : MonoBehaviour
     {
         _isSelected = isSelected;
         currentItem = itemStack;
-
+        _itemPreviewImage.sprite = itemStack.Item.Preview;
         
         _imgSelected.gameObject.SetActive(isSelected);
+        //_bgImage.gameObject.SetActive(!isSelected);
     }
 
     public void SetInactiveItem()
     {
         _itemPreviewImage.gameObject.SetActive(false);
-        _bgImage.gameObject.SetActive(false);
+      //  _bgImage.gameObject.SetActive(false);
         _imgSelected.gameObject.SetActive(false);
     }
     
@@ -49,12 +50,14 @@ public class UIItem : MonoBehaviour
 
         if (ItemSelected != null)
         {
+           // _bgImage.gameObject.SetActive(false);
             _imgSelected.gameObject.SetActive(true);
             ItemSelected.Invoke(currentItem.Item);
         }
         else
         {
             _imgSelected.gameObject.SetActive(false);
+           // _bgImage.gameObject.SetActive(true);
         }
     }
 

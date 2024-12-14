@@ -26,10 +26,16 @@ public class MoveController : MonoBehaviour
 
     [SerializeField] private GameStateSO gameState;
     private bool cursorLocked = true;
+    
+    [Header("test")]
+    public Camera currentCamera;
+    
+    private Animator animator; // Ссылка на аниматор
 
-    void Start()
+    void OnEnable()
     {
         controller = GetComponent<CharacterController>();
+       // animator = GetComponentInChildren<Animator>(); // Получаем аниматор
         // LockCursor();
     }
 
@@ -111,6 +117,9 @@ public class MoveController : MonoBehaviour
         {
             speed /= 2;
         }
+        
+        float movementSpeed = new Vector3(horizontal, 0, vertical).magnitude;
+      //  animator.SetFloat("Speed", movementSpeed);
     }
 
     private void HandleLook()

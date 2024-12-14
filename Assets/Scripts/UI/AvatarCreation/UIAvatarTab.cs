@@ -28,11 +28,15 @@ public class UIAvatarTab : MonoBehaviour
         
         if (isSelected)
         {
+            unselectTabImage.gameObject.SetActive(false);
+
             selectTabImage.gameObject.SetActive(true);
         }
         else
         {
             selectTabImage.gameObject.SetActive(false);
+
+            unselectTabImage.gameObject.SetActive(true);
         }
     }
 

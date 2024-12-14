@@ -1,44 +1,9 @@
 fileFormatVersion: 2
-guid: f453c4d9c7e6a954084d6ab31eff20e6
+guid: b09fc67c053b45a4ba175601c89db65d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boots
-    second: {fileID: 2100000, guid: 113cc829b1e4a0a449528206d5365747, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: hair1
-    second: {fileID: 2100000, guid: 1c95b8701f81e8145b1c686675d2abe4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: hair2
-    second: {fileID: 2100000, guid: 7c34a35ea21bdae488bc0e93e9f331db, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: jeans
-    second: {fileID: 2100000, guid: 36f7bffa64602ed4aa65e89c9f6c10c1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shorts
-    second: {fileID: 2100000, guid: b34fa72726b705a49b27fed844028149, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: tishort
-    second: {fileID: 2100000, guid: ce54a97a2a5c9dc4dbcb8e5a689f4365, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: undershirt
-    second: {fileID: 2100000, guid: c96c3a34313aafa4c878ea13ef4b8464, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
