@@ -10,6 +10,8 @@ public class UIAvatarTabs : MonoBehaviour
     [SerializeField] private List<UIAvatarTab> tabBars = new List<UIAvatarTab>();
     public event UnityAction<AvatarTabSO> TabChanged;
     
+    [SerializeField] private AvatarTabSO currentSelectedTab;
+    
     private void OnEnable()
     {
         InitializeTabs(tabBars);
@@ -30,12 +32,10 @@ public class UIAvatarTabs : MonoBehaviour
 
     public void SetTabs(List<AvatarTabSO> typesList, AvatarTabSO selectedTab)
     {
-        
         for (int i = 0; i < tabBars.Count; i++)
         {
             if (i < typesList.Count)
             {
-                //tabBars[i].SetTab(isSelected);
                 tabBars[i].gameObject.SetActive(true);
             }
             else

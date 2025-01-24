@@ -62,8 +62,6 @@ namespace UI.AvatarCreation
                     womanObject.SetActive(false);
                     menObject.SetActive(true);
                     
-                    Debug.Log("Man");
-
                     currentGameobject = menObject;
 
                     currentItems = avatarDataSO.MenItems;
@@ -73,8 +71,6 @@ namespace UI.AvatarCreation
                     menObject.SetActive(false);
                     womanObject.SetActive(true);
                     
-                    Debug.Log("Woman");
-
                     currentGameobject = womanObject;
                     
                     currentItems = avatarDataSO.WomanItems;

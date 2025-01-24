@@ -4826,6 +4826,7 @@ MonoBehaviour:
   selectTabImage: {fileID: 427413977110189754}
   unselectTabImage: {fileID: 2742908530291305189}
   currentTabType: {fileID: 11400000, guid: cd03e942a732fa94f8c71e4314478f89, type: 2}
+  isFirstSelected: 0
 --- !u!1 &3379616845748751908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,6 +5669,7 @@ MonoBehaviour:
   - {fileID: 8854287061617707658}
   - {fileID: 4368646687506601586}
   - {fileID: 3361600519502022050}
+  currentSelectedTab: {fileID: 0}
 --- !u!4 &4124900278416890563
 Transform:
   m_ObjectHideFlags: 0
@@ -5989,6 +5991,7 @@ MonoBehaviour:
   selectTabImage: {fileID: 9181185337194815976}
   unselectTabImage: {fileID: 1208710041363466036}
   currentTabType: {fileID: 11400000, guid: 55f0b9d7e73bdc84aa37483aa6988aa3, type: 2}
+  isFirstSelected: 0
 --- !u!4 &4417231114553581899
 Transform:
   m_ObjectHideFlags: 0
@@ -8102,6 +8105,7 @@ MonoBehaviour:
   - {fileID: 8854287061617707658}
   - {fileID: 4368646687506601586}
   - {fileID: 3361600519502022050}
+  currentSelectedTab: {fileID: 0}
 --- !u!137 &6137786882943442107
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10980,6 +10984,7 @@ MonoBehaviour:
   selectTabImage: {fileID: 3380308461217833850}
   unselectTabImage: {fileID: 4352952591188056855}
   currentTabType: {fileID: 11400000, guid: 82aa7d5b01d135d4a95ac4b2e3d276a2, type: 2}
+  isFirstSelected: 0
 --- !u!224 &8880076399273357531
 RectTransform:
   m_ObjectHideFlags: 0

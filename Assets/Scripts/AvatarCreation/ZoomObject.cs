@@ -13,14 +13,11 @@ public class ZoomObject : MonoBehaviour
     private float currentDistance; // Текущее расстояние от камеры до персонажа
     private Vector3 offset; // Смещение камеры
 
-    private Vector3 startPosition;
 
     void Start()
     {
         currentDistance = Vector3.Distance(transform.position, target.position); // Начальное расстояние
         offset = transform.position - head.position;
-
-        startPosition = transform.position; // Смещение от головы персонажа
     }
 
     void Update()
@@ -38,6 +35,5 @@ public class ZoomObject : MonoBehaviour
             Vector3 desiredPosition = head.position + offset.normalized * currentDistance;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 10);
         }
-
     }
 }

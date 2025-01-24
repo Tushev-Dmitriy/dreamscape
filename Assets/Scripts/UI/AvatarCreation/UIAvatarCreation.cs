@@ -34,6 +34,7 @@ public class UIAvatarCreation : MonoBehaviour
     private void Awake()
     {
         _currentPanel = _generalSlots.gameObject;
+        
         if (tabBar == null)
         {
             Debug.LogError("TabBar не установлен в инспекторе.");
@@ -41,8 +42,6 @@ public class UIAvatarCreation : MonoBehaviour
         }
 
         tabBar.TabChanged += OnChangeTab; // Подписка на событие
-        Debug.Log("Подписка на TabChanged выполнена в Start.");
-    
         SetTabs(_tabTypesList, _selectedTab);
     }
 
@@ -65,6 +64,7 @@ public class UIAvatarCreation : MonoBehaviour
         }
 
         _selectedTab = _tabTypesList.Find(o => o.TabType == _selectedTabType);
+        
         if (_selectedTab == null)
         {
             Debug.LogError("No TabSO selected.");
@@ -78,20 +78,16 @@ public class UIAvatarCreation : MonoBehaviour
             case AvatarTabType.Clothes:
                 if (_clothesSlots != null)
                     SetCurrentPanel(_clothesSlots.gameObject);
-                Debug.Log("Clothes panel is active");
                 break;
             
             case AvatarTabType.General:
                 if (_generalSlots != null)
                     SetCurrentPanel(_generalSlots.gameObject);
-                Debug.Log("General panel is active");
-
                 break;
             
             case AvatarTabType.Appearance:
                 if (_appearanceSlots != null)
                     SetCurrentPanel(_appearanceSlots.gameObject);
-                Debug.Log("Appearance panel is active");
                 break;
             
             default:
@@ -135,6 +131,4 @@ public class UIAvatarCreation : MonoBehaviour
         _currentPanel = panel;
         _currentPanel.SetActive(true);
     }
-    
-
 }

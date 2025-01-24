@@ -39,8 +39,6 @@ namespace UI.AvatarCreation
                 case Gender.Man:
                     womanObject.SetActive(false);
                     menObject.SetActive(true);
-                    
-                    Debug.Log("Man");
 
                     currentGameobject = menObject;
 
@@ -50,8 +48,6 @@ namespace UI.AvatarCreation
                 case Gender.Woman:
                     menObject.SetActive(false);
                     womanObject.SetActive(true);
-                    
-                    Debug.Log("Woman");
 
                     currentGameobject = womanObject;
                     

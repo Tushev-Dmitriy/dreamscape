@@ -5,9 +5,599 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78218eea-6822-4041-96f4-c9e0820ae687" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptsAPI/RoomWorksFetcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptsAPI/RoomWorksFetcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/Avatar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Common/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Common/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/CharacterController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/CharacterController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AvatarCreation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AvatarCreation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RoomScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AvatarCreation/ZoomObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AvatarCreation/ZoomObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/AvatarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/AvatarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/CharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarCreation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarCreation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarTabs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/UIAvatarTabs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptsAPI/ConnectData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptsAPI/ConnectData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptsOther/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptsOther/RoomController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptsOther/RoomTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptsOther/RoomTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/LegaMuz_20241213_151107.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/LegaMuz_20241213_151107.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/TestTree_20241213_151107.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/TestTree_20241213_151107.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Tree1_20241213_151107.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Tree1_20241213_151107.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/ееееееее_20241213_151107.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/ееееееее_20241213_151107.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/AssetLoaderOptionsEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/AssetLoaderOptionsEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/BuildProcessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/BuildProcessor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/CheckMappers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/CheckMappers.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/ImporterOption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/ImporterOption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/LipSyncMappingEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/LipSyncMappingEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/MapperContextActions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/MapperContextActions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/MecanimAnimationClipEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/MecanimAnimationClipEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/PreBuiltResources.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/PreBuiltResources.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/SimpleAnimationPlayerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/SimpleAnimationPlayerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLib3MFScriptedImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLib3MFScriptedImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibDefineSymbolsHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibDefineSymbolsHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibDeprecationWarnings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibDeprecationWarnings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibGLTFScriptedImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibGLTFScriptedImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibImporterEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibImporterEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibPLYScriptedImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibPLYScriptedImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibSTLScriptedImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibSTLScriptedImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibScriptedImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibScriptedImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibSettingsProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibSettingsProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibVersionNotes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Editor/Scripts/TriLibVersionNotes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/KnownIssues.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/KnownIssues.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/ANTLR4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/ANTLR4.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/AndroidNativeFilePicker.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/AndroidNativeFilePicker.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/IxMilia.ThreeMf.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/IxMilia.ThreeMf.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/LibTessDotNet.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/LibTessDotNet.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/NewtonSoftJson.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/NewtonSoftJson.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/NewtonSoftJsonForUnity.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/NewtonSoftJsonForUnity.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/OpenSans.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/OpenSans.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/SharpZipLib.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/SharpZipLib.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/StandaloneFileBrowser.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/StandaloneFileBrowser.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/draco.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Licenses/draco.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Antlr4.Runtime.Standard.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Antlr4.Runtime.Standard.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/ICSharpCode.SharpZipLib.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/ICSharpCode.SharpZipLib.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/IxMilia.ThreeMf.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/IxMilia.ThreeMf.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/LibTessDotNet.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/LibTessDotNet.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json AOT.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json AOT/Newtonsoft.Json.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json AOT/Newtonsoft.Json.deps.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json AOT/Newtonsoft.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json AOT/Newtonsoft.Json.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Editor/Newtonsoft.Json.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Editor/Newtonsoft.Json.deps.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Editor/Newtonsoft.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Editor/Newtonsoft.Json.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Portable.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Portable/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Portable/Newtonsoft.Json.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Portable/Newtonsoft.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/Newtonsoft.Json/Newtonsoft.Json Portable/Newtonsoft.Json.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/StbImageSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/Dependencies/StbImageSharp.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Fbx.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Fbx.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Gltf.Draco.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Gltf.Draco.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Gltf.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Gltf.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.HDRLoader.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.HDRLoader.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Obj.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Obj.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Ply.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Ply.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Stl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.Stl.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.ThreeMf.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.ThreeMf.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Plugins/TriLibCore.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/ByNameAnimatorOverrideAnimationClipMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/ByNameAnimatorOverrideAnimationClipMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/LegacyToHumanoidAnimationClipMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/LegacyToHumanoidAnimationClipMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/SimpleAnimationPlayerAnimationClipMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/AnimationClip/SimpleAnimationPlayerAnimationClipMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Avatar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Avatar/MixamoAndBipedByNameHumanoidAvatarMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Avatar/MixamoAndBipedByNameHumanoidAvatarMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/LipSync.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/LipSync/PhonemeAndVisemeByNameLipSyncMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/LipSync/PhonemeAndVisemeByNameLipSyncMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/HDRPMaterialMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/HDRPMaterialMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/StandardMaterialMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/StandardMaterialMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/UniversalRPMaterialMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/Material/UniversalRPMaterialMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/RootBone.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/RootBone/ByBonesRootBoneMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/RootBone/ByBonesRootBoneMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/RootBone/ByNameRootBoneMapper.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/RootBone/ByNameRootBoneMapper.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/TriLibMappersPlaceholder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Mappers/TriLibMappersPlaceholder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandard.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandard.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlphaCompose.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlphaCompose.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlphaCutout.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/Standard/TriLibStandardAlphaCutout.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/TriLibStandardLoading.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Materials/Standard/TriLibStandardLoading.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/StandardAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/StandardAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/ApplyTransparency.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/ApplyTransparency.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/BuildMetallicTexture.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/BuildMetallicTexture.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/ExtractChannelData.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/ExtractChannelData.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/FixNormalMap.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/FixNormalMap.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/InvertChannelData.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/InvertChannelData.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/InvertChannels.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/InvertChannels.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/SpecularDiffuseToAlbedo.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/SpecularDiffuseToAlbedo.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/SwapChannelData.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Shaders/Utility/SwapChannelData.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibBlack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibBlack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibBump.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibBump.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibGrey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibGrey.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibTransparent.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibTransparent.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibTransparentWhite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibTransparentWhite.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibWhite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/Textures/TriLibWhite.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/TriLibMainFolderPlaceholder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/TriLibMainFolderPlaceholder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/TriLibSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Resources/TriLibSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetDownloader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetDownloader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetDownloaderBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetDownloaderBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetLoaderZip.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetLoaderZip.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetUnloader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/AssetUnloader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/GCHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/GCHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/LipSyncMapping.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/LipSyncMapping.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/AnimatorOverrideAnimationClipMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/AnimatorOverrideAnimationClipMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByBonesRootBoneMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByBonesRootBoneMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameAnimatorOverrideAnimationClipMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameAnimatorOverrideAnimationClipMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameHumanoidAvatarMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameHumanoidAvatarMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameLipSyncMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameLipSyncMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameRootBoneMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ByNameRootBoneMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/LegacyToHumanoidAnimationClipMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/LegacyToHumanoidAnimationClipMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/SimpleAnimationPlayerAnimationClipMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/SimpleAnimationPlayerAnimationClipMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/StandardMaterialMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/StandardMaterialMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ZipFileExternalDataMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ZipFileExternalDataMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ZipFileTextureMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Mappers/ZipFileTextureMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Playables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Playables/SimpleAnimationPlayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Playables/SimpleAnimationPlayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TextureLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TextureLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TriLibReaders.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TriLibReaders.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TriLibSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/TriLibSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/UriLoadCustomContextData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/UriLoadCustomContextData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Utils.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Utils/GraphicsSettingsUtils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/Utils/GraphicsSettingsUtils.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/ZipLoadCustomContextData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Scripts/ZipLoadCustomContextData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Third-Party Notices.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/Third-Party Notices.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/TriLibReleaseNotes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/TriLibReleaseNotes.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/TriLibVersion.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/TriLibVersion.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/link.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibCore/link.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/arm64-v8a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/arm64-v8a/libdracodec_unity.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/arm64-v8a/libdracodec_unity.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/armeabi-v7a.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/armeabi-v7a/libdracodec_unity.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/Android/armeabi-v7a/libdracodec_unity.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.bundle.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.bundle/Contents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.bundle/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.bundle/Contents/MacOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.bundle/Contents/MacOS/dracodec_unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibGltfDraco/Plugins/dracodec_unity.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRPAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRPAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRPAlphaCutout.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/Standard/TriLibHDRPAlphaCutout.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/TriLibHDRPLoading.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Materials/HDRP/TriLibHDRPLoading.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Shaders/BuildHDRPMask.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Shaders/BuildHDRPMask.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Textures/HDRPMask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Resources/Textures/HDRPMask.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts/HDRPVirtualMaterial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts/HDRPVirtualMaterial.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts/Mappers/HDRPMaterialMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibHDRP/Scripts/Mappers/HDRPMaterialMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/AssetViewer.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/AssetViewer.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Materials/Skybox.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Materials/Skybox.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Scripts/AssetViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AssetViewer/Scripts/AssetViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AnimatorControllers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AnimatorControllers/Mannequin.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AnimatorControllers/Mannequin.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/ReflectionProbe-0.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/ReflectionProbe-1.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/AvatarLoader/ReflectionProbe-1.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Materials/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Materials/Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/FinalRig.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/FinalRig.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/ReadMe.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/idle_anim.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/idle_anim.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/walk_anim.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Models/walk_anim.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Scripts/AvatarController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Scripts/AvatarController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Scripts/AvatarLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Scripts/AvatarLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Textures/Ground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/AvatarLoader/Textures/Ground.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Bold.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-BoldItalic.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-ExtraBold.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-ExtraBoldItalic.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Italic.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Light.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-LightItalic.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-Regular.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-SemiBold.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Fonts/OpenSans-SemiBoldItalic.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Plugins/PasteManagerPlugin.jslib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Plugins/PasteManagerPlugin.jslib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/AssetViewerBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/AssetViewerBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/FixMaterials.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/FixMaterials.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/PasteManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Scripts/PasteManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/Arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/Arrow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/ArrowLeft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/ArrowLeft.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/dropdown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/dropdown.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/helpbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/helpbutton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/knob.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/knob.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/playbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/playbutton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/roundbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/roundbutton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/roundbuttonborder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/roundbuttonborder.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/stopbutton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/Common/Textures/stopbutton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/LoadExtraAnimations.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/LoadExtraAnimations.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyBase.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyBase.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyIdle.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyIdle.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyJump.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyJump.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyWalk.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Models/BuddyWalk.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Scripts/LoadExtraAnimationsSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Scripts/LoadExtraAnimationsSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Scripts/TestCurve.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Scripts/TestCurve.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/Buddy.mlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/Buddy.mlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyIdle.mlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyIdle.mlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyJump.mlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyJump.mlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyWalk.mlt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadExtraAnimations/Source Models/BuddyWalk.mlt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/LoadModelFromFile.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/LoadModelFromFile.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/TriLibSampleModel.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/TriLibSampleModel.mtl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/TriLibSampleModel.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/TriLibSampleModel.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/sampleTex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Models/sampleTex.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Scripts/LoadModelFromFileSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFile/Scripts/LoadModelFromFileSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker/LoadModelFromFilePicker.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker/LoadModelFromFilePicker.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker/Scripts/LoadModelFromFilePickerSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromFilePicker/Scripts/LoadModelFromFilePickerSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/LoadModelFromStream.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/LoadModelFromStream.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Mappers/ExternalDataMapperSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Mappers/ExternalDataMapperSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Mappers/TextureMapperSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Mappers/TextureMapperSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/TriLibSampleModel.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/TriLibSampleModel.mtl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/TriLibSampleModel.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/TriLibSampleModel.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/sampleTex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Models/sampleTex.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Scripts/LoadModelFromStreamSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromStream/Scripts/LoadModelFromStreamSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL/LoadModelFromURL.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL/LoadModelFromURL.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL/Scripts/LoadModelFromURLSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/LoadModelFromURL/Scripts/LoadModelFromURLSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomAssetLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomAssetLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomAssetLoaderSample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomAssetLoaderSample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomLoaderSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/SimpleCustomAssetLoader/SimpleCustomLoaderSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Models/WithMyData.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Models/WithMyData.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Scripts/SampleUserPropertiesMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Scripts/SampleUserPropertiesMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Scripts/UserPropertiesLoadingSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/Scripts/UserPropertiesLoadingSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/UserPropertiesLoadingSample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibSamples/UserPropertiesLoading/UserPropertiesLoadingSample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/ExtensionFilter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/ExtensionFilter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/IStandaloneFileBrowser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/IStandaloneFileBrowser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/ItemWithStream.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/ItemWithStream.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowser.java.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowserAndroidListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowserAndroidListener.java.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowserFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Android/StandaloneFileBrowserFragment.java.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Linux.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Linux/x86_64.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Linux/x86_64/libStandaloneFileBrowser.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Linux/x86_64/libStandaloneFileBrowser.so.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.bundle.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.bundle/Contents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.bundle/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.bundle/Contents/MacOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.bundle/Contents/MacOS/StandaloneFileBrowser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.jslib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/StandaloneFileBrowser.jslib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.exp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.iobj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.iobj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.ipdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.ipdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x64/StandaloneFileBrowser.lib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.exp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/Windows/x86/StandaloneFileBrowser.lib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/iOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/iOS/StandaloneFileBrowser.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/Plugins/iOS/StandaloneFileBrowser.mm.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserAndroid.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserAndroid.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserIOS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserIOS.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserLinux.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserLinux.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserMac.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserMac.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWebGL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWebGL.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWinRT.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWinRT.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWindows.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/StandaloneFileBrowserWindows.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/AssetLoaderFilePicker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/AssetLoaderFilePicker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/Mappers/FilePickerExternalDataMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/Mappers/FilePickerExternalDataMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/Mappers/FilePickerTextureMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowser/TriLib/Mappers/FilePickerTextureMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowserSources.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibStandaloneFileBrowser/StandaloneFileBrowserSources.zip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRPAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRPAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRPAlphaCutout.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/Standard/TriLibUniversalRPAlphaCutout.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/TriLibUniversalRPLoading.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Resources/Materials/UniversalRP/TriLibUniversalRPLoading.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Scripts/Mappers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Scripts/Mappers/UniversalRPMaterialMapper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TriLib/TriLibUniversalRP/Scripts/Mappers/UniversalRPMaterialMapper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +613,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIHud.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkSlot.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -37,7 +630,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ui&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -48,6 +641,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Dreamscape/streaming_assets\Dreamscape.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\MSI\Desktop\Dreamscape" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\2022.3.53f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\MSI\Desktop\репо\unitygameUI -debugCodeOptimization" />
@@ -100,6 +701,11 @@
       <workItem from="1734072964778" duration="6348000" />
       <workItem from="1734099376719" duration="22392000" />
       <workItem from="1734130901350" duration="1223000" />
+      <workItem from="1735026742381" duration="783000" />
+      <workItem from="1737612785095" duration="3651000" />
+      <workItem from="1737703373383" duration="5209000" />
+      <workItem from="1737712653124" duration="60000" />
+      <workItem from="1737712732664" duration="9851000" />
     </task>
     <servers />
   </component>
