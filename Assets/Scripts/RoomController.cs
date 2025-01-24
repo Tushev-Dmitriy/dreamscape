@@ -11,6 +11,7 @@ public class RoomController : MonoBehaviour
 {
     [HideInInspector] public RoomWorksResponse roomWorksResponse;
     public List<GameObject> workSlots;
+    [SerializeField] FBXToGLTFConverter modelConverter;
 
     private List<string> savedFiles = new List<string>();
 
@@ -24,7 +25,6 @@ public class RoomController : MonoBehaviour
 
         for (int i = 0; i < workSlots.Count; i++)
         {
-            // Проверяем, есть ли работа для текущего слота
             if (i >= allWorkInRoom.Count || allWorkInRoom[i].WorkID == -1)
             {
                 ClearSlot(workSlots[i]);
@@ -79,7 +79,7 @@ public class RoomController : MonoBehaviour
             
             File.WriteAllBytes(savePath, fileData);
 
-            savedFiles.Add(savePath); // Добавляем файл в список для последующего удаления
+            savedFiles.Add(savePath);
 
             Debug.Log($"Файл {fileName} успешно сохранен в {savePath}");
 
@@ -144,14 +144,12 @@ public class RoomController : MonoBehaviour
 
     private void ClearSlot(GameObject slot)
     {
-        // Удаляем материал, если есть
         MeshRenderer renderer = slot.GetComponent<MeshRenderer>();
         if (renderer != null && renderer.material != null)
         {
             renderer.material = null;
         }
 
-        // Удаляем аудиоклип, если есть
         AudioSource audioSource = slot.GetComponent<AudioSource>();
         if (audioSource != null)
         {
@@ -167,164 +165,28 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        AssimpContext importer = new AssimpContext();
-        Debug.Log($"Попытка загрузки модели из: {filePath}");
-
-        try
-        {
-            // Импортируем сцену
-            Scene model = importer.ImportFile(filePath, PostProcessSteps.Triangulate | PostProcessSteps.FlipUVs);
-
-            Debug.Log($"Количество материалов в модели: {model.MaterialCount}");
-
-            // Словарь для хранения текстур
-            Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();
-
-            // Проходим по всем мешам
-            foreach (var mesh in model.Meshes)
-            {
-                Debug.Log($"Загружается меш: {mesh.Name} (Материал индекс: {mesh.MaterialIndex})");
-
-                // Создаем меш Unity
-                UnityEngine.Mesh unityMesh = new UnityEngine.Mesh
-                {
-                    name = mesh.Name,
-                    vertices = mesh.Vertices.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray(),
-                    normals = mesh.Normals.Select(n => new Vector3(n.X, n.Y, n.Z)).ToArray(),
-                    triangles = mesh.GetIndices()
-                };
-                
-                unityMesh.RecalculateNormals();
-               /* if (mesh.HasTextureCoords(0))
-                {
-                    unityMesh.uv = mesh.TextureCoordinateChannels[1].Select(uv => new Vector2(uv.X, uv.Y)).ToArray();
-                }*/
-
-                // Создаем объект для меша
-                GameObject meshObject = new GameObject(mesh.Name);
-                meshObject.transform.SetParent(slot.transform);
-
-                // Применяем трансформации
-                meshObject.transform.localScale = new Vector3(0.004f, 0.004f, 0.004f);
-                meshObject.transform.localRotation = UnityEngine.Quaternion.Euler(0, 0, 0);
-                meshObject.transform.localPosition = new Vector3(0, -0.55f, 0);
-
-                // Добавляем MeshFilter и MeshRenderer
-                MeshFilter meshFilter = meshObject.AddComponent<MeshFilter>();
-                meshFilter.mesh = unityMesh;
-
-                MeshRenderer meshRenderer = meshObject.AddComponent<MeshRenderer>();
-
-                // Работаем с материалом
-                Assimp.Material material = model.Materials[mesh.MaterialIndex];
-                UnityEngine.Material unityMaterial = new UnityEngine.Material(Shader.Find("Standard"));
-
-                // Загружаем текстуры
-                if (material.HasTextureDiffuse)
-                {
-                    TextureSlot textureSlot;
-                    if (material.GetMaterialTexture(TextureType.Diffuse, 0, out textureSlot))
-                    {
-                        string texturePath = textureSlot.FilePath;
-
-                        // Проверяем, встроенная или внешняя текстура
-                        Texture2D texture;
-                        if (!string.IsNullOrEmpty(texturePath) && texturePath.StartsWith("*"))
-                        {
-                            // Встроенные текстуры
-                            texture = LoadEmbeddedTexture(model, texturePath);
-                        }
-                        else
-                        {
-                            // Внешние текстуры
-                            string fullPath = Path.Combine(Path.GetDirectoryName(filePath), texturePath);
-                            if (!loadedTextures.TryGetValue(fullPath, out texture))
-                            {
-                                texture = LoadExternalTexture(fullPath);
-                                loadedTextures[fullPath] = texture;
-                            }
-                        }
-
-                        // Применяем текстуру к материалу
-                        if (texture != null)
-                        {
-                            unityMaterial.mainTexture = texture;
-                        }
-                    }
-                }
-
-                // Назначаем материал
-                meshRenderer.material = unityMaterial;
-
-                Debug.Log($"Меш {mesh.Name} успешно загружен.");
-            }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Ошибка при загрузке FBX: {ex.Message}");
-        }
+        modelConverter.ConvertAndSpawnModel(slot, filePath);
     }
 
-    // Метод для загрузки встроенной текстуры
-    private Texture2D LoadEmbeddedTexture(Scene model, string texturePath)
+    public void SetNewPos()
     {
-        int textureIndex = int.Parse(texturePath.Substring(1)); // Пропускаем символ '*'
-        if (textureIndex >= 0 && textureIndex < model.Textures.Count)
-        {
-            var embeddedTexture = model.Textures[textureIndex];
-            int width = embeddedTexture.Width;
-            int height = embeddedTexture.Height;
-
-            Debug.Log($"Встроенная текстура {textureIndex}: ширина = {width}, высота = {height}");
-            
-            if (embeddedTexture.HasCompressedData)
-            {
-                byte[] textureData = embeddedTexture.CompressedData;
-                string savePath = Path.Combine(Application.persistentDataPath, "fileName.png");
-
-                Texture2D texture = new Texture2D(1024, 1024);
-                
-                texture.LoadImage(textureData);
-                texture.mipMapBias = 0;
-                Debug.Log("Успешно загружена встроенная текстура.");
-
-                File.WriteAllBytes(savePath, textureData);
-                return texture;
-            }
-        }
-
-        Debug.LogError("Не удалось загрузить встроенную текстуру.");
-        return null;
+        modelConverter.SetupPosForModels();
     }
-
-    // Метод для загрузки внешней текстуры
-    private Texture2D LoadExternalTexture(string texturePath)
-    {
-        if (File.Exists(texturePath))
-        {
-            byte[] textureData = File.ReadAllBytes(texturePath);
-
-            Texture2D texture = new Texture2D(2, 2);
-            texture.LoadImage(textureData);
-            Debug.Log($"Успешно загружена внешняя текстура из {texturePath}");
-            return texture;
-        }
-
-        Debug.LogError($"Текстура не найдена: {texturePath}");
-        return null;
-    }
-
-
 
     private void OnDestroy()
     {
-        foreach (string filePath in savedFiles)
+        string directoryPath = Application.persistentDataPath;
+
+        string[] files = Directory.GetFiles(directoryPath);
+        foreach (string file in files)
         {
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-                Debug.Log($"Файл удален: {filePath}");
-            }
+            File.Delete(file);
+        }
+
+        string[] directories = Directory.GetDirectories(directoryPath);
+        foreach (string directory in directories)
+        {
+            Directory.Delete(directory, true);
         }
     }
 }
