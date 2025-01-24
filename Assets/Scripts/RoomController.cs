@@ -17,7 +17,7 @@ public class RoomController : MonoBehaviour
 
     public void SetWorksInRoom(RoomWorksResponse roomWorksResponseIn)
     {
-        
+
         Debug.LogError("set works in room");
         roomWorksResponse = roomWorksResponseIn;
 
@@ -76,7 +76,7 @@ public class RoomController : MonoBehaviour
             string savePath = Path.Combine(Application.persistentDataPath, fileName);
 
             byte[] fileData = System.Convert.FromBase64String(work.WorkContent);
-            
+
             File.WriteAllBytes(savePath, fileData);
 
             savedFiles.Add(savePath);
@@ -165,12 +165,7 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        modelConverter.ConvertAndSpawnModel(slot, filePath);
-    }
-
-    public void SetNewPos()
-    {
-        modelConverter.SetupPosForModels();
+        modelConverter.ConvertAndAddModel(slot, filePath);
     }
 
     private void OnDestroy()

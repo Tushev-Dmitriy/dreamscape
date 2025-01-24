@@ -1,113 +1,116 @@
 using System.Diagnostics;
 using System.IO;
 using UnityEngine;
-using System.Collections;
-using UnityGLTF;
+using GLTFast;
+using System.Threading.Tasks;
 using Debug = UnityEngine.Debug;
-using Unity.VisualScripting;
-using GLTF;
-using System.Threading;
+using System.Collections;
 
 public class FBXToGLTFConverter : MonoBehaviour
 {
-    [Header("Paths")]
-    private string fbxFilePath;
     private string fbx2glTFPath;
-
-    private string gltfFilePath;
-
-    GameObject tempGo;
-    GameObject tempSlot;
 
     private void Start()
     {
         fbx2glTFPath = $"{Application.streamingAssetsPath}/FBX2glTF-windows-x64.exe";
     }
 
-    private void ConvertFBXToGLTF(string fbxPath)
+    private string ConvertFBXToGLTF(string fbxPath)
     {
-        tempGo = null;
-
         if (!File.Exists(fbxPath))
         {
             Debug.LogError($"FBX файл не найден: {fbxPath}");
-            return;
+            return null;
         }
 
         string outputFileName = Path.GetFileNameWithoutExtension(fbxPath);
-
         string outputDirectory = Path.GetDirectoryName(fbxPath);
         string outputPath = Path.Combine(outputDirectory, outputFileName);
 
-        Process process = new Process();
-        process.StartInfo.FileName = fbx2glTFPath;
-        process.StartInfo.Arguments = $"\"{fbxPath}\" -o \"{outputPath}\"";
-        process.StartInfo.CreateNoWindow = true;
-        process.StartInfo.UseShellExecute = false;
-        process.StartInfo.RedirectStandardOutput = true;
-        process.StartInfo.RedirectStandardError = true;
+        Process process = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = fbx2glTFPath,
+                Arguments = $"\"{fbxPath}\" -o \"{outputPath}\"",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            }
+        };
 
         process.Start();
         process.WaitForExit();
 
-        string error = process.StandardError.ReadToEnd();
         if (process.ExitCode != 0)
         {
-            Debug.LogError($"Ошибка при конверсии FBX в GLTF: {error}");
-            return;
+            Debug.LogError($"Ошибка конверсии FBX в GLTF: {process.StandardError.ReadToEnd()}");
+            return null;
         }
 
-        gltfFilePath = Path.Combine(outputPath + "_out", outputFileName + ".gltf");
+        string gltfPath = Path.Combine(outputPath + "_out", outputFileName + ".gltf");
 
-        if (File.Exists(gltfFilePath))
+        if (File.Exists(gltfPath))
         {
-            Debug.Log($"Конвертация завершена успешно: {gltfFilePath}");
+            Debug.Log($"Конвертация завершена успешно: {gltfPath}");
+            return gltfPath;
         }
         else
         {
             Debug.LogError("GLTF файл не найден после конверсии!");
+            return null;
         }
     }
 
-    private IEnumerator LoadGLTFInScene(GameObject slot, string gltfPath)
+    private async Task LoadGLTFToSlotAsync(string gltfPath, GameObject slot)
     {
-        tempSlot = null;
-
-        if (!System.IO.File.Exists(gltfPath))
+        if (!File.Exists(gltfPath))
         {
             Debug.LogError($"GLTF файл не найден: {gltfPath}");
-            yield break;
+            return;
         }
 
-        string localFileUri = "file://" + gltfPath;
+        var gltfImport = new GltfImport();
+        bool success = await gltfImport.Load(gltfPath);
 
-        ImportOptions importOptions = new ImportOptions
+        if (success && gltfImport != null && gltfImport.SceneCount > 0)
         {
-            AsyncCoroutineHelper = gameObject.GetOrAddComponent<AsyncCoroutineHelper>()
-        };
+            GameObject loadedModel = new GameObject("LoadedModel");
+            gltfImport.InstantiateSceneAsync(loadedModel.transform);
 
-        GLTFSceneImporter importer = new GLTFSceneImporter(localFileUri, importOptions);
+            GameObject tempModel = loadedModel.transform.GetChild(0).GetChild(0).gameObject;
 
-        tempSlot = slot;
+            Destroy(loadedModel);
+            tempModel.transform.SetParent(slot.transform);
+            tempModel.transform.localPosition = new Vector3(-0.6f, -0.5f, 0);
+            tempModel.transform.localScale = new Vector3(0.42f, 0.42f, 0.42f);
 
-        yield return importer.LoadSceneAsync(-1);
+            Debug.Log("Модель успешно загружена и добавлена в слот.");
+        }
+        else
+        {
+            Debug.LogError("Ошибка загрузки GLTF файла.");
+        }
     }
 
-    public void SetupPosForModels()
+    private IEnumerator LoadGLTFToSlotCoroutine(string gltfPath, GameObject slot)
     {
-        GameObject tempGo = GameObject.Find("Root Scene").transform.GetChild(0).GetChild(0).gameObject;
-        tempGo.transform.SetParent(tempSlot.transform);
-        tempGo.transform.localPosition = new Vector3(-0.45f, -0.5f, 0);
-        tempGo.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        var task = LoadGLTFToSlotAsync(gltfPath, slot);
+        yield return new WaitUntil(() => task.IsCompleted);
+
+        if (task.Exception != null)
+        {
+            Debug.LogError($"Ошибка при загрузке: {task.Exception.Message}");
+        }
     }
 
-    public void ConvertAndSpawnModel(GameObject slot, string path)
+    public void ConvertAndAddModel(GameObject slot, string fbxPath)
     {
-        fbxFilePath = path;
-        ConvertFBXToGLTF(fbxFilePath);
-        if (!string.IsNullOrEmpty(gltfFilePath))
+        string gltfPath = ConvertFBXToGLTF(fbxPath);
+        if (!string.IsNullOrEmpty(gltfPath))
         {
-            StartCoroutine(LoadGLTFInScene(slot, gltfFilePath));
+            StartCoroutine(LoadGLTFToSlotCoroutine(gltfPath, slot));
         }
     }
 }
