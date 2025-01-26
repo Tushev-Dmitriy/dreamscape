@@ -83,8 +83,7 @@ public class FBXToGLTFConverter : MonoBehaviour
 
             Destroy(loadedModel);
             tempModel.transform.SetParent(slot.transform);
-            tempModel.transform.localPosition = new Vector3(-0.6f, -0.5f, 0);
-            tempModel.transform.localScale = new Vector3(0.42f, 0.42f, 0.42f);
+            FitModelToSlot(tempModel, slot);
 
             Debug.Log("Модель успешно загружена и добавлена в слот.");
         }
@@ -93,6 +92,56 @@ public class FBXToGLTFConverter : MonoBehaviour
             Debug.LogError("Ошибка загрузки GLTF файла.");
         }
     }
+
+    private void FitModelToSlot(GameObject model, GameObject slot)
+    {
+        model.transform.localPosition = Vector3.zero;
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = Vector3.one;
+
+        Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0)
+        {
+            Debug.LogWarning("У модели отсутствует компонент Renderer.");
+            return;
+        }
+
+        Bounds modelBounds = new Bounds(renderers[0].bounds.center, renderers[0].bounds.size);
+        foreach (var renderer in renderers)
+        {
+            modelBounds.Encapsulate(renderer.bounds);
+        }
+
+        BoxCollider slotCollider = slot.GetComponent<BoxCollider>();
+        if (slotCollider == null)
+        {
+            Debug.LogError("Слот не имеет компонента BoxCollider для определения размеров.");
+            return;
+        }
+        Vector3 slotSize = slotCollider.size;
+        Vector3 slotCenter = slotCollider.center;
+
+        Vector3 modelSize = modelBounds.size;
+
+        float scaleX = slotSize.x / modelSize.x;
+        float scaleY = slotSize.y / modelSize.y;
+        float scaleZ = slotSize.z / modelSize.z;
+
+        float scaleFactor = Mathf.Min(scaleX, scaleY, scaleZ);
+
+        model.transform.localScale = Vector3.one * scaleFactor;
+
+        float modelBottom = modelBounds.min.y * model.transform.localScale.y;
+
+        Vector3 offset = new Vector3(
+            0,
+            slotCenter.y - modelBottom,
+            0
+        );
+
+        model.transform.localPosition = offset;
+    }
+
 
     private IEnumerator LoadGLTFToSlotCoroutine(string gltfPath, GameObject slot)
     {
