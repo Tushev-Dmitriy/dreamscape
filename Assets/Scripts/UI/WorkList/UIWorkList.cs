@@ -29,19 +29,19 @@ namespace UI
             getWorkListEventChannel.RaiseEvent();
 
             setWorkListEventChannel.OnEventRaised += SetItems;
-            
-            setWorkSlotsChannel.OnEventRaised += SetSlots;
-            
-            listEnabledChannel.RaiseEvent();
+
+            SetSlots();
+
+            //listEnabledChannel.RaiseEvent();
         }
 
         private void OnDisable()
         {
             setWorkListEventChannel.OnEventRaised -= SetItems;
             
-            setWorkSlotsChannel.OnEventRaised -= SetSlots;
+           // setWorkSlotsChannel.OnEventRaised -= SetSlots;
             
-            listItemsToShow.Clear();
+           // listItemsToShow.Clear();
         }
 
         private void SetSlots()
@@ -51,7 +51,6 @@ namespace UI
                 slot.SetWorkSlot();
             }
         }
-        
 
         private void SetItems()
         {

@@ -26,13 +26,12 @@ public class UIWorkSlot : MonoBehaviour
     private void OnEnable()
     {
         SaveChanges += SetWorksSlots;
-        
-        ResetUI();
     }
 
     private void OnDisable()
     {
         SaveChanges -= SetWorksSlots;
+        ResetUI();
     }
 
     public void SetWorkSlot()
@@ -45,7 +44,13 @@ public class UIWorkSlot : MonoBehaviour
                 {
                     for (int i = 0; i < userData.WorkSlot.MusicSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.MusicSlot[i].ToString();
+                        if (userData.WorkSlot.MusicSlot[i] != null) {
+                            inputFields[i].text = userData.WorkSlot.MusicSlot[i];
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
                 break;
@@ -55,7 +60,14 @@ public class UIWorkSlot : MonoBehaviour
                 {
                     for (int i = 0; i < userData.WorkSlot.ImagesSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.ImagesSlot[i].ToString();
+                        if (userData.WorkSlot.ImagesSlot[i] != null)
+                        {
+                            inputFields[i].text = userData.WorkSlot.ImagesSlot[i];
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
                 break;
@@ -66,7 +78,13 @@ public class UIWorkSlot : MonoBehaviour
                 {
                     for (int i = 0; i < userData.WorkSlot.ModelSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.ModelSlot[i].ToString();
+                        if (userData.WorkSlot.ModelSlot[i] != null) {
+                            inputFields[i].text = userData.WorkSlot.ModelSlot[i].ToString();
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
                 break;

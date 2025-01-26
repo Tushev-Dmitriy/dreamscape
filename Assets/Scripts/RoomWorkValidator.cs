@@ -28,7 +28,8 @@ public class RoomWorkValidator : MonoBehaviour
         StartCoroutine(ValidateAndSaveCoroutine(roomId, workSlot.ImagesSlot, workSlot.MusicSlot, workSlot.ModelSlot));
     }
 
-    private IEnumerator ValidateAndSaveCoroutine(int roomId, string[] imageFields, string[] musicFields, string[] modelFields)
+    private IEnumerator ValidateAndSaveCoroutine(int roomId, string[] imageFields, string[] musicFields,
+        string[] modelFields)
     {
         List<(int slot, string field, string type)> slots = new List<(int, string, string)>
         {
@@ -39,7 +40,16 @@ public class RoomWorkValidator : MonoBehaviour
 
         foreach (var (slot, field, type) in slots)
         {
-            string workIdText = field.Trim();
+            string workIdText;
+            if (field != null)
+            {
+                Debug.Log(field.Trim());
+                workIdText = field.Trim();
+            }
+            else
+            {
+                workIdText = null;
+            }
 
             if (string.IsNullOrEmpty(workIdText))
             {
@@ -77,7 +87,7 @@ public class RoomWorkValidator : MonoBehaviour
             if (addWorkRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Failed to add work in slot {slot}: {addWorkRequest.downloadHandler.text}");
-                
+
                 //userData.ResetSlotsData();
                 yield break;
             }
