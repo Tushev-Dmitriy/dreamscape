@@ -52,6 +52,8 @@ namespace UI.AvatarCreation
 
         private void SetGender(int gender)
         {
+            Debug.Log(gender);
+            
             //currentItems.Clear();
             
             _gender = (Gender)gender;

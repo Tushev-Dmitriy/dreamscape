@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
         currentRoomIdEvent.OnEventRaised -= SetCurrentRoomId;
         RoomManager.onJoinedRoom -= OnJoinedRoom;
         
-        UserData.ResetSlotsData();
+        //UserData.ResetSlotsData();
     }
 
     private void OnRoomSceneLoaded(bool isLoaded)

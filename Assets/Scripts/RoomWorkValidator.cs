@@ -78,7 +78,7 @@ public class RoomWorkValidator : MonoBehaviour
             {
                 Debug.LogError($"Failed to add work in slot {slot}: {addWorkRequest.downloadHandler.text}");
                 
-                userData.ResetSlotsData();
+                //userData.ResetSlotsData();
                 yield break;
             }
         }

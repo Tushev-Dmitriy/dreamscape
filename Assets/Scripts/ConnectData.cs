@@ -6,7 +6,7 @@ public static class ConnectData
 {
     private static readonly string Host = "http://95.181.167.71:8000/";
     public static readonly string RegistrationUrl = $"{Host}auth/register";
-    public static readonly string LoginUrl = $"{Host}auth/login";
+    public static readonly string LoginUrl = $"{Host}auth/login/";
     public static readonly string UserWorksUrl = $"{Host}works/";
     public static readonly string AddWorkBaseUrl = $"{Host}works/";
 
@@ -18,6 +18,11 @@ public static class ConnectData
     public static string GetUserWorksUrl(int userId)
     {
         return $"{UserWorksUrl}{userId}";
+    }
+
+    public static string GetUserWorksIdUrl(int userId)
+    {
+        return $"{Host}room/{userId}/work_ids/";
     }
 
     public static string GetDeleteWorkUrl(int userId, int workId)
