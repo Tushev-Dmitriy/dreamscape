@@ -77,7 +77,7 @@ public class SceneLoader : MonoBehaviour
 
         }
         
-        LoadScene(menuToLoad, showLoadingScreen, fadeScreen);
+        _loadHub.RaiseEvent(menuToLoad, showLoadingScreen, fadeScreen);
     }
     
     private void LoadScene(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)

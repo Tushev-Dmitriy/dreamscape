@@ -7,12 +7,13 @@
     <list default="true" id="78218eea-6822-4041-96f4-c9e0820ae687" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/WorkListPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/WorkListPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ManagerScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ManagerScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/UserData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/UserData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConnectData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ConnectData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomWorkValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomWorkValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TabBar/UITabBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TabBar/UITabBar.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,8 @@
       <workItem from="1737712653124" duration="60000" />
       <workItem from="1737712732664" duration="9851000" />
       <workItem from="1737751107897" duration="445000" />
-      <workItem from="1737904334832" duration="7673000" />
+      <workItem from="1737904334832" duration="12411000" />
+      <workItem from="1737970566809" duration="7126000" />
     </task>
     <servers />
   </component>

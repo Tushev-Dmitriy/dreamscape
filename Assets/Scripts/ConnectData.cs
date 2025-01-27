@@ -50,9 +50,9 @@ public static class ConnectData
         return $"{Host}works/{workId}/validate/{type}";
     }
 
-    public static string GetAddWorkUrl(int roomId, int slot)
+    public static string PutWorkToSlot(int roomId)
     {
-        return $"{Host}room/{roomId}/{slot}/add_work/";
+        return $"{Host}room/{roomId}/add_works/";
     }
 
 }
