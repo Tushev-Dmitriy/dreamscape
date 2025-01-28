@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class ConnectData
 {
-    private static readonly string Host = "http://95.181.167.71:8000/";
+    //95.181.167.71
+    private static readonly string Host = "http://localhost:8000/";
     public static readonly string RegistrationUrl = $"{Host}auth/register";
     public static readonly string LoginUrl = $"{Host}auth/login/";
     public static readonly string UserWorksUrl = $"{Host}works/";

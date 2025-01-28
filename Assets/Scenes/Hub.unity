@@ -4839,7 +4839,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611591315696702900, guid: 478630c7c63de2d499e785be09e919fd, type: 3}
       propertyPath: roomId
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2611591315696702900, guid: 478630c7c63de2d499e785be09e919fd, type: 3}
       propertyPath: gameState
@@ -18495,7 +18495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRoom: 0
-  roomId: 4
+  roomId: 0
   loadRoomEventChannel: {fileID: 11400000, guid: 9b167a6d299cd774cb5f7f2da56cfed1, type: 2}
   currentRoomIdEvent: {fileID: 11400000, guid: 0c587b66b7d4a464d85b0e556272c43b, type: 2}
   gameScene: {fileID: 11400000, guid: 12f0959324d75a541b49f97b50a6136c, type: 2}

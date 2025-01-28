@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RoomSO
   m_EditorClassIdentifier: 
   SceneType: 4
-  SceneReference: RoomScene
+  SceneReference: Test_Map

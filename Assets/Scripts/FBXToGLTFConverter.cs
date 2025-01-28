@@ -5,6 +5,9 @@ using GLTFast;
 using System.Threading.Tasks;
 using Debug = UnityEngine.Debug;
 using System.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class FBXToGLTFConverter : MonoBehaviour
 {
@@ -32,7 +35,7 @@ public class FBXToGLTFConverter : MonoBehaviour
             StartInfo = new ProcessStartInfo
             {
                 FileName = fbx2glTFPath,
-                Arguments = $"\"{fbxPath}\" -o \"{outputPath}\"",
+                Arguments = $"\"{fbxPath}\" -o \"{outputPath}\" --embed",
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
@@ -63,6 +66,7 @@ public class FBXToGLTFConverter : MonoBehaviour
         }
     }
 
+
     private async Task LoadGLTFToSlotAsync(string gltfPath, GameObject slot)
     {
         if (!File.Exists(gltfPath))
@@ -80,6 +84,8 @@ public class FBXToGLTFConverter : MonoBehaviour
             gltfImport.InstantiateSceneAsync(loadedModel.transform);
 
             GameObject tempModel = loadedModel.transform.GetChild(0).GetChild(0).gameObject;
+
+            //tempModel.GetComponent<Renderer>().material.shader = Shader.Find("glTF/PbrMetallicRoughness");
 
             Destroy(loadedModel);
             tempModel.transform.SetParent(slot.transform);
@@ -99,11 +105,10 @@ public class FBXToGLTFConverter : MonoBehaviour
         model.transform.localRotation = Quaternion.identity;
         model.transform.localScale = Vector3.one;
 
-        Renderer[] renderers = model.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0)
+        List<Renderer> renderers = model.GetComponentsInChildren<Renderer>().ToList();
+        if (renderers.Count == 0)
         {
-            Debug.LogWarning("У модели отсутствует компонент Renderer.");
-            return;
+            renderers.Add(model.AddComponent<Renderer>());
         }
 
         Bounds modelBounds = new Bounds(renderers[0].bounds.center, renderers[0].bounds.size);
@@ -118,28 +123,18 @@ public class FBXToGLTFConverter : MonoBehaviour
             Debug.LogError("Слот не имеет компонента BoxCollider для определения размеров.");
             return;
         }
-        Vector3 slotSize = slotCollider.size;
-        Vector3 slotCenter = slotCollider.center;
 
-        Vector3 modelSize = modelBounds.size;
+        Bounds slotBounds = slotCollider.bounds;
 
-        float scaleX = slotSize.x / modelSize.x;
-        float scaleY = slotSize.y / modelSize.y;
-        float scaleZ = slotSize.z / modelSize.z;
+        float scaleX = slotBounds.size.x / modelBounds.size.x;
+        float scaleY = slotBounds.size.y / modelBounds.size.y;
+        float scaleZ = slotBounds.size.z / modelBounds.size.z;
 
         float scaleFactor = Mathf.Min(scaleX, scaleY, scaleZ);
 
         model.transform.localScale = Vector3.one * scaleFactor;
 
-        float modelBottom = modelBounds.min.y * model.transform.localScale.y;
-
-        Vector3 offset = new Vector3(
-            0,
-            slotCenter.y - modelBottom,
-            0
-        );
-
-        model.transform.localPosition = offset;
+        model.transform.localPosition = new Vector3(0, -0.05f, 0);
     }
 
 

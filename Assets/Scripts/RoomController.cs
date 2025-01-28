@@ -17,7 +17,7 @@ public class RoomController : MonoBehaviour
 
     public void SetWorksInRoom(RoomWorksResponse roomWorksResponseIn)
     {
-
+        DeleteData();
         Debug.LogError("set works in room");
         roomWorksResponse = roomWorksResponseIn;
 
@@ -170,12 +170,20 @@ public class RoomController : MonoBehaviour
 
     private void OnDestroy()
     {
+        DeleteData();
+    }
+
+    void DeleteData()
+    {
         string directoryPath = Application.persistentDataPath;
 
         string[] files = Directory.GetFiles(directoryPath);
         foreach (string file in files)
         {
-            File.Delete(file);
+            if (!file.EndsWith(".log"))
+            {
+                File.Delete(file);
+            }
         }
 
         string[] directories = Directory.GetDirectories(directoryPath);

@@ -27,27 +27,27 @@ public class MoveController : MonoBehaviourPun
 
     [SerializeField] private GameStateSO gameState;
     private bool cursorLocked = true;
-    
+
     [Header("test")]
     public Camera currentCamera;
-    
+
     private Animator animator; // Ссылка на аниматор
 
     void OnEnable()
     {
         controller = GetComponent<CharacterController>();
-       animator = GetComponentInChildren<Animator>(); // Получаем аниматор
-       
-       if (photonView.IsMine)
-       {
-           EnableLocalPlayerCamera();
-       }
-       else
-       {
-           DisableOtherPlayerCamera();
-       }
+        animator = GetComponentInChildren<Animator>(); // Получаем аниматор
+
+        if (photonView.IsMine)
+        {
+            EnableLocalPlayerCamera();
+        }
+        else
+        {
+            DisableOtherPlayerCamera();
+        }
     }
-    
+
     private void EnableLocalPlayerCamera()
     {
         Debug.LogError("EnableOtherPlayerCamera");
@@ -83,13 +83,13 @@ public class MoveController : MonoBehaviourPun
 
     private void OnDisable()
     {
-        if (photonView.IsMine ) gameState.UpdateGameState(GameState.Menu);
+        if (photonView.IsMine) gameState.UpdateGameState(GameState.Menu);
     }
 
     void Update()
     {
         if (!photonView.IsMine) return;
-        
+
         if (gameState.CurrentGameState == GameState.Gameplay)
         {
             if (cursorLocked)
@@ -98,7 +98,7 @@ public class MoveController : MonoBehaviourPun
                 HandleMovement();
                 HandleLook();
             }
-            
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (cursorLocked)
@@ -153,7 +153,7 @@ public class MoveController : MonoBehaviourPun
             speed /= 2;
         }
 
-        float forward = Vector3.Dot(velocity, transform.forward); 
+        float forward = Vector3.Dot(velocity, transform.forward);
         //Debug.Log("Forward: " + forward);
         //animator.SetFloat("Speed", forward);
     }
