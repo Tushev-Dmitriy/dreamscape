@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveController : MonoBehaviour
+public class MoveController : MonoBehaviourPun
 {
     public float speed = 15.0f;
     public float rotateSpeed = 2.5f;
@@ -36,24 +37,58 @@ public class MoveController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
        animator = GetComponentInChildren<Animator>(); // Получаем аниматор
-        // LockCursor();
+       
+       if (photonView.IsMine)
+       {
+           EnableLocalPlayerCamera();
+       }
+       else
+       {
+           DisableOtherPlayerCamera();
+       }
+    }
+    
+    private void EnableLocalPlayerCamera()
+    {
+        Debug.LogError("EnableOtherPlayerCamera");
+
+        if (currentCamera != null)
+        {
+            currentCamera.gameObject.SetActive(true);
+            currentCamera.enabled = true;
+        }
+
+        var audioListener = GetComponentInChildren<AudioListener>();
+        if (audioListener != null)
+        {
+            audioListener.enabled = true;
+        }
+    }
+
+    private void DisableOtherPlayerCamera()
+    {
+        Debug.LogError("DisableOtherPlayerCamera");
+        if (currentCamera != null)
+        {
+            currentCamera.gameObject.SetActive(false);
+            currentCamera.enabled = false;
+        }
+
+        var audioListener = GetComponentInChildren<AudioListener>();
+        if (audioListener != null)
+        {
+            audioListener.enabled = false;
+        }
     }
 
     private void OnDisable()
     {
-        gameState.UpdateGameState(GameState.Menu);
+        if (photonView.IsMine ) gameState.UpdateGameState(GameState.Menu);
     }
 
     void Update()
     {
-        if (gameState.CurrentGameState != GameState.Gameplay)
-        {
-            var camera = GetComponentInChildren<Camera>().enabled = false;
-        }
-        else
-        {
-            var camera = GetComponentInChildren<Camera>().enabled = true;
-        }
+        if (!photonView.IsMine) return;
         
         if (gameState.CurrentGameState == GameState.Gameplay)
         {
@@ -91,8 +126,8 @@ public class MoveController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 camForward = Camera.main.transform.forward;
-        Vector3 camRight = Camera.main.transform.right;
+        Vector3 camForward = currentCamera.transform.forward;
+        Vector3 camRight = currentCamera.transform.right;
 
         camForward.y = 0;
         camRight.y = 0;

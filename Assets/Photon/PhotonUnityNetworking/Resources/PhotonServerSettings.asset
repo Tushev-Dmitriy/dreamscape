@@ -43,6 +43,10 @@ MonoBehaviour:
   - SetNickName
   - UpdatePortals
   - SetRoomId
+  - RPC_SetGender
+  - RPC_SetHairstyle
+  - RPC_SetOutfitDown
+  - RPC_SetOutfitTop
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1

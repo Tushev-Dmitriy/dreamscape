@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace UI.AvatarCreation
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : MonoBehaviourPunCallbacks
     {
         [SerializeField] private UserData userData;
         [SerializeField] private AvatarDataSO avatarData;
@@ -22,123 +25,95 @@ namespace UI.AvatarCreation
         private List<AvatarItemStack> outfitTopItems = new List<AvatarItemStack>();
         private List<AvatarItemStack> outfitDownItems = new List<AvatarItemStack>();
 
-        private void OnEnable()
+         private void Awake()
         {
-            SetGender(userData.AvatarData.Gender);
-            SetHairstyle(userData.AvatarData.HairStyle);
-            SetOutfitTop(userData.AvatarData.OutfitTop);
-            SetOutfitDown(userData.AvatarData.OutfitDown);
+            if (photonView.IsMine)
+            {
+                // Сохранение данных в CustomProperties при создании аватара
+                Hashtable playerProperties = new Hashtable
+                {
+                    { "Gender", (int)userData.AvatarData.Gender },
+                    { "HairStyle", userData.AvatarData.HairStyle },
+                    { "OutfitTop", userData.AvatarData.OutfitTop },
+                    { "OutfitDown", userData.AvatarData.OutfitDown }
+                };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+            }
+            else
+            {
+                // Получение данных другого игрока
+                ApplyAvatarSettings(photonView.Owner);
+            }
+        }
+
+        public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+        {
+            if (targetPlayer == photonView.Owner)
+            {
+                ApplyAvatarSettings(targetPlayer);
+            }
+        }
+
+        private void ApplyAvatarSettings(Player player)
+        {
+            if (player.CustomProperties.TryGetValue("Gender", out object gender))
+                SetGender((int)gender);
+
+            if (player.CustomProperties.TryGetValue("HairStyle", out object hairStyle))
+                SetHairstyle((int)hairStyle);
+
+            if (player.CustomProperties.TryGetValue("OutfitTop", out object outfitTop))
+                SetOutfitTop((int)outfitTop);
+
+            if (player.CustomProperties.TryGetValue("OutfitDown", out object outfitDown))
+                SetOutfitDown((int)outfitDown);
         }
 
         private void SetGender(int gender)
         {
             _gender = (Gender)gender;
-            
-            switch (_gender)
-            {
-                case Gender.Man:
-                    womanObject.SetActive(false);
-                    menObject.SetActive(true);
 
-                    currentGameobject = menObject;
+            currentGameobject = _gender == Gender.Man ? menObject : womanObject;
+            currentItems = _gender == Gender.Man ? avatarData.MenItems : avatarData.WomanItems;
 
-                    currentItems = avatarData.MenItems;
-                    break;
-                
-                case Gender.Woman:
-                    menObject.SetActive(false);
-                    womanObject.SetActive(true);
-
-                    currentGameobject = womanObject;
-                    
-                    currentItems = avatarData.WomanItems;
-                    break;
-            }
-
-            userData.AvatarData.Gender = gender;
+            currentGameobject.SetActive(true);
         }
 
         private void SetHairstyle(int hairstyle)
         {
             hairstyleItems = currentItems.FindAll(x => x.Item.AvatarItemType.AvatarType == AvatarType.Hairstyle);
-            
-            List<GameObject> hairstyleItemList = new List<GameObject>();
-
-            foreach (var hair in hairstyleItems)
-            {
-                var character = currentGameobject.transform.GetChild(0);
-                var hairObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
-                    .FirstOrDefault(t => t.name == hair.Item.ObjectName)?.gameObject;      
-                
-                hairstyleItemList.Add(hairObject);
-            }
-
-            for (int i = 0; i < hairstyleItemList.Count; i++)
-            {
-                if (i == hairstyle)
-                {
-                    hairstyleItemList[i].SetActive(true);
-                }
-                else
-                {
-                    hairstyleItemList[i].SetActive(false);
-                }
-            }
+            ActivateItem(hairstyleItems, hairstyle);
         }
 
         private void SetOutfitTop(int outfitTop)
         {
             outfitTopItems = currentItems.FindAll(x => x.Item.AvatarItemType.AvatarType == AvatarType.OutfitTop);
-            
-            List<GameObject> outfitTopObjects = new List<GameObject>();
-
-            foreach (var outfit in outfitTopItems)
-            {
-                var character = currentGameobject.transform.GetChild(0);
-                var outfitObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
-                    .FirstOrDefault(t => t.name == outfit.Item.ObjectName)?.gameObject;      
-                
-                outfitTopObjects.Add(outfitObject);
-            }
-
-            for (int i = 0; i < outfitTopObjects.Count; i++)
-            {
-                if (i == outfitTop)
-                {
-                    outfitTopObjects[i].SetActive(true);
-                }
-                else
-                {
-                    outfitTopObjects[i].SetActive(false);
-                }
-            }
+            ActivateItem(outfitTopItems, outfitTop);
         }
 
         private void SetOutfitDown(int outfitDown)
         {
             outfitDownItems = currentItems.FindAll(x => x.Item.AvatarItemType.AvatarType == AvatarType.OutfitDown);
-            
-            List<GameObject> outfitDownObjects = new List<GameObject>();
+            ActivateItem(outfitDownItems, outfitDown);
+        }
 
-            foreach (var outfit in outfitDownItems)
+        private void ActivateItem(List<AvatarItemStack> itemList, int index)
+        {
+            List<GameObject> itemObjects = new List<GameObject>();
+
+            foreach (var item in itemList)
             {
                 var character = currentGameobject.transform.GetChild(0);
-                var outfitObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
-                    .FirstOrDefault(t => t.name == outfit.Item.ObjectName)?.gameObject;      
-                
-                outfitDownObjects.Add(outfitObject);
+                var itemObject = character.GetComponentsInChildren<Transform>(true)
+                    .FirstOrDefault(t => t.name == item.Item.ObjectName)?.gameObject;
+
+                if (itemObject != null)
+                    itemObjects.Add(itemObject);
             }
 
-            for (int i = 0; i < outfitDownObjects.Count; i++)
+            for (int i = 0; i < itemObjects.Count; i++)
             {
-                if (i == outfitDown)
-                {
-                    outfitDownObjects[i].SetActive(true);
-                }
-                else
-                {
-                    outfitDownObjects[i].SetActive(false);
-                }
+                itemObjects[i]?.SetActive(i == index);
             }
         }
     }

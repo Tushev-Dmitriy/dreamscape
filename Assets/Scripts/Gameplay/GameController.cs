@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _portalPref;
     [SerializeField] private RoomManager _photonRoomManager;
 
-    private void Awake()
+    private void Start()
     {
         _onRoomLoadedEvent.OnEventRaised += OnRoomSceneLoaded;
         currentRoomIdEvent.OnEventRaised += SetCurrentRoomId;
@@ -65,9 +65,6 @@ public class GameController : MonoBehaviour
     private void SpawnPlayer()
     {
         var player = PhotonNetwork.Instantiate(_playerPref.name, new Vector3(0, 1, 0), Quaternion.identity);
-        var controller = player.GetComponentInChildren<MoveController>();
-        controller.enabled = true;
-        controller.currentCamera.gameObject.SetActive(true);
-        controller.currentCamera.enabled = true;
+
     }
 }
