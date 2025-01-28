@@ -56,7 +56,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("Leaving current room...");
             _roomForCreating = _hubRoomName;
-            PhotonNetwork.LeaveRoom();
+            
+            RoomOptions roomOptions = new RoomOptions
+            {
+                MaxPlayers = 20, // Максимальное количество игроков в хабе
+                IsVisible = true,
+                IsOpen = true
+            };
+
+            // Присоединяемся или создаём комнату
+            PhotonNetwork.JoinOrCreateRoom(_roomForCreating, roomOptions, TypedLobby.Default);
         }
     }
 
@@ -128,5 +137,4 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //Debug.LogError(0);
         ConnectToServer();
     }
-
 }

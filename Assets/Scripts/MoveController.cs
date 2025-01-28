@@ -35,7 +35,7 @@ public class MoveController : MonoBehaviour
     void OnEnable()
     {
         controller = GetComponent<CharacterController>();
-       // animator = GetComponentInChildren<Animator>(); // Получаем аниматор
+       animator = GetComponentInChildren<Animator>(); // Получаем аниматор
         // LockCursor();
     }
 
@@ -117,9 +117,10 @@ public class MoveController : MonoBehaviour
         {
             speed /= 2;
         }
-        
-        float movementSpeed = new Vector3(horizontal, 0, vertical).magnitude;
-      //  animator.SetFloat("Speed", movementSpeed);
+
+        float forward = Vector3.Dot(velocity, transform.forward); 
+        //Debug.Log("Forward: " + forward);
+        //animator.SetFloat("Speed", forward);
     }
 
     private void HandleLook()

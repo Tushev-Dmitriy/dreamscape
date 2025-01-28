@@ -163,6 +163,12 @@ public class UIHud : MonoBehaviour
     private void GoToHub()
     {
         _backToHub.RaiseEvent(_hubScene, true, true);
+        RoomManager roomManager = FindObjectOfType<RoomManager>();
+
+        if (roomManager != null)
+        {
+            roomManager.SwitchToHub();
+        }
     }
 
     private void HideExitConfirmationPopup(bool isConfirmed)

@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/Assets/Scripts/FBXToGLTFConverter.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/HubOpener.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomManager.cs" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomOpener.cs" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/PhotonManager.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Assets/ScriptsOther/RoomController.cs" charset="windows-1251" />
   </component>
 </project>

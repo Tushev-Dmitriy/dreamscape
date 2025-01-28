@@ -2,7 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RoomOpener : MonoBehaviour, IInteractable
+public class RoomOpener : MonoBehaviour
 {
     [SerializeField] private RoomManager _roomManager;
     public string roomName;
@@ -16,5 +16,4 @@ public class RoomOpener : MonoBehaviour, IInteractable
     {
         _roomManager.SwitchToRoom(roomName);
     }
-
 }

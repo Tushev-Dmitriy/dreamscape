@@ -9,10 +9,7 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject playerPrefab;
 
     public List<Transform> spawnPoints;
-
-    [SerializeField] private PlayerInteractUI _interactUI;
-    [SerializeField] private PlayerDataSO _playerData;
-
+    
     private void Start()
     {
         RoomManager.onJoinedRoom += OnJoinedRoom;
@@ -44,24 +41,16 @@ public class PlayerSpawner : MonoBehaviour
 
     private Vector3 GetSpawnPosition()
     {
-        // Определяем позицию для спавна игрока
         return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count - 1)].position;
     }
 
     private void EnablePlayerControl(GameObject player)
     {
-        //некоректный функционал
-        _interactUI.SetPlayerInteract(player.GetComponent<PlayerInteract>());
-        //
-
-        var playerSetup = player.GetComponent<PlayerSetup>();
         var photonView = player.GetComponent<PhotonView>();
 
-
-        if (playerSetup != null && photonView != null)
+        if (photonView != null)
         {
-            playerSetup.IsLocalPlayer();
-            photonView.RPC("SetNickName", RpcTarget.AllBuffered, _playerData.playerName);
+         //   photonView.RPC("SetNickName", RpcTarget.AllBuffered, _playerData.playerName);
         }
         else
         {

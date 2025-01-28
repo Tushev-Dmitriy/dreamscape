@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HubOpener : MonoBehaviour, IInteractable
+public class HubOpener : MonoBehaviour
 {
     [SerializeField] private RoomManager _roomManager;
 

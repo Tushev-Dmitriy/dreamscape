@@ -17791,7 +17791,7 @@ MonoBehaviour:
   gameScene: {fileID: 11400000, guid: 12f0959324d75a541b49f97b50a6136c, type: 2}
   loadHubEventChannel: {fileID: 11400000, guid: 063a345b035fcaf47a3d2027d8213f23, type: 2}
   hubScene: {fileID: 11400000, guid: 316c66036e750804fb532013457105b2, type: 2}
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 12f04149f09ff1942af0cd0ae3b7d1d5, type: 2}
 --- !u!4 &1729647041
 Transform:
   m_ObjectHideFlags: 0
