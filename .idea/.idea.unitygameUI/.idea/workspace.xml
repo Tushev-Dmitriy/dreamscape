@@ -7,47 +7,12 @@
     <list default="true" id="78218eea-6822-4041-96f4-c9e0820ae687" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unitygameUI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ManagerScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ManagerScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/FaceObjectToCamera.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/FaceObjectToCamera.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/HubOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/HubOpener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/IInteractable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/IInteractable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/InteractionButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/InteractionButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/PlayerInteract.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/PlayerInteract.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/PlayerInteractUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Interactions/PlayerInteractUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/MouseLook.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/MouseLook.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Movement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/Movement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerDataSO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerDataSO.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerNicknameController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerNicknameController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerSetup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerSetup.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/PlayerSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomEventHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomEventHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConnectData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ConnectData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomOpener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/ListItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/ListItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/PhotonManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/PhotonManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/Player.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/RoomUIManagment/Player.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/TestObserver.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/TestObserver.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/WaitingRoomManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PhotonScripts/WaitingRoomManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIHud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIHud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +23,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/EmptyPlayerManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PhotonScripts/EmptyPlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AvatarCreation/Elements/UISelectButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/TopList/UITopWorkItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIHud.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/WorkList/UIWorkSlot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/org.khronos.unitygltf@b99d85f0b6/Runtime/Scripts/GLTFSceneImporter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
@@ -94,7 +58,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Dreamscape/streaming_assets\Dreamscape.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Dreamscape\Dreamscape.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\MSI\Desktop\Dreamscape" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -160,7 +124,8 @@
       <workItem from="1737712732664" duration="9851000" />
       <workItem from="1737751107897" duration="445000" />
       <workItem from="1737904334832" duration="12411000" />
-      <workItem from="1737970566809" duration="10226000" />
+      <workItem from="1737970566809" duration="26508000" />
+      <workItem from="1738130087348" duration="2326000" />
     </task>
     <servers />
   </component>

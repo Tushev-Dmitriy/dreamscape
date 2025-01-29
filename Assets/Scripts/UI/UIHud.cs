@@ -17,11 +17,13 @@ public class UIHud : MonoBehaviour
     [SerializeField] private UIAddWork addWorkPanel;
 
     [SerializeField] private GameSceneSO _hubScene;
+    [SerializeField] private GameSceneSO _menuScene;
 
     [SerializeField] private List<TabSO> _tabTypesList = new List<TabSO>();
     [SerializeField] private GameStateSO gameState;
     
     [SerializeField] private LoadEventChannelSO _backToHub;
+    [SerializeField] private LoadEventChannelSO _backToMenu;
     
     private TabSO _selectedTab = default;
 
@@ -168,7 +170,11 @@ public class UIHud : MonoBehaviour
         if (roomManager != null)
         {
             roomManager.SwitchToHub();
+            roomManager.SetNextLoadRoom("hub");
+            roomManager.Disconect();
         }
+        
+        tabBar.DeselectTab(_selectedTab);
     }
 
     private void HideExitConfirmationPopup(bool isConfirmed)
@@ -178,11 +184,7 @@ public class UIHud : MonoBehaviour
         
         if (isConfirmed)
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+            _backToMenu.RaiseEvent(_menuScene, true, true);
         }
         else
         {
