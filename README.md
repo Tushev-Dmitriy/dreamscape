@@ -17,7 +17,23 @@
 <div>Ключевой элемент игры, позволяющий игрокам выразить свою индивидуальность и создать уникального персонажа</div>
 <div align=center>⠀</div>
 
+<div align=center>
+  <img src="gifs/аватар1.gif" /> 
+  <img src="gifs/аватар2.gif" />
+</div>
+
+<div align=center>⠀</div>
+
 - Хаб
 
 <div>Центральное место в игре, где игроки могут взаимодействовать друг с другом, открывать новые возможности и изучать творческие работы сообщества</div>
+<div align=center>⠀</div>
+
+<div align=center>
+  <img src="gifs/хаб1.gif" /> 
+  <img src="gifs/хаб2.gif" />
+
+</div>
+
+<div align=center>⠀</div>
 
