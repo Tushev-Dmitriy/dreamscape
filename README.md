@@ -12,6 +12,10 @@
 <b>Жанр:</b> многопользовательская песочница с элементами социальной сети
 </div>
 
+
+<div align=center>⠀</div>
+<div align=center> <i>Проект был создан в рамках хакатона от ИРПО </i> </div>
+
 <div align=left>
   <h1> 
     <img src=https://github.com/user-attachments/assets/45994afe-ef01-414c-aa2a-98aa53c19553>
@@ -38,6 +42,17 @@
   <img src="gifs/хаб1.gif" width="350"/> 
   <img src="gifs/хаб2.gif" width="350"/>
 
+</div>
+
+<div align=center>⠀</div>
+
+- Персональные комнаты
+<div>Игроки могут размещать свои работы (изображения, 3D-модели, концепты и т. д.) в комнате, выбирая их расположение</div>
+<div align=center>⠀</div>
+
+<div align=center>
+  <img src="gifs/room1.gif" width="350"/> 
+  <img src="gifs/room2.gif" width="350"/>
 </div>
 
 <div align=center>⠀</div>
