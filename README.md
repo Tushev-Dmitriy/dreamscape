@@ -12,14 +12,19 @@
 <b>Жанр:</b> многопользовательская песочница с элементами социальной сети
 </div>
 
-## Геймплей
+<div align=left>
+  <h1> 
+    <img src=https://github.com/user-attachments/assets/45994afe-ef01-414c-aa2a-98aa53c19553>
+  </h1>
+</div>
+
 - Кастомизация аватара
 <div>Ключевой элемент игры, позволяющий игрокам выразить свою индивидуальность и создать уникального персонажа</div>
 <div align=center>⠀</div>
 
 <div align=center>
-  <img src="gifs/аватар1.gif" /> 
-  <img src="gifs/аватар2.gif" />
+  <img src="gifs/аватар1.gif" width="350"/> 
+  <img src="gifs/аватар2.gif" width="350"/>
 </div>
 
 <div align=center>⠀</div>
@@ -30,8 +35,8 @@
 <div align=center>⠀</div>
 
 <div align=center>
-  <img src="gifs/хаб1.gif" /> 
-  <img src="gifs/хаб2.gif" />
+  <img src="gifs/хаб1.gif" width="350"/> 
+  <img src="gifs/хаб2.gif" width="350"/>
 
 </div>
 
