@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd476b0642e61c4cad71f18c9a2dd65, type: 3}
   m_Name: Men_Tishirt
   m_EditorClassIdentifier: 
+  _guid: d20b4dc2c677ac746a7c2e7dbb0ebcc1
   preview: {fileID: 21300000, guid: df09a96a1ac3ebb41b6241405cd7ad7e, type: 3}
   avatarItemType: {fileID: 11400000, guid: 8016635c1bd271f40a6891c64b9ca317, type: 2}
-  objectName: tishirt
+  objectName: tishort

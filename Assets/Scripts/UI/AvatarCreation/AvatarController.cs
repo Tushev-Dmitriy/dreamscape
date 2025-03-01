@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace UI.AvatarCreation
@@ -51,7 +52,9 @@ namespace UI.AvatarCreation
 
         private void SetGender(int gender)
         {
-            currentItems.Clear();
+            Debug.Log(gender);
+            
+            //currentItems.Clear();
             
             _gender = (Gender)gender;
             
@@ -61,8 +64,6 @@ namespace UI.AvatarCreation
                     womanObject.SetActive(false);
                     menObject.SetActive(true);
                     
-                    Debug.Log("Man");
-
                     currentGameobject = menObject;
 
                     currentItems = avatarDataSO.MenItems;
@@ -72,8 +73,6 @@ namespace UI.AvatarCreation
                     menObject.SetActive(false);
                     womanObject.SetActive(true);
                     
-                    Debug.Log("Woman");
-
                     currentGameobject = womanObject;
                     
                     currentItems = avatarDataSO.WomanItems;
@@ -91,7 +90,10 @@ namespace UI.AvatarCreation
 
             foreach (var hair in hairstyleItems)
             {
-                var hairObject = currentGameobject.transform.Find(hair.Item.ObjectName).gameObject;
+                var character = currentGameobject.transform.GetChild(0);
+                var hairObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
+                    .FirstOrDefault(t => t.name == hair.Item.ObjectName)?.gameObject;      
+                
                 hairstyleItemList.Add(hairObject);
             }
 
@@ -118,7 +120,10 @@ namespace UI.AvatarCreation
 
             foreach (var outfit in outfitTopItems)
             {
-                var outfitObject = currentGameobject.transform.Find(outfit.Item.ObjectName).gameObject;
+                var character = currentGameobject.transform.GetChild(0);
+                var outfitObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
+                    .FirstOrDefault(t => t.name == outfit.Item.ObjectName)?.gameObject;      
+                
                 outfitTopObjects.Add(outfitObject);
             }
 
@@ -145,8 +150,11 @@ namespace UI.AvatarCreation
 
             foreach (var outfit in outfitDownItems)
             {
-                var hairObject = currentGameobject.transform.Find(outfit.Item.ObjectName).gameObject;
-                outfitDownItems.Add(outfit);
+                var character = currentGameobject.transform.GetChild(0);
+                var outfitObject = character.GetComponentsInChildren<Transform>(true) // true - учитывает все дочерние объекты
+                    .FirstOrDefault(t => t.name == outfit.Item.ObjectName)?.gameObject;      
+                
+                outfitDownObjects.Add(outfitObject);
             }
 
             for (int i = 0; i < outfitDownObjects.Count; i++)

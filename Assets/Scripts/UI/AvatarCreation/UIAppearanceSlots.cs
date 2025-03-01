@@ -12,8 +12,7 @@ public class UIAppearanceSlots : MonoBehaviour
     [SerializeField] private List<UIItem> _itemSlots = default;
 
     [SerializeField] private IntEventChannelSO setHairstyleEventChannel;
-
-
+    
     private List<AvatarItemStack> _slots = new List<AvatarItemStack>();
 
     private int selectedItemId = -1;
@@ -80,11 +79,6 @@ public class UIAppearanceSlots : MonoBehaviour
             _itemSlots = new List<UIItem>();
         }
 
-        foreach (var slot in _itemSlots)
-        {
-            slot.SetInactiveItem();
-        }
-
         int itemsCount = listItemsToShow.Count;
 
         for (int i = 0; i < itemsCount; i++)
@@ -99,12 +93,6 @@ public class UIAppearanceSlots : MonoBehaviour
                 Debug.LogError(
                     $"Not enough available slots for work items. Index {i} exceeds availableSlots count {_itemSlots.Count}");
             }
-        }
-
-        // Deactivate remaining slots if there are more availableSlots than items
-        for (int i = itemsCount; i < _itemSlots.Count; i++)
-        {
-            _itemSlots[i].SetInactiveItem();
         }
     }
 }

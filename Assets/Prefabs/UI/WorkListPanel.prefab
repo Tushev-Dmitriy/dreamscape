@@ -220,7 +220,8 @@ MonoBehaviour:
   getWorkListEventChannel: {fileID: 11400000, guid: ca6eff28aff27b347a31648637d863dd, type: 2}
   setWorkListEventChannel: {fileID: 11400000, guid: 345a03820c8bc864380e0de6a6565877, type: 2}
   setWorksInSlotsEvent: {fileID: 11400000, guid: af225759aed4d7d44b5797586c85d99d, type: 2}
-  setWorkSlotsChannel: {fileID: 0}
+  listEnabledChannel: {fileID: 11400000, guid: ac95d372dcef3fa408990b649358b365, type: 2}
+  setWorkSlotsChannel: {fileID: 11400000, guid: 56ee7ffe9a4af5b45be7239d0763b066, type: 2}
   userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
 --- !u!1 &189865248067496449
 GameObject:
@@ -1418,7 +1419,6 @@ MonoBehaviour:
   - {fileID: 3373786046617713945}
   workType: 2
   userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
-  setWorkSlotsChannel: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
 --- !u!1 &2874888247909027785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6933304660644317826}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3097,7 +3097,6 @@ MonoBehaviour:
   - {fileID: 7380207976399077197}
   workType: 0
   userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
-  setWorkSlotsChannel: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
 --- !u!1 &4980191554578216197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,7 +3269,6 @@ MonoBehaviour:
   - {fileID: 599576384944352453}
   workType: 1
   userData: {fileID: 11400000, guid: 06deebbc031965d42b961bbc6ed196f5, type: 2}
-  setWorkSlotsChannel: {fileID: 11400000, guid: 88979241612acee42ae9cba112da999a, type: 2}
 --- !u!1 &5309338332910462644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000025480986}
+  m_AnchoredPosition: {x: 0, y: 0.0000025308404}
   m_SizeDelta: {x: 0, y: 607}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8332572429399173037

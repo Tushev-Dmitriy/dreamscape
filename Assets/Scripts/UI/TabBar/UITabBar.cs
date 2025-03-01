@@ -4,17 +4,23 @@ using System.Collections.Generic;
 using UI.TabBar;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class UITabBar : MonoBehaviour
 {
     [SerializeField] private List<UITab> tabBars = new List<UITab>();
     public event UnityAction<TabSO> TabChanged;
 
+    [SerializeField] private Text _playerName;
+    [SerializeField] private UserData _userData;
+
     private bool tabsInitialized = false;
 
     private void OnEnable()
     {
         InitializeTabs(tabBars);
+
+        _playerName.text = _userData.Login;
     }
 
     public void InitializeTabs(List<UITab> tabList)

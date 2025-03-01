@@ -19,20 +19,19 @@ public class UIWorkSlot : MonoBehaviour
     [SerializeField] private InputField[] inputFields;
     [SerializeField] private WorkType workType;
     [SerializeField] private UserData userData;
-    
-    
+
+
     public UnityAction SaveChanges;
 
     private void OnEnable()
     {
         SaveChanges += SetWorksSlots;
-        
-        ResetUI();
     }
 
     private void OnDisable()
     {
         SaveChanges -= SetWorksSlots;
+        ResetUI();
     }
 
     public void SetWorkSlot()
@@ -45,30 +44,54 @@ public class UIWorkSlot : MonoBehaviour
                 {
                     for (int i = 0; i < userData.WorkSlot.MusicSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.MusicSlot[i].ToString();
+                        if (userData.WorkSlot.MusicSlot[i] != null)
+                        {
+                            inputFields[i].text = userData.WorkSlot.MusicSlot[i];
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
+
                 break;
-            
+
             case WorkType.Image:
                 if (userData.WorkSlot.ImagesSlot != null)
                 {
                     for (int i = 0; i < userData.WorkSlot.ImagesSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.ImagesSlot[i].ToString();
+                        if (userData.WorkSlot.ImagesSlot[i] != null)
+                        {
+                            inputFields[i].text = userData.WorkSlot.ImagesSlot[i];
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
+
                 break;
-            
+
             case WorkType.Model:
-                
+
                 if (userData.WorkSlot.ModelSlot != null)
                 {
                     for (int i = 0; i < userData.WorkSlot.ModelSlot.Length; i++)
                     {
-                        inputFields[i].text = userData.WorkSlot.ModelSlot[i].ToString();
+                        if (userData.WorkSlot.ModelSlot[i] != null)
+                        {
+                            inputFields[i].text = userData.WorkSlot.ModelSlot[i].ToString();
+                        }
+                        else
+                        {
+                            inputFields[i].text = "";
+                        }
                     }
                 }
+
                 break;
         }
     }
@@ -104,15 +127,15 @@ public class UIWorkSlot : MonoBehaviour
                         {
                             userData.WorkSlot.ImagesSlot[i] = inputFields[i].text;
                         }
-                        else
-                        {
-                            ColorField(inputFields[i], Color.red);
-                        }
+                    }
+                    else
+                    {
+                        userData.WorkSlot.ImagesSlot[i] = null;
                     }
                 }
 
                 break;
-            
+
             case WorkType.Audio:
                 for (int i = 0; i < inputFields.Length; i++)
                 {
@@ -123,15 +146,15 @@ public class UIWorkSlot : MonoBehaviour
                         {
                             userData.WorkSlot.MusicSlot[i] = inputFields[i].text;
                         }
-                        else
-                        {
-                            ColorField(inputFields[i], Color.red);
-                        }
+                    }
+                    else
+                    {
+                        userData.WorkSlot.MusicSlot[i] = null;
                     }
                 }
 
                 break;
-            
+
             case WorkType.Model:
                 for (int i = 0; i < inputFields.Length; i++)
                 {
@@ -142,15 +165,14 @@ public class UIWorkSlot : MonoBehaviour
                         {
                             userData.WorkSlot.ModelSlot[i] = inputFields[i].text;
                         }
-                        else
-                        {
-                            ColorField(inputFields[i], Color.red);
-                        }
+                    }
+                    else
+                    {
+                        userData.WorkSlot.ModelSlot[i] = null;
                     }
                 }
 
                 break;
-                
         }
     }
-} 
+}

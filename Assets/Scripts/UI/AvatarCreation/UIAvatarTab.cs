@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UI.AvatarCreation;
 using UI.TabBar;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -17,6 +19,16 @@ public class UIAvatarTab : MonoBehaviour
 
     [ReadOnly] public AvatarTabSO currentTabType = default;
     
+    [SerializeField] private bool isFirstSelected = false;
+
+    private void Start()
+    {
+        if (isFirstSelected)
+        {
+            UpdateState(isFirstSelected);
+        }
+    }
+
     public void SetTab(bool isSelected)
     {
         UpdateState(isSelected);
@@ -26,13 +38,17 @@ public class UIAvatarTab : MonoBehaviour
     {
         _actionButton.interactable = !isSelected;
         
-        if (isSelected)
+        if (isSelected )
         {
+            unselectTabImage.gameObject.SetActive(false);
+
             selectTabImage.gameObject.SetActive(true);
         }
         else
         {
             selectTabImage.gameObject.SetActive(false);
+
+            unselectTabImage.gameObject.SetActive(true);
         }
     }
 

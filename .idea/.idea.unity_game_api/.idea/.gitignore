@@ -2,8 +2,8 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/contentModel.xml
 /.idea.unity_game_api.iml
+/contentModel.xml
 /modules.xml
 /projectSettingsUpdater.xml
 # Editor-based HTTP Client requests

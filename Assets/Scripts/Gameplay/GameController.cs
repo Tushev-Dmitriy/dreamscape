@@ -3,28 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using Events;
 using UnityEngine;
+using Photon.Pun;
 using UnityEngine.Serialization;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private BoolEventChannelSO _onHubLoadedEvent;
     [SerializeField] private BoolEventChannelSO _onRoomLoadedEvent;
     
     [SerializeField] private IntEventChannelSO currentRoomIdEvent;
     [SerializeField] private UserData UserData;
 
-    private void Awake()
+    [Header("test")]
+    [SerializeField] private GameObject _playerPref;
+    [SerializeField] private GameObject _portalPref;
+    [SerializeField] private RoomManager _photonRoomManager;
+
+    private void Start()
     {
-        _onHubLoadedEvent.OnEventRaised += OnHubSceneLoaded;
         _onRoomLoadedEvent.OnEventRaised += OnRoomSceneLoaded;
         currentRoomIdEvent.OnEventRaised += SetCurrentRoomId;
+        RoomManager.onJoinedRoom += OnJoinedRoom;
     }
 
     private void OnDisable()
     {
-        _onHubLoadedEvent.OnEventRaised -= OnHubSceneLoaded;
         _onRoomLoadedEvent.OnEventRaised -= OnRoomSceneLoaded;
         currentRoomIdEvent.OnEventRaised -= SetCurrentRoomId;
+        RoomManager.onJoinedRoom -= OnJoinedRoom;
         
         UserData.ResetSlotsData();
     }
@@ -36,31 +42,29 @@ public class GameController : MonoBehaviour
         if (roomControllerSceneObject != null)
         {
             RoomWorksFetcher.Instance.roomController = roomControllerSceneObject;
-            RoomWorksFetcher.Instance.StartGetRoom(UserData.CurrentRoomID); 
-            
-            Debug.Log("room controller");
+            RoomWorksFetcher.Instance.StartGetRoom(UserData.CurrentRoomID);
         }
         else
         {
             Debug.LogError("RoomController not found in the scene!");
         }
 
-        SetPlayerPosition(new Vector3(0, 1, 0));
-    }
-
-    void OnHubSceneLoaded(bool onHubLoaded)
-    {
-        SetPlayerPosition(new Vector3(0, 1, 0));
-    }
-
-    void SetPlayerPosition(Vector3 position)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<MoveController>().SetPlayerPos();
     }
 
     private void SetCurrentRoomId(int roomId)
     {
         UserData.CurrentRoomID = roomId;
+    }
+
+    private void OnJoinedRoom()
+    {
+        SpawnPlayer();
+
+    }
+
+    private void SpawnPlayer()
+    {
+        var player = PhotonNetwork.Instantiate(_playerPref.name, new Vector3(0, 1, 0), Quaternion.identity);
+
     }
 }

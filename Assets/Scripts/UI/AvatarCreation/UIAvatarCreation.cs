@@ -20,6 +20,9 @@ public class UIAvatarCreation : MonoBehaviour
     [SerializeField] private LoadEventChannelSO _backToMenu;
     [SerializeField] private VoidEventChannelSO onSaveAvatarDataEvent;
 
+    [SerializeField] private LoadEventChannelSO loadHubSceneEvent;
+    [SerializeField] private GameSceneSO hub;
+
     [SerializeField] private GameSceneSO _menuToLoad;
     
     private AvatarTabSO _selectedTab = default;
@@ -30,6 +33,8 @@ public class UIAvatarCreation : MonoBehaviour
 
     private void Awake()
     {
+        _currentPanel = _generalSlots.gameObject;
+        
         if (tabBar == null)
         {
             Debug.LogError("TabBar не установлен в инспекторе.");
@@ -37,8 +42,6 @@ public class UIAvatarCreation : MonoBehaviour
         }
 
         tabBar.TabChanged += OnChangeTab; // Подписка на событие
-        Debug.Log("Подписка на TabChanged выполнена в Start.");
-    
         SetTabs(_tabTypesList, _selectedTab);
     }
 
@@ -61,6 +64,7 @@ public class UIAvatarCreation : MonoBehaviour
         }
 
         _selectedTab = _tabTypesList.Find(o => o.TabType == _selectedTabType);
+        
         if (_selectedTab == null)
         {
             Debug.LogError("No TabSO selected.");
@@ -110,6 +114,10 @@ public class UIAvatarCreation : MonoBehaviour
     public void SaveAvatarData()
     {
         onSaveAvatarDataEvent.RaiseEvent();
+        
+        loadHubSceneEvent.RaiseEvent(hub, true, true);
+        
+        gameState.UpdateGameState(GameState.Gameplay);
     }
 
     private void SetCurrentPanel(GameObject panel)
@@ -123,6 +131,4 @@ public class UIAvatarCreation : MonoBehaviour
         _currentPanel = panel;
         _currentPanel.SetActive(true);
     }
-    
-
 }

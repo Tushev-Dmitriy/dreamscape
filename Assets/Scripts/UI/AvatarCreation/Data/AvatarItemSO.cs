@@ -4,7 +4,7 @@ using UI.AvatarCreation;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Avatar/Item", order = 1)]
-public class AvatarItemSO : ScriptableObject
+public class AvatarItemSO : SerializableScriptableObject
 {
     [SerializeField] private Sprite preview;
     [SerializeField] private AvatarItemTypeSO avatarItemType;

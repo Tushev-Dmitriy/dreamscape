@@ -12,54 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbdd772bfe0e4843882acee905506fc, type: 3}
   m_Name: UserData
   m_EditorClassIdentifier: 
-  UserID: 8
-  Login: newuser
-  Nickname: newuser
-  RoomID: 3
-  CurrentRoomID: 3
-  WorksID: 240000002500000027000000290000002a0000002b0000003100000032000000
+  UserID: 4
+  Login: test
+  Nickname: test
+  RoomID: 4
+  CurrentRoomID: 6
+  WorksID: 0700000008000000090000000a0000000b0000000c0000000d000000
   LikedWorks: 
   AllWorks:
-  - WorkID: 36
-    WorkTitle: TestTree
+  - WorkID: 7
+    WorkTitle: model1
     WorkType: Model
     LikesCount: 0
     IsModerated: 1
-  - WorkID: 37
-    WorkTitle: Tree1
+  - WorkID: 8
+    WorkTitle: testModel
     WorkType: Model
     LikesCount: 0
     IsModerated: 1
-  - WorkID: 39
-    WorkTitle: LegaMuz
+  - WorkID: 9
+    WorkTitle: image
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 10
+    WorkTitle: image
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 11
+    WorkTitle: image1
+    WorkType: Image
+    LikesCount: 0
+    IsModerated: 1
+  - WorkID: 12
+    WorkTitle: msic
     WorkType: Music
     LikesCount: 0
     IsModerated: 1
-  - WorkID: 41
-    WorkTitle: "\u0435\u0449\u0435 \u043E\u0434\u043D\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430"
-    WorkType: Image
-    LikesCount: 0
-    IsModerated: 0
-  - WorkID: 42
-    WorkTitle: "\u043A\u043A\u043A"
-    WorkType: Model
-    LikesCount: 0
-    IsModerated: 0
-  - WorkID: 43
-    WorkTitle: "\u0435\u0435\u0435\u0435\u0435\u0435\u0435\u0435"
+  - WorkID: 13
+    WorkTitle: aaaa
     WorkType: Image
     LikesCount: 0
     IsModerated: 1
-  - WorkID: 49
-    WorkTitle: fdsfdsfds
-    WorkType: Image
-    LikesCount: 0
-    IsModerated: 0
-  - WorkID: 50
-    WorkTitle: vbvcbvcbvcb
-    WorkType: Image
-    LikesCount: 0
-    IsModerated: 0
   WorkSlot:
     ImagesSlot:
     - 
@@ -73,3 +68,8 @@ MonoBehaviour:
     - 
     - 
     - 
+  AvatarData:
+    HairStyle: 0
+    Gender: 1
+    OutfitTop: 0
+    OutfitDown: 1
