@@ -19,8 +19,9 @@
 <div align=center>⠀</div>
 
 <div align=center>
-  <a href="https://docs.google.com/presentation/d/1V4U6vSxNRCfyWUvMGfrXBfB7Yool9uh54w5MiqgEXZE/edit?usp=sharing"><img src=https://github.com/user-attachments/assets/ec7fdee9-2d3b-4562-a8d9-cc17cf3ac7df /> </a>
-  <a href="https://docs.google.com/document/d/1CjfnOfw6ruA4Od-KyRa0oHlIpFJmu7XZ/edit?usp=sharing&ouid=104369285055219336950&rtpof=true&sd=true"><img src=https://github.com/user-attachments/assets/9c233fe3-d98a-46e8-bdbd-4d28fe78c3ba /> </a>
+  <a href="https://docs.google.com/presentation/d/1V4U6vSxNRCfyWUvMGfrXBfB7Yool9uh54w5MiqgEXZE/edit?usp=sharing"><img src=https://github.com/user-attachments/assets/36ed2043-e68f-4b7c-9e15-7aef62a33837 /> </a>
+  <a href="https://docs.google.com/document/d/1CjfnOfw6ruA4Od-KyRa0oHlIpFJmu7XZ/edit?usp=sharing&ouid=104369285055219336950&rtpof=true&sd=true"><img src=https://github.com/user-attachments/assets/d3a78e63-f0c8-42be-973e-cde986cefed5 /> </a>
+<a href="https://drive.google.com/drive/folders/1riuP7ym29B1m_QvwaFlBrGFjLS0RGAEj?usp=sharing"><img src=https://github.com/user-attachments/assets/53165c72-4223-48ce-a03b-db33089bb9fd /> </a>
 </div>
 
 <div align=left>
