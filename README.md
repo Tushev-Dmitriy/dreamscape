@@ -14,11 +14,18 @@
 
 
 <div align=center>⠀</div>
-<div align=center> <i>Проект был создан в рамках хакатона от ИРПО </i> </div>
+<div align=center> <i>Проект является победителем в хакатоне от ИРПО </i> </div>
+
+<div align=center>⠀</div>
+
+<div align=center>
+  <a href="https://docs.google.com/presentation/d/1V4U6vSxNRCfyWUvMGfrXBfB7Yool9uh54w5MiqgEXZE/edit?usp=sharing"><img src=https://github.com/user-attachments/assets/ec7fdee9-2d3b-4562-a8d9-cc17cf3ac7df /> </a>
+  <a href="https://docs.google.com/document/d/1CjfnOfw6ruA4Od-KyRa0oHlIpFJmu7XZ/edit?usp=sharing&ouid=104369285055219336950&rtpof=true&sd=true"><img src=https://github.com/user-attachments/assets/9c233fe3-d98a-46e8-bdbd-4d28fe78c3ba /> </a>
+</div>
 
 <div align=left>
   <h1> 
-    <img src=https://github.com/user-attachments/assets/45994afe-ef01-414c-aa2a-98aa53c19553>
+    <img src=https://github.com/user-attachments/assets/36fc460e-93c8-47dd-ba6a-ccfc14909ab0>
   </h1>
 </div>
 
@@ -57,3 +64,20 @@
 
 <div align=center>⠀</div>
 
+<div align=left>
+  <h1> 
+    <img src=https://github.com/user-attachments/assets/701344eb-d908-4f4d-9ed8-f53345ad1b9a>
+  </h1>
+</div>
+
+#### Управление
+Передвижение происходит по WASD. Все остальные взаимодействия осуществляются нажатием мышки.
+Для появления курсора на экране необходимо нажать Escape, нажав данную клавишу еше раз, вы снова отключие курсор и будете управлять камерой. 
+
+#### Игровой процесс
+Для полной демонстрации необходимо зайти в игру на двух устройствах и под разными аккаунтами. 
+После авторизации вы попадете в хаб, справа и слева находятся порталы, которые ведут в комнаты игроков. Одна комната является постоянной и нужна для демонстрации функционала.
+
+#### Загрузка работ
+На данный момент предусмотрена загрузка только трех типов работ: изображения (png), аудиофайлы и модели в формате GLTF. Добавление остальных типов работ находится в разработке.
+После загрузки работы, для ее отображения в комнате необходимо добавить в слот. 
